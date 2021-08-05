@@ -1,6 +1,8 @@
-import React, { createContext, useReducer } from "react";
+import { AirportShuttle } from "@material-ui/icons";
+import axios from "axios";
+import React, { createContext, useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
-import { ACTIONS } from "../helpers/consts";
+import { ACTIONS, GAMES_API } from "../helpers/consts";
 
 export const gameContext = createContext();
 
@@ -27,12 +29,75 @@ const reducer = (state = INIT_STATE, action) => {
 }
 
 
-const GameContext = () => {
+const GameContext = ({children}) => {
 
   const [state,dispatch] = useReducer(reducer,INIT_STATE)
   let history = useHistory()
-  return <gameContext.Provider>
 
+  const getGamesData = async () => { 
+    const {data} = await axios(GAMES_API)
+    dispatch({
+      type: ACTIONS.GET_GAMES_DATA,
+      payload: data
+    })
+  }
+
+  const addNewGame = async (newGame) => {
+    await axios.post(GAMES_API,newGame)
+    await getGamesData()
+    history.push('/')  
+  }
+
+  const deleteGame = async (id) => {
+    await axios.delete(`${GAMES_API}/${id}`)
+    getGamesData()
+  }
+
+  const toggleModal = () => {
+    dispatch({
+      type: ACTIONS.MODAL,
+      payload: !state.modal
+    })
+  }
+
+  const setEditGameInfo = async (id) => {
+    await getGameDetails(id)
+    dispatch({
+      type: ACTIONS.MODAL,
+      payload: true
+    })
+  }
+
+  const getGameDetails = async (id) => {
+    const {data} = await axios(`${GAMES_API}/${id}`)
+    dispatch({
+      type:ACTIONS.GET_GAME_DETAILS,
+      payload: data
+    })
+  }
+
+  const saveEditedGame = async (id,editedGame) => {
+    console.log(editedGame)
+    const data = await axios.patch(`${GAMES_API}/${id}`,editedGame)
+    toggleModal() 
+    getGamesData()
+  }
+
+  const values = {
+    getGamesData,
+    addNewGame,
+    deleteGame,
+    setEditGameInfo,
+    toggleModal,  
+    getGameDetails,
+    saveEditedGame,
+    id: state.id,
+    gamesData: state.gamesData,
+    modal: state.modal,
+    gameDetails: state.gameDetails
+  }
+  return <gameContext.Provider value={values}>
+    {children}
   </gameContext.Provider>;
 };
 

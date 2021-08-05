@@ -4,3 +4,5 @@ export const ACTIONS = {
     CHANGE_ID:"CHANGE_ID",
     MODAL:"MODAL",
 }
+
+export const GAMES_API = 'http://localhost:8001/games'
