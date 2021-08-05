@@ -1,5 +1,4 @@
 {
-
   "users": [
     {
       "name": "kozhon.amantay@gmail.com",
@@ -21,8 +20,7 @@
       "isDiscount": true
     },
     {
-      "name": "Minecraft",
-
+      "name": "Minecraftawdawda",
       "description": "Minecraft is often described as a ‘sandbox game’. This means that it’s a virtual land where users can create their own worlds and experiences, using building blocks, resources discovered on the site and their own creativity. The game is available on multiple platforms. You can play on a computer, smartphone, tablet, Pi, XBox, Nintendo Wii or Playstation. It is growing in popularity day by day, especially among primary-aged children. ",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "price": "200",
@@ -37,7 +35,7 @@
       "image": "https://csgoluxe.ru/wp-content/uploads/2019/01/7oxe2g7t0y411.jpg",
       "price": "50",
       "genre": "shooter",
-      "id": 2,
+      "id": 3,
       "discount": "",
       "isDiscount": false
     },
@@ -47,12 +45,21 @@
       "image": "https://images5.alphacoders.com/819/819012.jpg",
       "price": "300",
       "genre": "survival",
-      "id": 2,
+      "id": 4,
       "discount": "80",
       "isDiscount": true
+    },
+    {
+      "name": "awdad",
+      "description": "wadawd",
+      "image": "https://csgoluxe.ru/wp-content/uploads/2019/01/7oxe2g7t0y411.jpg",
+      "price": "1231",
+      "genre": "sandbox",
+      "discount": "2",
+      "isDiscount": true,
+      "id": 5
     }
   ],
   "comments": [],
   "likes": []
 }
-

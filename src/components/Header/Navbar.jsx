@@ -91,7 +91,6 @@ const useStyles = makeStyles((theme) => ({
   appBar: {
     backgroundColor: "#1a1a1a",
     opacity: "90%",
-    height: 0,
   },
 }));
 
