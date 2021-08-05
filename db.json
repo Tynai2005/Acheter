@@ -48,16 +48,6 @@
       "id": 4,
       "discount": "80",
       "isDiscount": true
-    },
-    {
-      "name": "awdad",
-      "description": "wadawd",
-      "image": "https://csgoluxe.ru/wp-content/uploads/2019/01/7oxe2g7t0y411.jpg",
-      "price": "1231",
-      "genre": "sandbox",
-      "discount": "2",
-      "isDiscount": true,
-      "id": 5
     }
   ],
   "comments": [],
