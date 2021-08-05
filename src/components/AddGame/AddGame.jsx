@@ -6,6 +6,7 @@ const AddGame = () => {
     const {addNewGame} = useGames()
     const [gameInfo,setGameInfo] = useState({
         name:'',
+        creator:'',
         description:'',
         image:'',
         price:0,
@@ -16,6 +17,7 @@ const AddGame = () => {
     return (
         <div>   
             <input onChange={(e) => {setGameInfo({...gameInfo,name: e.target.value})}} type="text" placeholder='Name'/><br />
+            <input onChange={(e) => {setGameInfo({...gameInfo,creator: e.target.value})}} type="text" placeholder='Creator'/><br />
             <input onChange={(e) => {setGameInfo({...gameInfo,description: e.target.value})}} type="text" placeholder='Description'/><br />
             <input onChange={(e) => {setGameInfo({...gameInfo,image: e.target.value})}} type="text" placeholder='Image'/><br />
             <input onChange={(e) => {setGameInfo({...gameInfo,price: e.target.value})}} type="number" placeholder='Price($)'/><br />
