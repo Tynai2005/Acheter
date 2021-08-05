@@ -76,7 +76,19 @@ const EditGame = () => {
           value={gameDetails.price}
         />
       </div>
-
+      <div>
+        <input
+          onChange={(e) => {
+            setEditedGame({ ...editedGame, discount: e.target.value });
+            gameDetails.discount = e.target.value;
+          }}
+          type="number"
+          name=""
+          id=""
+          placeholder="Discount"
+          value={gameDetails.discount}
+        />
+      </div>
       <div>Is discount?</div>
       <div>
         <input
@@ -98,22 +110,6 @@ const EditGame = () => {
         />
         <span>No</span>
       </div>
-
-      {gameDetails.isDiscount ? (
-        <div>
-          <input
-            onChange={(e) => {
-              setEditedGame({ ...editedGame, discount: e.target.value });
-              gameDetails.discount = e.target.value;
-            }}
-            type="number"
-            name=""
-            id=""
-            placeholder="Discount"
-            value={gameDetails.discount}
-          />
-        </div>
-      ) : null}
       <div>
         Choose game genre:
         <div>
