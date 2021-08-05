@@ -12,16 +12,12 @@ const GamesList = () => {
   }, []);
 
   return (
-    <Container>
-      <div style={{ display: "flex", justifyContent: "center" }}>
-        <div className="container-div">
-          {gamesData &&
-            gamesData.map((game) => {
-              console.log(game);
-              return <GameCard game={game} />;
-            })}
-        </div>
-      </div>
+    <Container className="container-div">
+      {gamesData &&
+        gamesData.map((game) => {
+          console.log(game);
+          return <GameCard game={game} />;
+        })}
     </Container>
   );
 };
