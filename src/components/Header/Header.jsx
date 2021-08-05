@@ -1,4 +1,5 @@
 import React from "react";
+import logo from "./5777704462_e401e742-bab4-4b56-b277-e21100d57b0c.png";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,6 +19,7 @@ import Navbar from "./Navbar";
 import { Button } from "@material-ui/core";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import InfoIcon from "@material-ui/icons/Info";
+import { Link } from "react-router-dom";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -85,6 +87,11 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarBtn: {
     color: "white",
+  },
+  logo: {
+    color: "inherit",
+    textDecoration: "none",
+    width: "50px",
   },
 }));
 
@@ -171,9 +178,11 @@ export default function Header() {
       <div className={classes.grow}>
         <AppBar position="sticky" className={classes.navbar}>
           <Toolbar>
-            <Typography className={classes.title} variant="h6" noWrap>
-              Acheter
-            </Typography>
+            <Link to="/" className={classes.logo}>
+              <Typography className={classes.title} variant="h4" noWrap>
+                <img src={logo} alt="logo" className={classes.logo} />
+              </Typography>
+            </Link>
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
