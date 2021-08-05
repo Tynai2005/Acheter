@@ -7,6 +7,7 @@ import GameContextProvider from "../contexts/GameContext";
 import AddGame from "../components/AddGame/AddGame";
 import GameDetails from "../components/GameDetails/GameDetails";
 import GameContext from "../contexts/GameContext";
+import Footer from "../components/Footer/Footer";
 
 const Routes = () => {
   return (
@@ -16,13 +17,13 @@ const Routes = () => {
           <Header />
           <Switch>
             <Route exact path="/" component={Home} />
-<Route exact path="/gamedetails/:id" component={GameDetails} />
-        <Route exact path="/addgame" component={AddGame} />
+            <Route exact path="/gamedetails/:id" component={GameDetails} />
+            <Route exact path="/addgame" component={AddGame} />
           </Switch>
+          <Footer />
         </GameContextProvider>
       </BrowserRouter>
     </div>
-
   );
 };
 
