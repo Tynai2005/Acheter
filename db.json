@@ -1,1 +1,65 @@
-{}
+{
+  "users": [
+    {
+      "name": "kozhon.amantay@gmail.com",
+      "password": "coolboy2005",
+      "online": true,
+      "isAdmin": true,
+      "id": 1
+    }
+  ],
+  "games": [
+    {
+      "name": "Rocket League",
+      "description": "Загрузите игру и сразитесь в этом высокооктановом гибриде аркадного футбола и гоночного безумия! Соберите свой болид, выезжайте на поле и примите участие в одной из самых высоко оценённых спортивных игр всех времён! Загрузите игру и начните забивать голы прямо сейчас! Играйте в одиночку или с друзьями в сетевых режимах «1 на 1», «2 на 2» и «3 на 3» либо испытайте дополнительные режимы — «Рокот», «Снежный денёк» или «Кольца». Открывайте новые предметы в Rocket Pass, повышайте свой соревновательный рейтинг, участвуйте в соревновательных турнирах, выполняйте испытания, используйте преимущества кросс-платформенного прогресса и не только! Выезжайте на поле. Пора забивать голы!",
+      "image": "https://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
+      "price": "100",
+      "genre": "sport",
+      "id": 1,
+      "discount": "50",
+      "isDiscount": true
+    },
+    {
+      "name": "Minecraftawdawda",
+      "description": "Minecraft is often described as a ‘sandbox game’. This means that it’s a virtual land where users can create their own worlds and experiences, using building blocks, resources discovered on the site and their own creativity. The game is available on multiple platforms. You can play on a computer, smartphone, tablet, Pi, XBox, Nintendo Wii or Playstation. It is growing in popularity day by day, especially among primary-aged children. ",
+      "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
+      "price": "200",
+      "genre": "sandbox",
+      "id": 2,
+      "discount": "25",
+      "isDiscount": true
+    },
+    {
+      "name": "Counter Strike",
+      "description": "Counter-Strike: Global Offensive (CS:GO) is a multiplayer first-person shooter developed by Valve and Hidden Path Entertainment. It is the fourth game in the Counter-Strike series. Developed for over two years, Global Offensive was released for Windows, macOS, Xbox 360, and PlayStation 3 in August 2012, and for Linux in 2014. Valve still regularly updates the game, both with smaller balancing patches and larger content additions. The game pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based game modes. The most common game modes involve the Terrorists planting a bomb while Counter-Terrorists attempt to stop them, or Counter-Terrorists attempting to rescue hostages that the Terrorists have captured. There are eight official game modes, all of which have distinct characteristics specific to that mode. The game also has matchmaking support that allows players to play on dedicated Valve servers, in addition to community-hosted servers with custom maps and game modes. A battle-royale game-mode, 'Danger Zone', was introduced in December 2018.",
+      "image": "https://csgoluxe.ru/wp-content/uploads/2019/01/7oxe2g7t0y411.jpg",
+      "price": "50",
+      "genre": "shooter",
+      "id": 3,
+      "discount": "",
+      "isDiscount": false
+    },
+    {
+      "name": "ARK",
+      "description": "Ark: Survival Evolved is a sandbox survival game developed and published by Studio Wildcard. Players are stranded on a lush tropical island inhabited by mammoth dinosaurs. Survive by scavenging resources to craft tools and build a home to withstand the elements. Pick seeds and plant them, collecting dinosaur excrement to fertilize your farm. Or build improvised weapons to hunt prehistoric beasts for their hides and meat. As you play you level up in RPG-fashion, earning points to increase your stats and unlocking new craftable items. Tame ancient reptiles with food to assist you as pack mules, or ride them to fly, swim, and run faster across the sprawling landscape. Every animal in Ark obeys a predatorial hierarchy and wanders a specific ecosystem; tamed Dodo birds won’t do much good against a pack of velociraptors. While dinosaurs pose a threat, it’s humans who will kill you without mercy or provocation. Join a tribe with other players and create a thriving community, sharing resources and working together to survive. Or, raid other tribes for loot, in fast-paced and brutal PvP.",
+      "image": "https://images5.alphacoders.com/819/819012.jpg",
+      "price": "300",
+      "genre": "survival",
+      "id": 4,
+      "discount": "80",
+      "isDiscount": true
+    },
+    {
+      "name": "awdad",
+      "description": "wadawd",
+      "image": "https://csgoluxe.ru/wp-content/uploads/2019/01/7oxe2g7t0y411.jpg",
+      "price": "1231",
+      "genre": "sandbox",
+      "discount": "2",
+      "isDiscount": true,
+      "id": 5
+    }
+  ],
+  "comments": [],
+  "likes": []
+}
