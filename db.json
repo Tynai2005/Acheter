@@ -27,7 +27,7 @@
       "genre": "sandbox",
       "id": 2,
       "discount": "25",
-      "isDiscount": true
+      "isDiscount": false
     },
     {
       "name": "Counter Strike",
