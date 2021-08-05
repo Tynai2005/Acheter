@@ -8,16 +8,18 @@ const EditGame = () => {
     let [editedGame,setEditedGame] = useState({
         name: gameDetails.name,
         description:gameDetails.description,
+        creator:gameDetails.creator,
         image:gameDetails.image,
         price:gameDetails.price,
         genre:gameDetails.genre,
-        discount:gameDetails.discount,
+        creator:gameDetails.creator,
         isDiscount: gameDetails.isDiscount 
     })
 
     return (   
         <div>
             <div><input onChange={(e)=> {setEditedGame({...editedGame,name:e.target.value});gameDetails.name = e.target.value}} type="text" name="" id="" placeholder='Name' value={gameDetails.name}/></div>
+            <div><input onChange={(e)=> {setEditedGame({...editedGame,creator:e.target.value});gameDetails.creator = e.target.value}} type="text" name="" id="" placeholder='Creator' value={gameDetails.creator}/></div>
             <div><input onChange={(e)=> {setEditedGame({...editedGame,description:e.target.value});gameDetails.description = e.target.value}} type="text" name="" id="" placeholder='Description' value={gameDetails.description}/></div>
             <div><input onChange={(e)=> {setEditedGame({...editedGame,image:e.target.value});gameDetails.image = e.target.value}} type="text" name="" id="" placeholder='Phono' value={gameDetails.image}/></div>
             <div><input onChange={(e)=> {setEditedGame({...editedGame,price:e.target.value});gameDetails.price = e.target.value}} type="number" name="" id="" placeholder='Price' value={gameDetails.price}/></div>
