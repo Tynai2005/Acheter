@@ -1,4 +1,5 @@
 {
+
   "users": [
     {
       "name": "kozhon.amantay@gmail.com",
@@ -21,6 +22,7 @@
     },
     {
       "name": "Minecraft",
+
       "description": "Minecraft is often described as a ‘sandbox game’. This means that it’s a virtual land where users can create their own worlds and experiences, using building blocks, resources discovered on the site and their own creativity. The game is available on multiple platforms. You can play on a computer, smartphone, tablet, Pi, XBox, Nintendo Wii or Playstation. It is growing in popularity day by day, especially among primary-aged children. ",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "price": "200",
@@ -53,3 +55,4 @@
   "comments": [],
   "likes": []
 }
+
