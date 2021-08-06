@@ -13,60 +13,6 @@
       "password": "butylka",
       "isAdmin": true,
       "id": 2
-    },
-    {
-      "nickname": "a",
-      "name": "a@gmail.com",
-      "password": "1",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "1",
-      "id": 3
-    },
-    {
-      "nickname": "b",
-      "name": "b@gmail.com",
-      "password": "2",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "2",
-      "id": 4
-    },
-    {
-      "nickname": "c",
-      "name": "c@gmail.com",
-      "password": "2",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "2",
-      "id": 5
-    },
-    {
-      "nickname": "Dima",
-      "name": "Dima@gmail.com",
-      "password": "3",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "3",
-      "id": 6
-    },
-    {
-      "nickname": "d",
-      "name": "d@gmail.com",
-      "password": "1",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "1",
-      "id": 7
-    },
-    {
-      "nickname": "Bdwbakd",
-      "name": "k@gmail.com",
-      "password": "2",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "2",
-      "id": 8
     }
   ],
   "games": [

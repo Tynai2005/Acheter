@@ -31,7 +31,9 @@ const GameCard = ({ game }) => {
           >
             <div
               style={{
-                textAlign: "center",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 width: "40px",
                 height: "20px",
                 backgroundColor: "royalblue",
