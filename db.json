@@ -20,14 +20,15 @@
       "isDiscount": true
     },
     {
-      "name": "Minecraftawdawda",
+      "name": "Minecraft",
       "description": "Minecraft is often described as a ‘sandbox game’. This means that it’s a virtual land where users can create their own worlds and experiences, using building blocks, resources discovered on the site and their own creativity. The game is available on multiple platforms. You can play on a computer, smartphone, tablet, Pi, XBox, Nintendo Wii or Playstation. It is growing in popularity day by day, especially among primary-aged children. ",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "price": "200",
       "genre": "sandbox",
       "id": 2,
       "discount": "25",
-      "isDiscount": false
+      "isDiscount": "25",
+      "video": "                    <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MmB9b5njVbA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
     },
     {
       "name": "Counter Strike",
@@ -37,7 +38,7 @@
       "genre": "shooter",
       "id": 3,
       "discount": "",
-      "isDiscount": false
+      "isDiscount": ""
     },
     {
       "name": "ARK",
@@ -47,9 +48,32 @@
       "genre": "survival",
       "id": 4,
       "discount": "80",
-      "isDiscount": true
+      "isDiscount": "80"
+    },
+    {
+      "name": "njpmok[",
+      "description": "jnpko[pl]",
+      "image": "ojipk",
+      "video": "kjnokpo",
+      "price": 0,
+      "genre": "sandbox",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 7
+    },
+    {
+      "name": "cugyiho",
+      "description": "uygih",
+      "image": "ovibh",
+      "video": "ojivgjhb",
+      "price": 0,
+      "genre": "",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 8
     }
   ],
   "comments": [],
-  "likes": []
+  "likes": [],
+  "wishlist": []
 }

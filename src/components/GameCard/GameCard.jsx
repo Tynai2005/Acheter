@@ -1,16 +1,16 @@
+import { Link } from 'react-router-dom';
 import React from 'react';
 import { useGames } from '../../contexts/GameContext';
 
 const GameCard = ({game}) => {
 
-    const {deleteGame,setEditGameInfo} = useGames()
+    const {deleteGame,setEditGameInfo,id,changeId} = useGames()
     
     return (
         <div className='game-card'>
-            <div className="game-img-div"><img className="game-card-img" src={game.image} alt={`${game.name} img`}/></div>
+            <div className="game-img-div" onClick={() => changeId(game.id)}><img className="game-card-img" src={game.image} alt={`${game.name} img`}/></div>
             <div className="game-card-info">
                 <div style={{fontFamily:'Roboto',color:'gainsboro'}} >{game.name}</div>
-                <div style={{color:'silver',fontSize:'12px'}}>{game.description}</div>
                 {game.isDiscount ? <div style={{fontSize:'14px',display:'flex',width:'80%',justifyContent:'space-around'}}>
                     <div style={{textAlign: 'center',width:'40px',height:'20px',backgroundColor:'royalblue',borderRadius:'5px',color:'gainsboro',fontSize: '11px'}} >-{game.discount}%</div>
                     <div style={{textDecoration:'line-through',color:'silver',fontSize:'12px'}}>{game.price}$</div>

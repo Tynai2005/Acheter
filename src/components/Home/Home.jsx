@@ -5,7 +5,7 @@ import CarouselSlide from "../CarouselSlide/CarouselSlide";
 import { Link } from "react-router-dom";
 import { useGames } from "../../contexts/GameContext";
 import EditGame from "../EditGame.jsx/EditGame";
-import GamesList from "../GamesList/GamesList";
+import GamesListPreview from "../GamesListPreview/GamesListPreview";
 const Home = () => {
   const { modal } = useGames();
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       <Body />
       <Link to="/addgame">Add Game</Link>
       {modal ? <EditGame /> : null}
-      <GamesList />
+      <GamesListPreview />
     </div>
   );
 };

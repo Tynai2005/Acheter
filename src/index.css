@@ -32,6 +32,11 @@ code {
   height: 100%;
   border-radius: 5px;
   object-fit: cover;
+  opacity: 85%;
+}
+
+.game-card-img:hover{
+  opacity: 100%;
 }
 
 .game-img-div {
