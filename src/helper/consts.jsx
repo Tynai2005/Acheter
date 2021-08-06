@@ -10,7 +10,3 @@ export const ACTIONS = {
 
 export const GAMES_API = "http://localhost:8001/games";
 
-const data = axios(GAMES_API)
-
-export const GAMES_LIMIT = data.length;
-
