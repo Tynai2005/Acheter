@@ -5,21 +5,20 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
+
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
-import SearchIcon from "@material-ui/icons/Search";
+
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Navbar from "./Navbar";
 import { Button } from "@material-ui/core";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import InfoIcon from "@material-ui/icons/Info";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext";
+
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -92,10 +91,15 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     width: "50px",
   },
+  a: {
+    textDecoration: "none",
+    color: "black",
+  },
 }));
 
 export default function Header() {
   const classes = useStyles();
+  const { logout, logged } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -129,8 +133,18 @@ export default function Header() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      {!localStorage.getItem("user") ? (
+        <div>
+          <Link to="/login" className={classes.a}>
+            <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
+          </Link>
+          <Link to="/signup" className={classes.a}>
+            <MenuItem onClick={handleMenuClose}>Sign up</MenuItem>
+          </Link>
+        </div>
+      ) : (
+        <MenuItem onClick={(handleMenuClose, logout)}>Log out</MenuItem>
+      )}
     </Menu>
   );
 
@@ -192,7 +206,8 @@ export default function Header() {
                 <InfoIcon style={{ marginRight: "5px" }} />
                 About us
               </Button>
-              <IconButton
+              <Button
+                className={classes.navbarBtn}
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}
@@ -200,8 +215,9 @@ export default function Header() {
                 onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
-              </IconButton>
+                <AccountCircle style={{ marginRight: "5px" }} />
+                {logged ? <>{logged.nickname}</> : null}
+              </Button>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

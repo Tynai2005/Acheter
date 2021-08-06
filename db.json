@@ -1,12 +1,20 @@
 {
   "users": [
     {
+      "nickname": "Genshin4ever",
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
-      "online": true,
       "isAdmin": true,
       "id": 1
+    },
+    {
+      "nickname": "Tynai",
+      "name": "tynai.s.95@gmail.com",
+      "password": "butylka",
+      "isAdmin": true,
+      "id": 2
     }
+    
   ],
   "games": [
     {
@@ -27,8 +35,7 @@
       "genre": "sandbox",
       "id": 2,
       "discount": "25",
-      "isDiscount": "25",
-      "video": "                    <iframe width=\"560\" height=\"315\" src=\"https://www.youtube.com/embed/MmB9b5njVbA\" title=\"YouTube video player\" frameborder=\"0\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture\" allowfullscreen></iframe>"
+      "isDiscount": true
     },
     {
       "name": "Counter Strike",
@@ -51,26 +58,37 @@
       "isDiscount": "80"
     },
     {
-      "name": "njpmok[",
-      "description": "jnpko[pl]",
-      "image": "ojipk",
-      "video": "kjnokpo",
-      "price": 0,
-      "genre": "sandbox",
-      "discount": 0,
-      "isDiscount": false,
-      "id": 7
-    },
-    {
-      "name": "cugyiho",
-      "description": "uygih",
-      "image": "ovibh",
-      "video": "ojivgjhb",
+      "name": "vuyiijp",
+      "description": "hbkuji",
+      "image": "jhbkij",
+      "video": null,
       "price": 0,
       "genre": "",
       "discount": 0,
       "isDiscount": false,
-      "id": 8
+      "id": 5
+    },
+    {
+      "name": "njp",
+      "description": "nlkm;l,",
+      "image": "jnlkm;l,",
+      "video": null,
+      "price": 0,
+      "genre": "",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 6
+    },
+    {
+      "name": "",
+      "description": "jh bkjnlhbkjl",
+      "image": "bhjkjnl",
+      "video": null,
+      "price": 0,
+      "genre": "",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 7
     }
   ],
   "comments": [],

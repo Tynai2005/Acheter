@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useGames } from "../../contexts/GameContext";
 import GameCard from "../GameCard/GameCard";
+
 import { Carousel, Container } from "react-bootstrap";
 import {Link} from "react-router-dom"
 import SvgIcon from '@material-ui/core/SvgIcon';  
@@ -27,7 +28,6 @@ const GamesList = () => {
       <div><Link to='/'><HomeIcon/></Link></div>
       {gamesData &&
         gamesData.map((game) => {
-          console.log(game);
           return <GameCard game={game} />;
         })}
     </Container>

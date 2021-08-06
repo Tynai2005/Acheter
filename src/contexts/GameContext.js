@@ -1,8 +1,11 @@
-import { AirportShuttle } from "@material-ui/icons";
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
+
 import { ACTIONS, GAMES_API,} from "../helper/consts";
+
+
+
 
 export const gameContext = createContext();
 
@@ -41,7 +44,7 @@ let counter = 0
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  let history = useHistory();
+  const history = useHistory();
 
   const getGamesData = async () => {
     const {data} = await axios(GAMES_API)
@@ -116,7 +119,7 @@ const GameContextProvider = ({ children }) => {
     getGameDetails,
     saveEditedGame,
     changeId,
-    history,
+    history,  
     id: state.id,
     gamesData: state.gamesData,
     modal: state.modal,
