@@ -1,30 +1,35 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Button, Modal } from "react-bootstrap";
 import { useGames } from "../../contexts/GameContext";
 
 const EditGame = () => {
   const {
     modal,
     gameDetails,
-    setEditGameInfo,
-    getGameDetails,
-    id,
     saveEditedGame,
+    toggleModal,
   } = useGames();
 
   let [editedGame, setEditedGame] = useState({
     name: gameDetails.name,
     description: gameDetails.description,
     image: gameDetails.image,
+    video: gameDetails.video,
     price: gameDetails.price,
     genre: gameDetails.genre,
     discount: gameDetails.discount,
-    isDiscount: gameDetails.isDiscount,
+    isDiscount: gameDetails.discount,
   });
 
   return (
     <div>
-      <div>
+      <Modal show={modal} >
+        <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div>
         <input
           onChange={(e) => {
             setEditedGame({ ...editedGame, name: e.target.value });
@@ -66,6 +71,19 @@ const EditGame = () => {
       <div>
         <input
           onChange={(e) => {
+            setEditedGame({ ...editedGame, video: e.target.value });
+            gameDetails.video = e.target.value;
+          }}
+          type="text"
+          name=""
+          id=""
+          placeholder="Trailer"
+          value={gameDetails.video}
+        />
+      </div>
+      <div>
+        <input
+          onChange={(e) => {
             setEditedGame({ ...editedGame, price: e.target.value });
             gameDetails.price = e.target.value;
           }}
@@ -74,19 +92,6 @@ const EditGame = () => {
           id=""
           placeholder="Price"
           value={gameDetails.price}
-        />
-      </div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, discount: e.target.value });
-            gameDetails.discount = e.target.value;
-          }}
-          type="number"
-          name=""
-          id=""
-          placeholder="Discount"
-          value={gameDetails.discount}
         />
       </div>
       <div>Is discount?</div>
@@ -110,6 +115,20 @@ const EditGame = () => {
         />
         <span>No</span>
       </div>
+      {editedGame.isDiscount ?       
+      <div>
+        <input
+          onChange={(e) => {
+            setEditedGame({ ...editedGame, discount: e.target.value });
+            gameDetails.discount = e.target.value;
+          }}
+          type="number"
+          name=""
+          id=""
+          placeholder="Discount"
+          value={gameDetails.discount}
+        />
+      </div> : null}
       <div>
         Choose game genre:
         <div>
@@ -168,14 +187,19 @@ const EditGame = () => {
           Fighting
         </div>
       </div>
-      <button
-        type="button"
-        onClick={() => saveEditedGame(gameDetails.id, editedGame)}
-      >
-        Save
-      </button>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={toggleModal}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={() => saveEditedGame(gameDetails.id, editedGame)}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
+
 };
 
 export default EditGame;

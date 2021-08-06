@@ -13,61 +13,9 @@
       "password": "butylka",
       "isAdmin": true,
       "id": 2
-    },
-    {
-      "nickname": "a",
-      "name": "a@gmail.com",
-      "password": "1",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "1",
-      "id": 3
-    },
-    {
-      "nickname": "b",
-      "name": "b@gmail.com",
-      "password": "2",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "2",
-      "id": 4
-    },
-    {
-      "nickname": "c",
-      "name": "c@gmail.com",
-      "password": "2",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "2",
-      "id": 5
-    },
-    {
-      "nickname": "Dima",
-      "name": "Dima@gmail.com",
-      "password": "3",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "3",
-      "id": 6
-    },
-    {
-      "nickname": "d",
-      "name": "d@gmail.com",
-      "password": "1",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "1",
-      "id": 7
-    },
-    {
-      "nickname": "Bdwbakd",
-      "name": "k@gmail.com",
-      "password": "2",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "2",
-      "id": 8
+
     }
+    
   ],
   "games": [
     {
@@ -81,7 +29,7 @@
       "isDiscount": true
     },
     {
-      "name": "Minecraftawdawda",
+      "name": "Minecraft",
       "description": "Minecraft is often described as a ‘sandbox game’. This means that it’s a virtual land where users can create their own worlds and experiences, using building blocks, resources discovered on the site and their own creativity. The game is available on multiple platforms. You can play on a computer, smartphone, tablet, Pi, XBox, Nintendo Wii or Playstation. It is growing in popularity day by day, especially among primary-aged children. ",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "price": "200",
@@ -98,19 +46,53 @@
       "genre": "shooter",
       "id": 3,
       "discount": "",
-      "isDiscount": false
+      "isDiscount": ""
     },
     {
       "name": "ARK",
-      "description": "Something",
-      "image": "https://wallpaperaccess.com/full/1446082.jpg",
-      "price": "200",
-      "genre": "sandbox",
-      "discount": "20",
-      "isDiscount": true,
-      "id": 4
+      "description": "Ark: Survival Evolved is a sandbox survival game developed and published by Studio Wildcard. Players are stranded on a lush tropical island inhabited by mammoth dinosaurs. Survive by scavenging resources to craft tools and build a home to withstand the elements. Pick seeds and plant them, collecting dinosaur excrement to fertilize your farm. Or build improvised weapons to hunt prehistoric beasts for their hides and meat. As you play you level up in RPG-fashion, earning points to increase your stats and unlocking new craftable items. Tame ancient reptiles with food to assist you as pack mules, or ride them to fly, swim, and run faster across the sprawling landscape. Every animal in Ark obeys a predatorial hierarchy and wanders a specific ecosystem; tamed Dodo birds won’t do much good against a pack of velociraptors. While dinosaurs pose a threat, it’s humans who will kill you without mercy or provocation. Join a tribe with other players and create a thriving community, sharing resources and working together to survive. Or, raid other tribes for loot, in fast-paced and brutal PvP.",
+      "image": "https://images5.alphacoders.com/819/819012.jpg",
+      "price": "300",
+      "genre": "survival",
+      "id": 4,
+      "discount": "80",
+      "isDiscount": "80"
+    },
+    {
+      "name": "vuyiijp",
+      "description": "hbkuji",
+      "image": "jhbkij",
+      "video": null,
+      "price": 0,
+      "genre": "",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 5
+    },
+    {
+      "name": "njp",
+      "description": "nlkm;l,",
+      "image": "jnlkm;l,",
+      "video": null,
+      "price": 0,
+      "genre": "",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 6
+    },
+    {
+      "name": "",
+      "description": "jh bkjnlhbkjl",
+      "image": "bhjkjnl",
+      "video": null,
+      "price": 0,
+      "genre": "",
+      "discount": 0,
+      "isDiscount": false,
+      "id": 7
     }
   ],
   "comments": [],
-  "likes": []
+  "likes": [],
+  "wishlist": []
 }
