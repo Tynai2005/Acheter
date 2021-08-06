@@ -6,11 +6,11 @@ export const ACTIONS = {
   GET_GAMES_DATA: "GET_GAMES_DATA",
   CHANGE_ID: "CHANGE_ID",
   MODAL: "MODAL",
+
+  AUTH_OFFLINE: "AUTH_OFFLINE",
 };
 
-export const GAMES_API = "http://localhost:8001/games";
 
-const data = axios(GAMES_API)
-
-export const GAMES_LIMIT = data.length;
+export const JSON_API_USERS = "http://localhost:8000/users";
+export const GAMES_API = "http://localhost:8000/games";
 
