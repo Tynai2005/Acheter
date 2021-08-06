@@ -1,21 +1,31 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-import Body from "../Body/Body";
 import CarouselSlide from "../CarouselSlide/CarouselSlide";
 import { Link } from "react-router-dom";
 import { useGames } from "../../contexts/GameContext";
 import EditGame from "../EditGame.jsx/EditGame";
-import GamesList from "../GamesList/GamesList";
+
+import GamesListPreview from "../GamesListPreview/GamesListPreview";
+
+import { Container } from "@material-ui/core";
+
+
 const Home = () => {
   const { modal } = useGames();
   return (
-    <div>
+    <Container>
       <CarouselSlide />
-      <Body />
+
+      <h4 style={{ color: "white", fontFamily: "Noto Sans JP" }}>
+        Best games of this summer
+      </h4>
+
       <Link to="/addgame">Add Game</Link>
       {modal ? <EditGame /> : null}
-      <GamesList />
-    </div>
+
+      <GamesListPreview />
+    </Container>
+
   );
 };
 

@@ -3,18 +3,13 @@ import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
-import Typography from "@material-ui/core/Typography";
 import InputBase from "@material-ui/core/InputBase";
-import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import { Button } from "@material-ui/core";
+import { useGames } from "../../contexts/GameContext";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -98,6 +93,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const {history,getGamesData} = useGames()
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -117,6 +113,13 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const searching = (e) => {
+    const search = new URLSearchParams(history.location.search);
+    search.set('q', e.target.value);
+    history.push(`${history.location.pathname}?${search.toString()}`);
+    getGamesData();
   };
 
   const menuId = "primary-search-account-menu";
@@ -186,6 +189,7 @@ export default function PrimarySearchAppBar() {
                 <SearchIcon />
               </div>
               <InputBase
+                onChange={(e) => searching(e)}
                 placeholder="Search…"
                 classes={{
                   root: classes.inputRoot,

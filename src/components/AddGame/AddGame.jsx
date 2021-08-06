@@ -1,11 +1,24 @@
-import { makeStyles } from "@material-ui/core";
+
+import { Container, makeStyles, TextField, Button } from "@material-ui/core";
+
 import React from "react";
 import { useState } from "react";
 import { useGames } from "../../contexts/GameContext";
+import { RadioGroup } from '@material-ui/core';
+
+
 const useStyles = makeStyles((theme) => ({
-  text: {
-    color: "white",
+  container: {
+    backgroundColor: "slateblue",
   },
+
+
+  btns: {
+    backgroundColor: "#0099ff",
+    color: "white",
+    padding: "10px 20px",
+  },
+
 }));
 const AddGame = () => {
   const classes = useStyles();
@@ -14,132 +27,162 @@ const AddGame = () => {
     name: "",
     description: "",
     image: "",
+    video: null,
     price: 0,
     genre: "",
     discount: 0,
     isDiscount: false,
   });
   return (
-    <div className={classes.text}>
-      <input
-        onChange={(e) => {
-          setGameInfo({ ...gameInfo, name: e.target.value });
-        }}
-        type="text"
-        placeholder="Name"
-      />
-      <br />
-      <input
-        onChange={(e) => {
-          setGameInfo({ ...gameInfo, description: e.target.value });
-        }}
-        type="text"
-        placeholder="Description"
-      />
-      <br />
-      <input
-        onChange={(e) => {
-          setGameInfo({ ...gameInfo, image: e.target.value });
-        }}
-        type="text"
-        placeholder="Image"
-      />
-      <br />
-      <input
-        onChange={(e) => {
-          setGameInfo({ ...gameInfo, price: e.target.value });
-        }}
-        type="number"
-        placeholder="Price($)"
-      />
-      <br />
-      <div>Is discount?</div>
-      <div>
+
+    <Container
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        margin: "50px",
+      }}
+    >
+      <div className={classes.text}>
+        <h1>Game creator</h1>
+        <br />
+
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, isDiscount: true });
+            setGameInfo({ ...gameInfo, name: e.target.value });
           }}
-          name="isdiscount"
-          type="radio"
+          type="text"
+          placeholder="Name"
         />
-        <span>Yes</span>
-      </div>
-      <div>
+        <br />
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, isDiscount: false });
+            setGameInfo({ ...gameInfo, description: e.target.value });
           }}
-          name="isdiscount"
-          type="radio"
+          type="text"
+          placeholder="Description"
         />
-        <span>No</span>
-      </div>
-      {gameInfo.isDiscount ? (
+
+        <br />
+        <input
+
+          onChange={(e) => {
+            setGameInfo({ ...gameInfo, image: e.target.value });
+          }}
+          type="text"
+          placeholder="Image"
+        />
+        <br />
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, discount: e.target.value });
+            setGameInfo({ ...gameInfo, price: e.target.value });
           }}
+
           type="number"
-          placeholder="Discount(%)"
+          placeholder="Price($)"
+
         />
-      ) : null}
-      <div>
-        Choose game genre:
+        <br />
+        <p>Discount</p>
         <div>
           <input
-            type="radio"
-            name="genreRadio"
-            id=""
-            onChange={() => {
-              setGameInfo({ ...gameInfo, genre: "rpg" });
+            onChange={(e) => {
+              setGameInfo({ ...gameInfo, isDiscount: true });
             }}
+            name="isdiscount"
+            type="radio"
           />
-          RPG
+          <span>Have discount</span>
         </div>
         <div>
           <input
-            type="radio"
-            name="genreRadio"
-            id=""
-            onChange={() => {
-              setGameInfo({ ...gameInfo, genre: "sandbox" });
+            onChange={(e) => {
+              setGameInfo({ ...gameInfo, isDiscount: false });
             }}
+            name="isdiscount"
+            type="radio"
           />
-          Sandbox
+          <span>Dont have discount</span>
         </div>
-        <div>
+        {gameInfo.isDiscount ? (
           <input
-            type="radio"
-            name="genreRadio"
-            id=""
-            onChange={() => {
-              setGameInfo({ ...gameInfo, genre: "shooter" });
+            onChange={(e) => {
+              setGameInfo({ ...gameInfo, discount: e.target.value });
             }}
+            type="number"
+            placeholder="Discount(%)"
           />
-          Shooter
-        </div>
+        ) : null}
         <div>
-          <input
-            type="radio"
-            name="genreRadio"
-            id=""
-            onChange={() => {
-              setGameInfo({ ...gameInfo, genre: "fighting" });
-            }}
-          />
-          Fighting
+          <p> Choose game genre:</p>
+
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "rpg" });
+              }}
+            />
+            RPG
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "survival" });
+              }}
+            />
+            Survival
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "sandbox" });
+              }}
+            />
+            Sandbox
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "shooter" });
+              }}
+            />
+            Shooter
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "fighting" });
+              }}
+            />
+            Fighting
+          </div>
         </div>
+        <br />
+        <Button
+          onClick={() => {
+            console.log(gameInfo);
+            addNewGame(gameInfo);
+          }}
+          className={classes.btns}
+        >
+          Добавить
+        </Button>
       </div>
-      <br />
-      <button
-        onClick={() => {
-          console.log(gameInfo);
-          addNewGame(gameInfo);
-        }}
-      >
-        Добавить
-      </button>
-    </div>
+    </Container>
   );
 };
 
