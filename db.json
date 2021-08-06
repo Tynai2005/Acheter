@@ -49,6 +49,24 @@
       "isAdmin": false,
       "passwordSec": "3",
       "id": 6
+    },
+    {
+      "nickname": "d",
+      "name": "d@gmail.com",
+      "password": "1",
+      "cart": [],
+      "isAdmin": false,
+      "passwordSec": "1",
+      "id": 7
+    },
+    {
+      "nickname": "Bdwbakd",
+      "name": "k@gmail.com",
+      "password": "2",
+      "cart": [],
+      "isAdmin": false,
+      "passwordSec": "2",
+      "id": 8
     }
   ],
   "games": [
