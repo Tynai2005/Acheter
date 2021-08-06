@@ -1,8 +1,11 @@
-import { AirportShuttle } from "@material-ui/icons";
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
-import { ACTIONS, GAMES_API, JSON_API_GAMES } from "../helper/consts";
+
+import { ACTIONS, GAMES_API,} from "../helper/consts";
+
+
+
 
 export const gameContext = createContext();
 
@@ -10,10 +13,10 @@ export const useGames = () => useContext(gameContext);
 
 const INIT_STATE = {
   gamesData: [],
-
   gameDetails: {},
   modal: false,
   id: null,
+  pages: 1
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -21,7 +24,11 @@ const reducer = (state = INIT_STATE, action) => {
     case ACTIONS.GET_GAME_DETAILS:
       return { ...state, gameDetails: action.payload };
     case ACTIONS.GET_GAMES_DATA:
-      return { ...state, gamesData: action.payload };
+      return {
+        ...state,
+        gamesData: action.payload.data,
+        pages: Math.ceil(action.payload.headers['x-total-count'] / counter),
+      }
     case ACTIONS.MODAL:
       return { ...state, modal: action.payload };
     case ACTIONS.CHANGE_ID:
@@ -33,15 +40,23 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
+let counter = 0
+
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  let history = useHistory();
+  const history = useHistory();
 
   const getGamesData = async () => {
-    const { data } = await axios(GAMES_API);
+    const {data} = await axios(GAMES_API)
+    console.log(data);
+    const search = new URLSearchParams(history.location.search);
+    search.set('_limit', data.length);
+    counter = data.length
+    history.push(`${history.location.pathname}?${search.toString()}`);
+    const data2 = await axios(`${GAMES_API}/${window.location.search}`);
     dispatch({
       type: ACTIONS.GET_GAMES_DATA,
-      payload: data,
+      payload: data2,
     });
   };
 
@@ -86,6 +101,15 @@ const GameContextProvider = ({ children }) => {
     getGamesData();
   };
 
+  const changeId = (id) => {
+    dispatch({
+      type: ACTIONS.CHANGE_ID,
+      payload: id,
+    });
+    history.push(`/gamedetails/${id}`)
+  }
+
+
   const values = {
     getGamesData,
     addNewGame,
@@ -94,6 +118,8 @@ const GameContextProvider = ({ children }) => {
     toggleModal,
     getGameDetails,
     saveEditedGame,
+    changeId,
+    history,  
     id: state.id,
     gamesData: state.gamesData,
     modal: state.modal,
