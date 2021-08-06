@@ -1,16 +1,24 @@
-import { Button, Container, makeStyles } from "@material-ui/core";
+
+import { Container, makeStyles, TextField, Button } from "@material-ui/core";
+
 import React from "react";
 import { useState } from "react";
 import { useGames } from "../../contexts/GameContext";
+import { RadioGroup } from '@material-ui/core';
+
+
 const useStyles = makeStyles((theme) => ({
-  text: {
-    color: "white",
+  container: {
+    backgroundColor: "slateblue",
   },
+
+
   btns: {
     backgroundColor: "#0099ff",
     color: "white",
     padding: "10px 20px",
   },
+
 }));
 const AddGame = () => {
   const classes = useStyles();
@@ -19,12 +27,14 @@ const AddGame = () => {
     name: "",
     description: "",
     image: "",
+    video: null,
     price: 0,
     genre: "",
     discount: 0,
     isDiscount: false,
   });
   return (
+
     <Container
       style={{
         display: "flex",
@@ -35,6 +45,7 @@ const AddGame = () => {
       <div className={classes.text}>
         <h1>Game creator</h1>
         <br />
+
         <input
           onChange={(e) => {
             setGameInfo({ ...gameInfo, name: e.target.value });
@@ -50,8 +61,10 @@ const AddGame = () => {
           type="text"
           placeholder="Description"
         />
+
         <br />
         <input
+
           onChange={(e) => {
             setGameInfo({ ...gameInfo, image: e.target.value });
           }}
@@ -63,8 +76,10 @@ const AddGame = () => {
           onChange={(e) => {
             setGameInfo({ ...gameInfo, price: e.target.value });
           }}
+
           type="number"
           placeholder="Price($)"
+
         />
         <br />
         <p>Discount</p>
