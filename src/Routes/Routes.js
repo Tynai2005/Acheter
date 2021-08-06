@@ -8,20 +8,28 @@ import AddGame from "../components/AddGame/AddGame";
 import GameDetails from "../components/GameDetails/GameDetails";
 import GameContext from "../contexts/GameContext";
 import Footer from "../components/Footer/Footer";
+import LogIn from "../components/Auth/LogIn";
+import AuthContextProvider from "../contexts/AuthContext";
+import SignUp from "../components/Auth/SignUp";
+import ProtectedRoute from "./ProtectedRoute";
 
 const Routes = () => {
   return (
     <div>
       <BrowserRouter>
-        <GameContextProvider>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/gamedetails/:id" component={GameDetails} />
-            <Route exact path="/addgame" component={AddGame} />
-          </Switch>
-          <Footer />
-        </GameContextProvider>
+        <AuthContextProvider>
+          <GameContextProvider>
+            <Header />
+            <Switch>
+              <Route exact path="/login" component={LogIn} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/gamedetails/:id" component={GameDetails} />
+              <ProtectedRoute exact path="/addgame" component={AddGame} />
+            </Switch>
+            <Footer />
+          </GameContextProvider>
+        </AuthContextProvider>
       </BrowserRouter>
     </div>
   );

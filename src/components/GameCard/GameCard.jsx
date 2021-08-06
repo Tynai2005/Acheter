@@ -1,8 +1,10 @@
 import React from "react";
+import { useAuth } from "../../contexts/AuthContext";
 import { useGames } from "../../contexts/GameContext";
 
 const GameCard = ({ game }) => {
   const { deleteGame, setEditGameInfo } = useGames();
+  const { logged } = useAuth();
 
   return (
     <div className="game-card">
@@ -62,8 +64,12 @@ const GameCard = ({ game }) => {
             {game.price}$
           </div>
         )}
-        <button onClick={() => deleteGame(game.id)}>DELETE</button>
-        <button onClick={() => setEditGameInfo(game.id)}>EDIT</button>
+        {logged && logged.isAdmin ? (
+          <div>
+            <button onClick={() => deleteGame(game.id)}>DELETE</button>
+            <button onClick={() => setEditGameInfo(game.id)}>EDIT</button>
+          </div>
+        ) : null}
       </div>
     </div>
   );

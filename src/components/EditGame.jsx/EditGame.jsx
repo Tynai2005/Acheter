@@ -129,6 +129,17 @@ const EditGame = () => {
             name="genreRadio"
             id=""
             onChange={() => {
+              setEditedGame({ ...editedGame, genre: "survival" });
+            }}
+          />
+          Survival
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="genreRadio"
+            id=""
+            onChange={() => {
               setEditedGame({ ...editedGame, genre: "sandbox" });
             }}
           />
