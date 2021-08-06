@@ -2,7 +2,7 @@ import { AirportShuttle } from "@material-ui/icons";
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
-import { ACTIONS, GAMES_API, GAMES_LIMIT } from "../helper/consts";
+import { ACTIONS, GAMES_API,} from "../helper/consts";
 
 export const gameContext = createContext();
 
@@ -24,7 +24,7 @@ const reducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         gamesData: action.payload.data,
-        pages: Math.ceil(action.payload.headers['x-total-count'] / GAMES_LIMIT),
+        pages: Math.ceil(action.payload.headers['x-total-count'] / counter),
       }
     case ACTIONS.MODAL:
       return { ...state, modal: action.payload };
@@ -37,6 +37,8 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
+let counter = 0
+
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   let history = useHistory();
@@ -46,6 +48,7 @@ const GameContextProvider = ({ children }) => {
     console.log(data);
     const search = new URLSearchParams(history.location.search);
     search.set('_limit', data.length);
+    counter = data.length
     history.push(`${history.location.pathname}?${search.toString()}`);
     const data2 = await axios(`${GAMES_API}/${window.location.search}`);
     dispatch({
