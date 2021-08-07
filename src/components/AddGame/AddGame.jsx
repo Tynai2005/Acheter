@@ -69,42 +69,12 @@ const AddGame = () => {
         <br />
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, price: e.target.value });
+            setGameInfo({ ...gameInfo, price: Number(e.target.value) });
           }}
           type="number"
           placeholder="Price($)"
         />
         <br />
-        <p>Discount</p>
-        <div>
-          <input
-            onChange={(e) => {
-              setGameInfo({ ...gameInfo, isDiscount: true });
-            }}
-            name="isdiscount"
-            type="radio"
-          />
-          <span>Have discount</span>
-        </div>
-        <div>
-          <input
-            onChange={(e) => {
-              setGameInfo({ ...gameInfo, isDiscount: false });
-            }}
-            name="isdiscount"
-            type="radio"
-          />
-          <span>Dont have discount</span>
-        </div>
-        {gameInfo.isDiscount ? (
-          <input
-            onChange={(e) => {
-              setGameInfo({ ...gameInfo, discount: e.target.value });
-            }}
-            type="number"
-            placeholder="Discount(%)"
-          />
-        ) : null}
         <div>
           <p> Choose game genre:</p>
 
@@ -114,7 +84,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "rpg" });
+                setGameInfo({ ...gameInfo, genre: "RPG" });
               }}
             />
             RPG
@@ -162,6 +132,17 @@ const AddGame = () => {
               }}
             />
             Fighting
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "MOBA" });
+              }}
+            />
+            MOBA
           </div>
         </div>
         <br />
