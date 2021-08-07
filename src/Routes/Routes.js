@@ -18,19 +18,19 @@ const Routes = () => {
   return (
     <div>
       <BrowserRouter>
-      <AuthContextProvider>
-        <GameContextProvider>
-          <Header />
-          <Switch>
-            <Route exact path="/login" component={LogIn} />
-            <Route exact path="/signup" component={SignUp} />
-            <Route exact path="/" component={Home} />
-            <Route exact path="/gamedetails/:id" component={GameDetails} />
-            <ProtectedRoute exact path="/addgame" component={AddGame} />
-            <Route exact path="/gameslist" component={GamesList} />
-          </Switch>
-          <Footer />
-        </GameContextProvider>
+        <AuthContextProvider>
+          <GameContextProvider>
+            <Header />
+            <Switch>
+              <Route exact path="/login" component={LogIn} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/" component={Home} />
+              <Route exact path="/gamedetails/:id" component={GameDetails} />
+              <ProtectedRoute exact path="/addgame" component={AddGame} />
+              <Route exact path="/gameslist" component={GamesList} />
+            </Switch>
+            <Footer />
+          </GameContextProvider>
         </AuthContextProvider>
       </BrowserRouter>
     </div>

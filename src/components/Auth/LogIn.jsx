@@ -35,10 +35,15 @@ const useStyles = makeStyles((theme) => ({
   },
   visBtn: {
     color: "white",
+    marginLeft: "-50px",
   },
   grids: {
     display: "flex",
     alignItems: "center",
+  },
+  containers: {
+    display: "flex",
+    flexDirection: "column",
   },
 }));
 
@@ -57,7 +62,7 @@ const LogIn = () => {
   return (
     <Container component="main" maxWidth="xs">
       <form action="" className={classes.cont}>
-        <Grid container>
+        <Grid container className={classes.containers}>
           <div>
             <Typography component="h1" variant="h5" style={{ color: "white" }}>
               Authorization
@@ -112,19 +117,22 @@ const LogIn = () => {
               {!visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
             </IconButton>
           </Grid>
-          {!exist ? (
-            <Typography className={classes.text}>
-              No such user exists. Wanna <Link to="/signup">sign up</Link>?
-            </Typography>
-          ) : null}
-          <Button
-            className={classes.btns}
-            variant="contained"
-            color="primary"
-            onClick={() => login(newUser)}
-          >
-            Log in
-          </Button>
+          <Grid>
+            {!exist ? (
+              <Typography className={classes.text}>
+                No such user exists. Wanna <Link to="/signup">sign up</Link>?
+              </Typography>
+            ) : null}
+
+            <Button
+              className={classes.btns}
+              variant="contained"
+              color="primary"
+              onClick={() => login(newUser)}
+            >
+              Log in
+            </Button>
+          </Grid>
         </Grid>
       </form>
     </Container>

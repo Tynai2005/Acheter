@@ -7,9 +7,10 @@ import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import { Button } from "@material-ui/core";
+
+import { Button, Link } from "@material-ui/core";
 import { useGames } from "../../contexts/GameContext";
+import MenuIcon from "@material-ui/icons/Menu";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -93,7 +94,7 @@ export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const {history,getGamesData} = useGames()
+  const { history, getGamesData } = useGames();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -116,8 +117,9 @@ export default function PrimarySearchAppBar() {
   };
 
   const searching = (e) => {
+    history.push("/gameslist");
     const search = new URLSearchParams(history.location.search);
-    search.set('q', e.target.value);
+    search.set("q", e.target.value);
     history.push(`${history.location.pathname}?${search.toString()}`);
     getGamesData();
   };
@@ -179,7 +181,7 @@ export default function PrimarySearchAppBar() {
                 onClick={handleMobileMenuOpen}
                 color="inherit"
               >
-                <MoreIcon />
+                <MenuIcon />
               </IconButton>
             </div>
           </div>
@@ -188,6 +190,7 @@ export default function PrimarySearchAppBar() {
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
+
               <InputBase
                 onChange={(e) => searching(e)}
                 placeholder="Search…"

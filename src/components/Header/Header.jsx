@@ -180,7 +180,7 @@ export default function Header() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        {logged ? <>{logged.nickname}</> : "Profile"}
       </MenuItem>
     </Menu>
   );

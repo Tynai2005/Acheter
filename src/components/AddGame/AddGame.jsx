@@ -1,24 +1,20 @@
-
 import { Container, makeStyles, TextField, Button } from "@material-ui/core";
 
 import React from "react";
 import { useState } from "react";
 import { useGames } from "../../contexts/GameContext";
-import { RadioGroup } from '@material-ui/core';
-
+import { RadioGroup } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
     backgroundColor: "slateblue",
   },
 
-
   btns: {
     backgroundColor: "#0099ff",
     color: "white",
     padding: "10px 20px",
   },
-
 }));
 const AddGame = () => {
   const classes = useStyles();
@@ -34,12 +30,12 @@ const AddGame = () => {
     isDiscount: false,
   });
   return (
-
     <Container
       style={{
         display: "flex",
         justifyContent: "center",
         margin: "50px",
+        color: "white",
       }}
     >
       <div className={classes.text}>
@@ -64,7 +60,6 @@ const AddGame = () => {
 
         <br />
         <input
-
           onChange={(e) => {
             setGameInfo({ ...gameInfo, image: e.target.value });
           }}
@@ -76,10 +71,8 @@ const AddGame = () => {
           onChange={(e) => {
             setGameInfo({ ...gameInfo, price: e.target.value });
           }}
-
           type="number"
           placeholder="Price($)"
-
         />
         <br />
         <p>Discount</p>

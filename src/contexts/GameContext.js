@@ -2,10 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ACTIONS, GAMES_API,} from "../helper/consts";
-
-
-
+import { ACTIONS, GAMES_API } from "../helper/consts";
 
 export const gameContext = createContext();
 
@@ -16,7 +13,7 @@ const INIT_STATE = {
   gameDetails: {},
   modal: false,
   id: null,
-  pages: 1
+  pages: 1,
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -27,8 +24,8 @@ const reducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         gamesData: action.payload.data,
-        pages: Math.ceil(action.payload.headers['x-total-count'] / counter),
-      }
+        pages: Math.ceil(action.payload.headers["x-total-count"] / counter),
+      };
     case ACTIONS.MODAL:
       return { ...state, modal: action.payload };
     case ACTIONS.CHANGE_ID:
@@ -40,18 +37,18 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
-let counter = 0
+let counter = 0;
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const history = useHistory();
 
   const getGamesData = async () => {
-    const {data} = await axios(GAMES_API)
+    const { data } = await axios(GAMES_API);
     console.log(data);
     const search = new URLSearchParams(history.location.search);
-    search.set('_limit', data.length);
-    counter = data.length
+    search.set("_limit", data.length);
+    counter = data.length;
     history.push(`${history.location.pathname}?${search.toString()}`);
     const data2 = await axios(`${GAMES_API}/${window.location.search}`);
     dispatch({
@@ -106,9 +103,8 @@ const GameContextProvider = ({ children }) => {
       type: ACTIONS.CHANGE_ID,
       payload: id,
     });
-    history.push(`/gamedetails/${id}`)
-  }
-
+    history.push(`/gamedetails/${id}`);
+  };
 
   const values = {
     getGamesData,
@@ -119,7 +115,7 @@ const GameContextProvider = ({ children }) => {
     getGameDetails,
     saveEditedGame,
     changeId,
-    history,  
+    history,
     id: state.id,
     gamesData: state.gamesData,
     modal: state.modal,
