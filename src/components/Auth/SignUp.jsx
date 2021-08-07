@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   visBtn: {
     color: "white",
+    marginLeft: "-50px",
   },
   grids: {
     display: "flex",

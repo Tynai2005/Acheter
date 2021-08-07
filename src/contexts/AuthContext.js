@@ -67,8 +67,15 @@ const AuthContextProvider = ({ children }) => {
     });
   };
 
-  const regUser = (e) => {
-    console.log(e);
+  const regUser = async (e) => {
+    const { data } = await axios(JSON_API_USERS);
+    await data.map((user) => {
+      if (user.name === e.name) {
+        e.name = "";
+        alert("Such user exists");
+        return;
+      }
+    });
     if (
       /(\W|^)[\w.+\-]*@gmail\.com(\W|$)/gi.test(e.name) &&
       e.password === e.passwordSec

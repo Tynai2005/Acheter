@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CarouselSlide = () => {
   const classes = useStyles();
-  const { getGamesData, gamesData } = useGames();
+  const { getGamesData, gamesData, changeId } = useGames();
 
   useEffect(() => {
     getGamesData();
@@ -39,7 +39,9 @@ const CarouselSlide = () => {
             alt="First slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
-            <Button className={classes.btns}>See more</Button>
+            <Button className={classes.btns} onClick={() => changeId(1)}>
+              See more
+            </Button>
           </Carousel.Caption>
           {/* <video style={{ height: 700, width: "100%" }} controls>
             <source
@@ -57,7 +59,9 @@ const CarouselSlide = () => {
             alt="Second slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
-            <Button className={classes.btns}>See more</Button>
+            <Button className={classes.btns} onClick={() => changeId(2)}>
+              See more
+            </Button>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className={classes.slides}>
@@ -67,7 +71,9 @@ const CarouselSlide = () => {
             alt="Third slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
-            <Button className={classes.btns}>See more</Button>
+            <Button className={classes.btns} onClick={() => changeId(3)}>
+              See more
+            </Button>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className={classes.slides}>
@@ -77,7 +83,9 @@ const CarouselSlide = () => {
             alt="Third slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
-            <Button className={classes.btns}>See more</Button>
+            <Button className={classes.btns} onClick={() => changeId(4)}>
+              See more
+            </Button>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
