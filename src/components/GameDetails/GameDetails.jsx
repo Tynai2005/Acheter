@@ -77,43 +77,27 @@ const GameDetails = () => {
     return (
         <div className={classes.detailsContainer}>
             <div className={classes.details}>
-            <div><Link to='/' className={classes.homeLink}><HomeIcon/></Link></div>
-                <hr className={classes.hr} />
-                <div style={{display:'flex'}}>
-                <div className={classes.left}>            
-                    <h1 className={classes.h1}>{gameDetails.name}</h1>
-                    <div>{(gameDetails.video)}</div>
-                    <div><img className={classes.img} src={gameDetails.image} alt="game img" /></div>
-                    <p className={classes.p}>{gameDetails.description}</p> 
-                    <div className={classes.genre}>
-                        <div class={classes.vl}></div>
-                        <div >
-                            <h6 className={classes.p}>Genre:</h6>
-                            <h5 className={classes.h1}>{gameDetails.genre}</h5>
+                <div><Link to='/' className={classes.homeLink}><HomeIcon/></Link></div>
+                    <hr className={classes.hr} />
+                    <div style={{display:'flex'}}>
+                    <div className={classes.left}>
+                        <h1 className={classes.h1}>{gameDetails.name}</h1>
+                        <div><img className={classes.img} src={gameDetails.image} alt="game img" /></div>
+                        <p className={classes.p}>{gameDetails.description}</p> 
+                        <div className={classes.genre}>
+                            <div class={classes.vl}></div>
+                            <div >
+                                <h6 className={classes.p}>Genre:</h6>
+                                <h5 className={classes.h1}>{gameDetails.genre}</h5>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div className={classes.right}>
-                <Button variant="contained" color="primary">Buy now</Button>
-                <Button variant="outlined" color={buttonColor} onClick={() => setButtonColor('secondary')}>Add to wishlist</Button>
-                </div>
+                    <Button variant="contained" color="primary">Buy now</Button>
+                    <Button variant="outlined" color={buttonColor} onClick={() => setButtonColor('secondary')}>Add to wishlist</Button>
                 </div>
             </div>
-          </div>
-          <div className={classes.right}>
-            <Button variant="contained" color="primary">
-              Buy now
-            </Button>
-            <Button
-              variant="outlined"
-              color={buttonColor}
-              onClick={() => setButtonColor("secondary")}
-            >
-              Add to wishlist
-            </Button>
-          </div>
         </div>
-      </div>
     </div>
   );
 };

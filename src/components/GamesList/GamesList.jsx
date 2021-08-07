@@ -58,6 +58,7 @@ const GamesList = () => {
 
   return (
     <Container className={classes.container}>
+      {modal ? <EditGame /> : null}
       <Grid
         className={classes.grids}
         style={{ justifyContent: "space-between", margin: "20px 0" }}
@@ -79,11 +80,10 @@ const GamesList = () => {
             return <GameCard game={game} />;
           })}
       </Grid>
-    </Container>
     <div style={{ margin: '20px auto' }}>
-        <Pagination color='secondary' count={pages} variant="outlined" shape="rounded" page={+page} onChange={handlePage} />
+      <Pagination size="large" color='secondary' count={pages} variant="outlined" shape="rounded" page={+page} onChange={handlePage} />
     </div>
-    </div>
+    </Container>
   );
 };
 
