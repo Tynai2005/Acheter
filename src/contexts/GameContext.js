@@ -2,10 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ACTIONS, GAMES_API,} from "../helper/consts";
-
-
-
+import { ACTIONS, GAMES_API } from "../helper/consts";
 
 export const gameContext = createContext();
 
@@ -16,7 +13,7 @@ const INIT_STATE = {
   gameDetails: {},
   modal: false,
   id: null,
-  pages: 1
+  pages: 1,
 };
 
 const reducer = (state = INIT_STATE, action) => {
@@ -103,8 +100,8 @@ const GameContextProvider = ({ children }) => {
       type: ACTIONS.CHANGE_ID,
       payload: id,
     });
-    history.push(`/gamedetails/${id}`)
-  }
+    history.push(`/gamedetails/${id}`);
+  };
 
   const changeGenre = async (selectedGenre) => {
     const {data} = await axios(GAMES_API)
@@ -115,7 +112,6 @@ const GameContextProvider = ({ children }) => {
       payload: newData,
     });
   }
-
 
   const values = {
     getGamesData,

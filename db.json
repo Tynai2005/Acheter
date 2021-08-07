@@ -13,15 +13,6 @@
       "password": "butylka",
       "isAdmin": true,
       "id": 2
-    },
-    {
-      "nickname": "Bakai",
-      "name": "bakai.k@gmail.com",
-      "password": "1",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "1",
-      "id": 3
     }
   ],
   "games": [
@@ -42,14 +33,13 @@
       "id": 6
     },
     {
-      "name": "Witcher 3",
-      "description": "The Witcher 3: Wild Hunt is an action role-playing game with a third-person perspective. Players control Geralt of Rivia, a monster slayer known as a Witcher. Geralt walks, runs, rolls and dodges, and (for the first time in the series) jumps, climbs and swims.",
-      "image": "https://www.nintendo.com//content/dam/noa/en_US/games/switch/t/the-witcher-3-wild-hunt-switch/the-witcher-3-wild-hunt-switch-hero.jpg",
-      "price": 500,
+      "name": "Witcher III",
+      "description": "The Witcher 3: Wild Hunt is an action role-playing game with a third-person perspective. Players control Geralt of Rivia, a monster slayer known as a Witcher. Geralt walks, runs, rolls and dodges, and (for the first time in the series) jumps, climbs and swims. He has a variety of weapons, including bombs, a crossbow and two swords (one steel and one silver). The steel sword is used primarily to kill humans while the silver sword is more effective against creatures and monsters. Players can draw out, switch and sheathe their swords at will. There are two modes of melee attack; light attacks are fast but weak, and heavy attacks are slow but strong. Players can block and counter enemy attacks with their swords. Swords have limited endurance and require regular repair. In addition to physical attacks, Geralt has five magical signs at his disposal: Aard, Axii, Igni, Yrden and Quen. Aard prompts Geralt to unleash a telekinetic blast, Axii confuses enemies, Igni burns them, Yrden slows them down and Quen offers players a temporary, protective shield. The signs use stamina, and cannot be used indefinitely. Players can use mutagens to increase Geralt's magic power. Geralt loses health when attacked by enemies, although wearing armour can help reduce health loss. Health is restored with meditation or consumables, such as food and potions. Players occasionally control Ciri, Geralt's adoptive daughter who can teleport short distances.",
+      "image": "https://www.ixbt.com/img/n1/news/2021/6/6/E531CN9WQAMmK-h_large.jpg",
+      "price": 400,
       "genre": "rpg",
       "id": 8
     },
-    {
       "name": "Cyberpunk",
       "description": "Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. ... You can customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you make shape the story and the world around you.",
       "image": "https://images7.alphacoders.com/102/thumb-350-1020913.jpg",

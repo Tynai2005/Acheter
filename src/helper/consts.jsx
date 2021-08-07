@@ -1,5 +1,3 @@
-
-
 export const ACTIONS = {
   GET_GAMES: "GET_GAMES",
   GET_GAME_DETAILS: "GET_GAME_DETAILS",
@@ -10,7 +8,5 @@ export const ACTIONS = {
   AUTH_OFFLINE: "AUTH_OFFLINE",
 };
 
-
 export const JSON_API_USERS = "http://localhost:8000/users";
 export const GAMES_API = "http://localhost:8000/games";
-

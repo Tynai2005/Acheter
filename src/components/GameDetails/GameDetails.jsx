@@ -1,12 +1,11 @@
-import { Button, colors, makeStyles, Typography, } from '@material-ui/core';
-import SvgIcon from '@material-ui/core/SvgIcon';
-import { Link } from 'react-router-dom';
-import React from 'react';
-import { useEffect } from 'react';
-import { useGames } from '../../contexts/GameContext';
-import { borderRadius, display, width } from '@material-ui/system';
-import { useState } from 'react';
-
+import { Button, colors, makeStyles, Typography } from "@material-ui/core";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import { Link } from "react-router-dom";
+import React from "react";
+import { useEffect } from "react";
+import { useGames } from "../../contexts/GameContext";
+import { borderRadius, display, width } from "@material-ui/system";
+import { useState } from "react";
 
 const useStyles = makeStyles(() => ({
     details:{
@@ -59,15 +58,14 @@ const useStyles = makeStyles(() => ({
 }))
 
 function HomeIcon(props) {
-    return (
-      <SvgIcon {...props}>
-        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-      </SvgIcon>
-    );
-  }
+  return (
+    <SvgIcon {...props}>
+      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </SvgIcon>
+  );
+}
 
 const GameDetails = () => {
-
     const {id,gameDetails,getGameDetails} = useGames()
     const [buttonColor,setButtonColor] = useState('primary')
 
@@ -75,7 +73,7 @@ const GameDetails = () => {
     useEffect(() => {
         getGameDetails(id)
         console.log(gameDetails);
-    },[gameDetails])
+    },[id])
     return (
         <div className={classes.detailsContainer}>
             <div className={classes.details}>
@@ -101,8 +99,23 @@ const GameDetails = () => {
                 </div>
                 </div>
             </div>
+          </div>
+          <div className={classes.right}>
+            <Button variant="contained" color="primary">
+              Buy now
+            </Button>
+            <Button
+              variant="outlined"
+              color={buttonColor}
+              onClick={() => setButtonColor("secondary")}
+            >
+              Add to wishlist
+            </Button>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default GameDetails;

@@ -7,12 +7,12 @@ import InputBase from "@material-ui/core/InputBase";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import SearchIcon from "@material-ui/icons/Search";
-import MoreIcon from "@material-ui/icons/MoreVert";
-import { Button } from "@material-ui/core";
+
+import { Button, Link, FormControlLabel,Radio,RadioGroup,TextField } from "@material-ui/core";
 import { useGames } from "../../contexts/GameContext";
+import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { FormControlLabel,Radio,RadioGroup,TextField} from "@material-ui/core";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -148,8 +148,9 @@ export default function PrimarySearchAppBar() {
   };
 
   const searching = (e) => {
+    history.push("/gameslist");
     const search = new URLSearchParams(history.location.search);
-    search.set('q', e.target.value);
+    search.set("q", e.target.value);
     history.push(`${history.location.pathname}?${search.toString()}`);
     getGamesData();
   };
@@ -307,7 +308,7 @@ export default function PrimarySearchAppBar() {
                 onClick={handleMobileMenuOpen}
                 color="inherit"
               >
-                <MoreIcon />
+                <MenuIcon />
               </IconButton>
             </div>
           </div>
@@ -316,6 +317,7 @@ export default function PrimarySearchAppBar() {
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
+
               <InputBase
                 onChange={(e) => searching(e)}
                 placeholder="Search…"

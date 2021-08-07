@@ -2,15 +2,37 @@ import React from "react";
 import { useEffect } from "react";
 import { useGames } from "../../contexts/GameContext";
 import GameCard from "../GameCard/GameCard";
+import { Link } from "react-router-dom";
+import SvgIcon from "@material-ui/core/SvgIcon";
+import { Grid, makeStyles, Button } from "@material-ui/core";
+import { useAuth } from "../../contexts/AuthContext";
 import { Pagination } from '@material-ui/lab';  
-import { Carousel, Container} from "react-bootstrap";
-import {Link} from "react-router-dom"
-import SvgIcon from '@material-ui/core/SvgIcon';  
+import { Carousel, Container} from "react-bootstrap";  
 import EditGame from "../EditGame.jsx/EditGame";
 import { getCurrentPage } from "../../helper/functions";
 import { useState } from "react";
 
+const useStyles = makeStyles((theme) => ({
+  container: {
+    width: "100%",
+    display: "flex",
+    flexWrap: "wrap",
+    flexDirection: "column",
+  },
+  grids: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "center",
+  },
+  addGame: {
+    textDecoration: "none",
+    color: "white",
+  },
+}));
 const GamesList = () => {
+  const { logged } = useAuth();
+  const classes = useStyles();
   const { getGamesData, gamesData,modal,pages,history} = useGames();
   const [page, setPage] = useState(getCurrentPage());
 
@@ -26,7 +48,6 @@ const GamesList = () => {
     setPage(page);
   };
 
-
   function HomeIcon(props) {
     return (
       <SvgIcon {...props}>
@@ -36,18 +57,31 @@ const GamesList = () => {
   }
 
   return (
-    <div style={{display: 'flex',flexDirection:'column',alignItems:'center'}}>
-    <Container className="container-div">
-      <Link to="/addgame">Add Game</Link>
-      {modal ? <EditGame /> : null}
-      <div><Link to='/'><HomeIcon/></Link></div>
-      {gamesData &&
-        gamesData.map((game) => {
-          return <GameCard game={game} />;
-        })}
+    <Container className={classes.container}>
+      <Grid
+        className={classes.grids}
+        style={{ justifyContent: "space-between", margin: "20px 0" }}
+      >
+        <Link to="/">
+          <HomeIcon />
+        </Link>
+        {logged && logged.isAdmin ? (
+          <Link to="/addgame" className={classes.addGame}>
+            <Button variant="contained" color="primary">
+              Add Game
+            </Button>
+          </Link>
+        ) : null}
+      </Grid>
+      <Grid className={classes.grids}>
+        {gamesData &&
+          gamesData.map((game) => {
+            return <GameCard game={game} />;
+          })}
+      </Grid>
     </Container>
     <div style={{ margin: '20px auto' }}>
-        <Pagination style={{color: 'wheat'}} color='secondary' count={pages} variant="outlined" shape="rounded" page={+page} onChange={handlePage} />
+        <Pagination color='secondary' count={pages} variant="outlined" shape="rounded" page={+page} onChange={handlePage} />
     </div>
     </div>
   );
