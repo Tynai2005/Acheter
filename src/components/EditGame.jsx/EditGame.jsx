@@ -26,7 +26,7 @@ const EditGame = () => {
     <div>
       <Modal show={modal} >
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Edit Game</Modal.Title>
         </Modal.Header>
         <Modal.Body>
         <div>
@@ -71,20 +71,7 @@ const EditGame = () => {
       <div>
         <input
           onChange={(e) => {
-            setEditedGame({ ...editedGame, video: e.target.value });
-            gameDetails.video = e.target.value;
-          }}
-          type="text"
-          name=""
-          id=""
-          placeholder="Trailer"
-          value={gameDetails.video}
-        />
-      </div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, price: e.target.value });
+            setEditedGame({ ...editedGame, price: Number(e.target.value) });
             gameDetails.price = e.target.value;
           }}
           type="number"
@@ -94,41 +81,6 @@ const EditGame = () => {
           value={gameDetails.price}
         />
       </div>
-      <div>Is discount?</div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, isDiscount: true });
-          }}
-          name="isdiscount"
-          type="radio"
-        />
-        <span>Yes</span>
-      </div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, isDiscount: false });
-          }}
-          name="isdiscount"
-          type="radio"
-        />
-        <span>No</span>
-      </div>
-      {editedGame.isDiscount ?       
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, discount: e.target.value });
-            gameDetails.discount = e.target.value;
-          }}
-          type="number"
-          name=""
-          id=""
-          placeholder="Discount"
-          value={gameDetails.discount}
-        />
-      </div> : null}
       <div>
         Choose game genre:
         <div>
@@ -185,6 +137,17 @@ const EditGame = () => {
             }}
           />
           Fighting
+        </div>
+        <div>
+          <input
+            type="radio"
+            name="genreRadio"
+            id=""
+            onChange={() => {
+              setEditedGame({ ...editedGame, genre: "MOBA" });
+            }}
+          />
+          MOBA
         </div>
       </div>
         </Modal.Body>

@@ -11,6 +11,6 @@ export const ACTIONS = {
 };
 
 
-export const JSON_API_USERS = "http://localhost:8001/users";
-export const GAMES_API = "http://localhost:8001/games";
+export const JSON_API_USERS = "http://localhost:8000/users";
+export const GAMES_API = "http://localhost:8000/games";
 

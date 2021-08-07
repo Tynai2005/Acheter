@@ -27,7 +27,7 @@ const reducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         gamesData: action.payload.data,
-        pages: Math.ceil(action.payload.headers['x-total-count'] / counter),
+        pages: Math.ceil(action.payload.headers['x-total-count'] / gamesCount),
       }
     case ACTIONS.MODAL:
       return { ...state, modal: action.payload };
@@ -40,23 +40,20 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
-let counter = 0
+let gamesCount = 4
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const history = useHistory();
 
   const getGamesData = async () => {
-    const {data} = await axios(GAMES_API)
-    console.log(data);
     const search = new URLSearchParams(history.location.search);
-    search.set('_limit', data.length);
-    counter = data.length
+    search.set('_limit', gamesCount);
     history.push(`${history.location.pathname}?${search.toString()}`);
-    const data2 = await axios(`${GAMES_API}/${window.location.search}`);
+    const data = await axios(`${GAMES_API}/${window.location.search}`);
     dispatch({
       type: ACTIONS.GET_GAMES_DATA,
-      payload: data2,
+      payload: data,
     });
   };
 
@@ -109,6 +106,16 @@ const GameContextProvider = ({ children }) => {
     history.push(`/gamedetails/${id}`)
   }
 
+  const changeGenre = async (selectedGenre) => {
+    const {data} = await axios(GAMES_API)
+    console.log(data)
+    let newData = data.filter((game) => game.genre == selectedGenre) 
+    dispatch({
+      type: ACTIONS.GET_GAMES_DATA,
+      payload: newData,
+    });
+  }
+
 
   const values = {
     getGamesData,
@@ -119,6 +126,8 @@ const GameContextProvider = ({ children }) => {
     getGameDetails,
     saveEditedGame,
     changeId,
+    changeGenre,
+    pages: state.pages,
     history,  
     id: state.id,
     gamesData: state.gamesData,

@@ -50,6 +50,9 @@ const useStyles = makeStyles(() => ({
         display:'flex',
         width:'100px',
         justifyContent:'space-between',
+    },
+    img:{
+        width:'90%'
     }
 
 
@@ -72,7 +75,7 @@ const GameDetails = () => {
     useEffect(() => {
         getGameDetails(id)
         console.log(gameDetails);
-    },[])
+    },[gameDetails])
     return (
         <div className={classes.detailsContainer}>
             <div className={classes.details}>
@@ -82,7 +85,9 @@ const GameDetails = () => {
                 <div className={classes.left}>            
                     <h1 className={classes.h1}>{gameDetails.name}</h1>
                     <div>{(gameDetails.video)}</div>
-                    <p className={classes.p}>{gameDetails.description}</p>                 <div className={classes.genre}>
+                    <div><img className={classes.img} src={gameDetails.image} alt="game img" /></div>
+                    <p className={classes.p}>{gameDetails.description}</p> 
+                    <div className={classes.genre}>
                         <div class={classes.vl}></div>
                         <div >
                             <h6 className={classes.p}>Genre:</h6>
