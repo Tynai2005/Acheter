@@ -30,19 +30,7 @@ const GameCard = ({ game }) => {
               </div>
             ) : null}
           </div>
-        ) : (
-          <div style={{ color: "gainsboro", fontSize: "15px" }}>
-            {game.price}$
-          </div>
-        )}
-        {logged && logged.isAdmin ? (
-          <div>
-            <button onClick={() => deleteGame(game.id)}>DELETE</button>
-            <button onClick={() => setEditGameInfo(game.id)}>EDIT</button>
-          </div>
-        ) : null}
       </div>
-    </div>
   );
 };
 

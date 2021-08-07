@@ -23,7 +23,6 @@ const EditGame = () => {
   });
 
   return (
-    <div>
     <Modal show={modal} className={classes.modalMarg}>
       <Modal.Header>
         <Modal.Title>Redacting</Modal.Title>
@@ -191,6 +190,7 @@ const EditGame = () => {
           MOBA
         </div>
       </div>
+      </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={toggleModal}>
@@ -204,8 +204,7 @@ const EditGame = () => {
         </Button>
       </Modal.Footer>
     </Modal>
-    </div>
-  );
+    );
 };
 
 export default EditGame;
