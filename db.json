@@ -5,6 +5,7 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
+      "cart": [],
       "id": 1
     },
     {
@@ -12,6 +13,7 @@
       "name": "tynai.s.95@gmail.com",
       "password": "butylka",
       "isAdmin": true,
+      "cart": [],
       "id": 2
     },
     {
@@ -54,24 +56,7 @@
   "games": [
     {
       "name": "Minecraft",
-      "comments": [
-        {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Mon Aug 09 2021 12:26:08",
-          "text": "     a",
-          "id": 1628490368690,
-          "isChanged": " (changed)"
-        },
-        {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Mon Aug 09 2021 12:46:33",
-          "text": "Майнкрафт говно",
-          "id": 1628491593294,
-          "isChanged": null
-        }
-      ],
+      "comments": [],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
       "image": "https://latestnews.fresherslive.com/images/articles/origin/2020/10/20/how-to-download-minecraft-in-pc-5f8e8c4c02a2b-1603177548.jpg",
       "price": 100,
