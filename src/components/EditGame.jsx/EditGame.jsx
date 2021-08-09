@@ -20,6 +20,7 @@ const EditGame = () => {
     genre: gameDetails.genre,
     discount: gameDetails.discount,
     isDiscount: gameDetails.discount,
+    comments: gameDetails.comments,
   });
 
   return (
@@ -129,7 +130,7 @@ const EditGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setEditedGame({ ...editedGame, genre: "rpg" });
+                setEditedGame({ ...editedGame, genre: "RPG" });
               }}
             />
             RPG
@@ -140,7 +141,7 @@ const EditGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setEditedGame({ ...editedGame, genre: "survival" });
+                setEditedGame({ ...editedGame, genre: "Survival" });
               }}
             />
             Survival
@@ -151,7 +152,7 @@ const EditGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setEditedGame({ ...editedGame, genre: "sandbox" });
+                setEditedGame({ ...editedGame, genre: "Sandbox" });
               }}
             />
             Sandbox
@@ -162,7 +163,7 @@ const EditGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setEditedGame({ ...editedGame, genre: "shooter" });
+                setEditedGame({ ...editedGame, genre: "Shooter" });
               }}
             />
             Shooter
@@ -173,7 +174,7 @@ const EditGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setEditedGame({ ...editedGame, genre: "fighting" });
+                setEditedGame({ ...editedGame, genre: "Fighting" });
               }}
             />
             Fighting

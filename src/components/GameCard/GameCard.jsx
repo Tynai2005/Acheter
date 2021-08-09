@@ -4,11 +4,11 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGames } from "../../contexts/GameContext";
 
 const GameCard = ({ game }) => {
-  const { deleteGame, setEditGameInfo, id, changeId } = useGames();
+  const { deleteGame, setEditGameInfo,history } = useGames();
   const { logged } = useAuth();
     return(
         <div className="game-card">
-          <div className="game-img-div" onClick={() => changeId(game.id)}>
+          <div className="game-img-div" onClick={() => {history.push(`gameDetails/${game.id}`)}}>
             <img
               className="game-card-img"
               src={game.image}

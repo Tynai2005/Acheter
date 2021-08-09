@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
     color: "white",
   },
+  sorryH1:{
+    color: 'white',
+    height:'80vh'
+  }
 }));
 const GamesList = () => {
   const { logged } = useAuth();
@@ -75,10 +79,10 @@ const GamesList = () => {
         ) : null}
       </Grid>
       <Grid className={classes.grids}>
-        {gamesData &&
-          gamesData.map((game) => {
+        {gamesData.length > 0 ? 
+          (gamesData.map((game) => {
             return <GameCard game={game} />;
-          })}
+          })) : <h1 className={classes.sorryH1}>Sorry, there are no such games...</h1>}
       </Grid>
     <div style={{ margin: '20px auto' }}>
       <Pagination size="large" color='secondary' count={pages} variant="outlined" shape="rounded" page={+page} onChange={handlePage} />

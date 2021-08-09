@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = () => {
   const classes = useStyles();
-  const { login, exist, visible, handleVisible, typePass, handleInpType } =
+  const { login, exist, visible, handleVisible, typePass, handleInpType,history} =
     useAuth();
   const [newUser, setNewUser] = useState({
     nickname: "",
@@ -123,7 +123,17 @@ const LogIn = () => {
                 No such user exists. Wanna <Link to="/signup">sign up</Link>?
               </Typography>
             ) : null}
-
+            <Button
+            className={classes.btns}
+            style={{marginRight:'25px'}}
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              history.goBack()
+            }}
+          >
+            Close
+          </Button>
             <Button
               className={classes.btns}
               variant="contained"
