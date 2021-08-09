@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const AddGame = () => {
   const classes = useStyles();
-  const { addNewGame } = useGames();
+  const { addNewGame ,history} = useGames();
   const [gameInfo, setGameInfo] = useState({
     name: "",
     description: "",
@@ -95,7 +95,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "survival" });
+                setGameInfo({ ...gameInfo, genre: "Survival" });
               }}
             />
             Survival
@@ -106,7 +106,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "sandbox" });
+                setGameInfo({ ...gameInfo, genre: "Sandbox" });
               }}
             />
             Sandbox
@@ -117,7 +117,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "shooter" });
+                setGameInfo({ ...gameInfo, genre: "Shooter" });
               }}
             />
             Shooter
@@ -128,7 +128,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "fighting" });
+                setGameInfo({ ...gameInfo, genre: "Fighting" });
               }}
             />
             Fighting
@@ -146,6 +146,9 @@ const AddGame = () => {
           </div>
         </div>
         <br />
+        <Button variant='secondary' onClick={() => history.push('/gameslist')}>
+          Close
+        </Button>
         <Button
           onClick={() => {
             console.log(gameInfo);
@@ -153,7 +156,7 @@ const AddGame = () => {
           }}
           className={classes.btns}
         >
-          Добавить
+          Add
         </Button>
       </div>
     </Container>
