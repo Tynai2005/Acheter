@@ -59,7 +59,7 @@ const GameComments = () => {
             alert('Comment cannot be empty')
         }
     }
-  };
+  
 
     const deleteComment = async (removableComment) => {
         const newComments = gameDetails.comments.filter((comment) => comment.id != removableComment.id )
@@ -68,31 +68,32 @@ const GameComments = () => {
     }
 
     const saveEditedComment = async (id) => {
-        if (editingComment.trim()){
-            const newComments = await gameDetails.comments.map((comment) => {
-                if(comment.id == id){
-                    if (!comment.isChanged){
-                   return({...comment,text : editingComment, authorNickname : comment.authorNickname, isChanged: ' (changed)'})
-                    }
-                    return({...comment,text : editingComment, authorNickname : comment.authorNickname })
-                }
-                return comment
-                })
-            gameDetails.comments = newComments
-            await toggleComment(gameDetails.id, gameDetails)
-            setIsEditing(false)
-        }else{
-            alert('Comment cannot be empty')
+        if (editingComment.trim()) {
+          const newComments = await gameDetails.comments.map((comment) => {
+            if (comment.id == id) {
+              if (!comment.isChanged) {
+                return {
+                  ...comment,
+                  text: editingComment,
+                  authorNickname: comment.authorNickname,
+                  isChanged: " (changed)",
+                };
+              }
+              return {
+                ...comment,
+                text: editingComment,
+                authorNickname: comment.authorNickname,
+              };
+            }
+            return comment;
+          });
+          gameDetails.comments = newComments;
+          await toggleComment(gameDetails.id, gameDetails);
+          setIsEditing(false);
+        } else {
+          alert("Comment cannot be empty");
         }
-        return comment;
-      });
-      gameDetails.comments = newComments;
-      await saveEditedGame(gameDetails.id, gameDetails);
-      setIsEditing(false);
-    } else {
-      alert("Comment cannot be empty");
-    }
-  };
+    };
 
   return (
     <div className={classes.commentsOuterContainer}>
