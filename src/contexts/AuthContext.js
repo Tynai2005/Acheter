@@ -60,7 +60,7 @@ const AuthContextProvider = ({ children }) => {
         setExist(true);
         setVisible(false);
         setInpType(false);
-        history.push("/");
+        history.push('/');
       } else {
         setExist(false);
       }
@@ -121,6 +121,7 @@ const AuthContextProvider = ({ children }) => {
     setVisible,
     setInpType,
     typePass,
+    history,
   };
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };

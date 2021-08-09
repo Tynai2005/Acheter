@@ -11,6 +11,8 @@ import React, { useState } from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
+import { useHistory } from "react-router-dom";
+import { useGames } from "../../contexts/GameContext";
 const useStyles = makeStyles((theme) => ({
   btns: {
     backgroundColor: "#0099ff",
@@ -48,6 +50,7 @@ const SignUp = () => {
     handleInpType,
     setVisible,
     setInpType,
+    history,
   } = useAuth();
   const [newUser, setNewUser] = useState({
     nickname: "",
@@ -144,6 +147,17 @@ const SignUp = () => {
               />
             </Grid>
           </Grid>
+          <Button
+            className={classes.btns}
+            style={{marginRight:'25px'}}
+            variant="contained"
+            color="secondary"
+            onClick={() => {
+              history.goBack()
+            }}
+          >
+            Close
+          </Button>
           <Button
             className={classes.btns}
             variant="contained"
