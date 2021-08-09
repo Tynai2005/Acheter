@@ -6,7 +6,7 @@ import { useGames } from "../../contexts/GameContext";
 
 const useStyles = makeStyles(() => ({
   commentsInnerContainer: {
-    width: "1000px",
+    maxWidth: "1000px",
     minHeight: "500px",
   },
   commentsOuterContainer: {
