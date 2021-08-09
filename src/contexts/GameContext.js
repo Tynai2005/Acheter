@@ -95,6 +95,12 @@ const GameContextProvider = ({ children }) => {
     getGamesData();
   };
 
+  const toggleComment = async (id, editedGame) => {
+    console.log(editedGame);
+    const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
+    getGamesData();
+  };
+
   const changeId = (id) => {
     dispatch({
       type: ACTIONS.CHANGE_ID,
@@ -123,6 +129,7 @@ const GameContextProvider = ({ children }) => {
     saveEditedGame,
     changeId,
     changeGenre,
+    toggleComment,
     pages: state.pages,
     history,  
     id: state.id,

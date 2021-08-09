@@ -38,9 +38,9 @@ const GameComments = () => {
     const [editingComment,setEditingComment] = useState()
     const [curId,setCurId] = useState('')
     const [isEditing,setIsEditing] = useState(false)
-    const {gameDetails,saveEditedGame} = useGames()
+    const {gameDetails,toggleComment} = useGames()
     const classes = useStyles()
-    const sendComment = async (comment,e) => {
+    const sendComment = async (comment) => {
         if(comment.trim()){
             const createdComment = {
                 authorNickname: (JSON.parse(localStorage.getItem('user')).nickname),
@@ -51,7 +51,7 @@ const GameComments = () => {
                 isChanged: null
             }
             gameDetails.comments.push(createdComment)
-            saveEditedGame(gameDetails.id, gameDetails)
+            toggleComment(gameDetails.id, gameDetails)
         }else{
             alert('Comment cannot be empty')
         }
@@ -60,7 +60,7 @@ const GameComments = () => {
     const deleteComment = async (removableComment) => {
         const newComments = gameDetails.comments.filter((comment) => comment.id != removableComment.id )
         gameDetails.comments = newComments
-        saveEditedGame(gameDetails.id, gameDetails)
+        toggleComment(gameDetails.id, gameDetails)
     }
 
     const saveEditedComment = async (id) => {
@@ -75,7 +75,7 @@ const GameComments = () => {
                 return comment
                 })
             gameDetails.comments = newComments
-            await saveEditedGame(gameDetails.id, gameDetails)
+            await toggleComment(gameDetails.id, gameDetails)
             setIsEditing(false)
         }else{
             alert('Comment cannot be empty')
