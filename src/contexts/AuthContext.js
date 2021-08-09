@@ -60,15 +60,22 @@ const AuthContextProvider = ({ children }) => {
         setExist(true);
         setVisible(false);
         setInpType(false);
-        history.push("/");
+        history.push('/');
       } else {
         setExist(false);
       }
     });
   };
 
-  const regUser = (e) => {
-    console.log(e);
+  const regUser = async (e) => {
+    const { data } = await axios(JSON_API_USERS);
+    await data.map((user) => {
+      if (user.name === e.name) {
+        e.name = "";
+        alert("Such user exists");
+        return;
+      }
+    });
     if (
       /(\W|^)[\w.+\-]*@gmail\.com(\W|$)/gi.test(e.name) &&
       e.password === e.passwordSec
@@ -114,6 +121,7 @@ const AuthContextProvider = ({ children }) => {
     setVisible,
     setInpType,
     typePass,
+    history,
   };
   return <authContext.Provider value={value}>{children}</authContext.Provider>;
 };

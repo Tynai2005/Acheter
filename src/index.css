@@ -14,14 +14,8 @@ code {
     monospace;
 }
 
-.container-div {
-  width: 90%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .game-card {
-  width: 200px;
+  width: 217px;
   height: 400px;
   border-radius: 5px;
   margin: 12px;
@@ -32,6 +26,11 @@ code {
   height: 100%;
   border-radius: 5px;
   object-fit: cover;
+  opacity: 70%;
+}
+
+.game-card-img:hover {
+  opacity: 100%;
 }
 
 .game-img-div {

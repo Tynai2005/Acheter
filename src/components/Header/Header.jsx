@@ -64,7 +64,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -103,7 +102,6 @@ export default function Header() {
   const { logout, logged } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -182,7 +180,7 @@ export default function Header() {
         >
           <AccountCircle />
         </IconButton>
-        <p>Profile</p>
+        {logged ? <>{logged.nickname}</> : "Profile"}
       </MenuItem>
     </Menu>
   );

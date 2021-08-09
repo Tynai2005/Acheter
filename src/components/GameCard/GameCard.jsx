@@ -1,10 +1,12 @@
+import { Link } from "react-router-dom";
 import React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useGames } from "../../contexts/GameContext";
 
 const GameCard = ({ game }) => {
-  const { deleteGame, setEditGameInfo } = useGames();
+  const { deleteGame, setEditGameInfo,history } = useGames();
   const { logged } = useAuth();
+<<<<<<< HEAD
 
   return (
     <div className="game-card">
@@ -64,16 +66,33 @@ const GameCard = ({ game }) => {
         ) : (
           <div style={{ color: "gainsboro", fontSize: "15px" }}>
             {game.price}$
+=======
+    return(
+        <div className="game-card">
+          <div className="game-img-div" onClick={() => {history.push(`gameDetails/${game.id}`)}}>
+            <img
+              className="game-card-img"
+              src={game.image}
+              alt={`${game.name} img`}
+            />
+>>>>>>> f8433d2e2d124720ba42f19672fdb843d2b7f0ae
           </div>
-        )}
-        {logged && logged.isAdmin ? (
-          <div>
-            <button onClick={() => deleteGame(game.id)}>DELETE</button>
-            <button onClick={() => setEditGameInfo(game.id)}>EDIT</button>
+          <div className="game-card-info">
+            <div style={{ fontFamily: "Roboto", color: "gainsboro" }}>
+              {game.name}
+            </div>
+            <div style={{ color: "silver", fontSize: "12px" }}>{game.creator}</div>
+              <div style={{ color: "gainsboro", fontSize: "15px" }}>
+                {game.price}$
+              </div>
+            {logged && logged.isAdmin ? (
+              <div>
+                <button onClick={() => deleteGame(game.id)}>DELETE</button>
+                <button onClick={() => setEditGameInfo(game.id)}>EDIT</button>
+              </div>
+            ) : null}
           </div>
-        ) : null}
       </div>
-    </div>
   );
 };
 
