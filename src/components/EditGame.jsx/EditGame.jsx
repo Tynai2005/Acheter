@@ -193,6 +193,28 @@ const EditGame = () => {
               />
               MOBA
             </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Sport" });
+                }}
+              />
+              Sport
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Open World" });
+                }}
+              />
+              Open World
+            </div>
           </div>
         </div>
       </Modal.Body>

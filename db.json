@@ -34,8 +34,17 @@
       "video": "https://www.youtube.com/embed/OmMF9EDbmQQ",
       "price": 0,
       "creator": "Psyonix LLC",
-      "genre": "Fighting",
-      "comments": [],
+      "genre": "Sport",
+      "comments": [
+        {
+          "authorNickname": "Sheva",
+          "authorMail": "sheva@gmail.com",
+          "date": "Wed Aug 11 2021 12:51:23",
+          "text": "Фууууууу",
+          "id": 1628664683336,
+          "isChanged": null
+        }
+      ],
       "id": 11
     },
     {
@@ -46,13 +55,47 @@
       "price": 30,
       "creator": "Studio Wildcard",
       "genre": "Survival",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Wed Aug 11 2021 12:17:52",
+          "text": "Не не норм игра",
+          "id": 1628662672637,
+          "isChanged": " (changed)"
+        },
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Wed Aug 11 2021 12:18:42",
+          "text": "иаиаиаиаиаывсам",
+          "id": 1628662722463,
+          "isChanged": " (changed)"
+        }
+      ],
       "id": 1
     },
     {
       "name": "Minecraft",
       "creator": "Mojang",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Wed Aug 11 2021 10:24:34",
+          "text": "Minecraft is bullshit!!!!!!!!",
+          "id": 1628655874486,
+          "isChanged": " (changed)"
+        },
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Wed Aug 11 2021 11:02:04",
+          "text": "aaaaaaaaaaaaasthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+          "id": 1628658124522,
+          "isChanged": " (changed)"
+        }
+      ],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "video": "https://www.youtube.com/embed/0G1hVQxkTBE",
@@ -83,7 +126,16 @@
     {
       "name": "Cyberpunk",
       "creator": "CD Projekt",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Sheva",
+          "authorMail": "sheva@gmail.com",
+          "date": "Wed Aug 11 2021 12:31:03",
+          "text": "Комментарий смертного",
+          "id": 1628663463488,
+          "isChanged": " (changed)"
+        }
+      ],
       "description": "Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. ... You can customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you make shape the story and the world around you.",
       "image": "https://static.cdprojektred.com/cms.cdprojektred.com/16x9_big/12aaa3b137a18e180bb92682e8f81674dcb7451f-1920x1080.jpg",
       "video": "https://www.youtube.com/embed/LembwKDo1Dk",
