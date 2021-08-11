@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./5777704462_e401e742-bab4-4b56-b277-e21100d57b0c.png";
+import logo from "./5777879891_5b3ad33c-5853-4bef-9990-1b35d0c4496e.png";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     color: "inherit",
     textDecoration: "none",
-    width: "50px",
+    width: "100px",
   },
   a: {
     textDecoration: "none",

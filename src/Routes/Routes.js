@@ -15,6 +15,8 @@ import SignUp from "../components/Auth/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
 import { CardTravel } from "@material-ui/icons";
 import Cart from "../components/Cart/Cart";
+import Purchase from "../components/Purchase/Purchase";
+import Library from "../components/Library/Library";
 
 const Routes = () => {
   return (
@@ -24,6 +26,8 @@ const Routes = () => {
           <GameContextProvider>
             <Header />
             <Switch>
+              <Route exact path="/library" component={Library} />
+              <Route exact path="/purchase" component={Purchase} />
               <ProtectedRoute exact path="/cart" component={Cart} />
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/signup" component={SignUp} />

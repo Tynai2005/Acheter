@@ -49,14 +49,23 @@ const useStyles = makeStyles((theme) => ({
 
 const LogIn = () => {
   const classes = useStyles();
-  const { login, exist, visible, handleVisible, typePass, handleInpType,history} =
-    useAuth();
+  const {
+    login,
+    exist,
+    visible,
+    handleVisible,
+    typePass,
+    handleInpType,
+    history,
+  } = useAuth();
   const [newUser, setNewUser] = useState({
     nickname: "",
     name: "",
     password: "",
     cart: [],
+    library: [],
     isAdmin: false,
+    id: "",
   });
 
   return (
@@ -124,16 +133,16 @@ const LogIn = () => {
               </Typography>
             ) : null}
             <Button
-            className={classes.btns}
-            style={{marginRight:'25px'}}
-            variant="contained"
-            color="secondary"
-            onClick={() => {
-              history.goBack()
-            }}
-          >
-            Close
-          </Button>
+              className={classes.btns}
+              style={{ marginRight: "25px" }}
+              variant="contained"
+              color="secondary"
+              onClick={() => {
+                history.goBack();
+              }}
+            >
+              Close
+            </Button>
             <Button
               className={classes.btns}
               variant="contained"

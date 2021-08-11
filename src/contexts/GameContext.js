@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { ACTIONS, GAMES_API } from "../helper/consts";
+
+
+import { ACTIONS, GAMES_API, JSON_API_USERS } from "../helper/consts";
+
 
 export const gameContext = createContext();
 
@@ -36,7 +39,7 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
-let gamesCount = 5;
+let gamesCount = 10;
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -119,6 +122,7 @@ const GameContextProvider = ({ children }) => {
     });
   };
 
+
   const toHome = () => {
     setIsAllGames(false)
     history.push('/gameslist')
@@ -129,7 +133,31 @@ const GameContextProvider = ({ children }) => {
     history.push('/')
   }
 
+  const deleteCartGame = async (id) => {
+    const curUser = JSON.parse(localStorage.getItem("user"));
+    const newCart = curUser.cart.filter((game) => game !== id);
+    const newUser = { ...curUser, cart: newCart };
+    localStorage.setItem("user", JSON.stringify(newUser));
+    axios.patch(`${JSON_API_USERS}/${curUser.id}`, newUser);
+  };
+
+  const toLibrary = async (id) => {
+    const curUser = JSON.parse(localStorage.getItem("user"));
+    const { data } = await axios(JSON_API_USERS);
+    data.map((user) => {
+      if (user.name === curUser.name) {
+        const edittedUser = { ...user };
+        edittedUser.library.push(id);
+        axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
+        localStorage.setItem("user", JSON.stringify(edittedUser));
+      }
+    });
+  };
+
+
   const values = {
+    toLibrary,
+    deleteCartGame,
     getGamesData,
     addNewGame,
     deleteGame,

@@ -4,6 +4,7 @@ import {
   Container,
   Grid,
   makeStyles,
+  Snackbar,
   Typography,
 } from "@material-ui/core";
 import SvgIcon from "@material-ui/core/SvgIcon";
@@ -17,6 +18,7 @@ import GameComments from "../GameComments/GameComments";
 import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
+import { Alert } from "@material-ui/lab";
 
 const useStyles = makeStyles(() => ({
   details: {
@@ -85,7 +87,9 @@ function HomeIcon(props) {
 }
 
 const GameDetails = () => {
-  const { gameDetails, getGameDetails, history } = useGames();
+  window.scrollTo(0, 0);
+  const [open, setOpen] = useState(false);
+  const { gameDetails, getGameDetails, history, toLibrary } = useGames();
   const { logged } = useAuth();
   const [buttonColorBoolean, setButtonColorBoolean] = useState(false);
   const [buttonColor, setButtonColor] = useState("primary");
@@ -106,6 +110,12 @@ const GameDetails = () => {
         localStorage.setItem("user", JSON.stringify(curUser));
       }
     });
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
   useEffect(() => {
     getGameDetails(search.slice(34, search.length));
@@ -150,16 +160,30 @@ const GameDetails = () => {
                 />
               </div>
               {gameDetails.price > 0 ? (
-                <h3 style={{ color: "white" }}>{gameDetails.price}$</h3>
+                <>
+                  <h3 style={{ color: "white" }}>{gameDetails.price}$</h3>
+                  <div className={classes.buyBtns}>
+                    <Button variant="contained" color="primary">
+                      Buy now
+                    </Button>
+                  </div>
+                </>
               ) : (
-                <h3 style={{ color: "white" }}>Free to play</h3>
+                <>
+                  <h3 style={{ color: "white" }}>Free to play</h3>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      handleOpen();
+                      toLibrary(gameDetails.id);
+                    }}
+                  >
+                    Add to library
+                  </Button>
+                </>
               )}
 
-              <div className={classes.buyBtns}>
-                <Button variant="contained" color="primary">
-                  Buy now
-                </Button>
-              </div>
               <div className={classes.buyBtns}>
                 {gameDetails.price > 0 ? (
                   <>
@@ -189,6 +213,11 @@ const GameDetails = () => {
           <GameComments />
         </div>
       </div>
+      <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Game has been added to your library!
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

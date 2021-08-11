@@ -21,6 +21,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import zIndex from "@material-ui/core/styles/zIndex";
+import { useAuth } from "../../contexts/AuthContext";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -131,13 +132,19 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const [sortMenuMobile, setSortMenuMobile] = useState(false);
+
+  const { logged } = useAuth();
+
+
+
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
   const { getGamesData, history,isAllGames,toHome,toGamesList } = useGames();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
 
 
   const handleProfileMenuOpen = (event) => {
@@ -209,9 +216,11 @@ export default function PrimarySearchAppBar() {
                 Home
               </Button>}
         </MenuItem>
-        <MenuItem>
-          <Button>Library</Button>
-        </MenuItem>
+        {logged ? (
+          <MenuItem>
+            <Button onClick={() => history.push("/library")}>Library</Button>
+          </MenuItem>
+        ) : null}
 
         <MenuItem onClick={handleProfileMenuOpen}>
           <Button>Cart</Button>
@@ -235,11 +244,24 @@ export default function PrimarySearchAppBar() {
             </Button> : 
             <Button
                 className={classes.navbarBtn}
+
                 onClick={toHome}
               >
                 All Games
               </Button>}
               <Button className={classes.navbarBtn}>Library</Button>
+
+              
+                
+              {logged ? (
+                <Button
+                  className={classes.navbarBtn}
+                  onClick={() => history.push("/library")}
+                >
+                  Library
+                </Button>
+              ) : null}
+
 
               <Button
                 onClick={() => history.push("/cart")}
@@ -248,6 +270,7 @@ export default function PrimarySearchAppBar() {
                 Cart
               </Button>
             </div>
+
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"
