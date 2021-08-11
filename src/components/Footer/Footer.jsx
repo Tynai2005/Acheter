@@ -5,7 +5,7 @@ import YouTubeIcon from "@material-ui/icons/YouTube";
 const useStyles = makeStyles((theme) => ({
   footer: {
     width: "100%",
-    maxHeight: "200px",
+
     backgroundColor: "black",
   },
   icons: {

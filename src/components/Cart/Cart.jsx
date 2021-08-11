@@ -1,9 +1,18 @@
-import { Container, Grid, makeStyles } from "@material-ui/core";
+import {
+  Container,
+  Grid,
+  IconButton,
+  makeStyles,
+  Button,
+} from "@material-ui/core";
 import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
+import DeleteIcon from "@material-ui/icons/Delete";
+import { useGames } from "../../contexts/GameContext";
+
 const useStyles = makeStyles((theme) => ({
   text: {
     color: "white",
@@ -28,13 +37,33 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     color: "white",
-    marginRight: "20px",
+  },
+  deleteBtn: {
+    color: "white",
+  },
+  noGame: {
+    color: "white",
+    height: "80vh",
+    textAlign: "center",
+    marginTop: "20px",
+  },
+  buyGrid: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+  buyBtn: {
+    color: "white",
+    backgroundColor: "green",
+  },
+  main: {
+    height: "100vh",
   },
 }));
 const Cart = () => {
   const classes = useStyles();
   const [cartGames, setCartGames] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const { deleteCartGame, history } = useGames();
   let cart = [];
 
   const getGameFromCart = async () => {
@@ -44,8 +73,6 @@ const Cart = () => {
     gamesData.data.map((game) => {
       curUser.cart.map((gameId) => {
         if (game.id == gameId) {
-          // let newCartGames = [...cartGames];
-          // newCartGames.push(game);
           cart.push(game);
           sum += game.price;
           setTotalPrice(sum);
@@ -61,7 +88,7 @@ const Cart = () => {
   return (
     <>
       {cartGames.length > 0 ? (
-        <Container>
+        <Container className={classes.main}>
           <h2 className={classes.title}>Your cart</h2>
           {cartGames.map((game) => (
             <Container className={classes.container}>
@@ -71,13 +98,29 @@ const Cart = () => {
               </Grid>
               <Grid className={classes.grids}>
                 <div className={classes.price}>{game.price}$</div>
+                <IconButton
+                  onClick={async () => {
+                    await deleteCartGame(game.id);
+                    getGameFromCart();
+                  }}
+                >
+                  <DeleteIcon className={classes.deleteBtn} />
+                </IconButton>
               </Grid>
             </Container>
           ))}
-          <h2 className={classes.title}>Total price: {totalPrice}</h2>
+          <Grid className={classes.buyGrid}>
+            <h2 className={classes.title}>Total price: {totalPrice}</h2>
+            <Button
+              className={classes.buyBtn}
+              onClick={() => history.push("/purchase")}
+            >
+              Buy
+            </Button>
+          </Grid>
         </Container>
       ) : (
-        <h3 style={{ color: "white" }}>There isnt games in your cart</h3>
+        <h2 className={classes.noGame}>There isn't games in your cart</h2>
       )}
     </>
   );
