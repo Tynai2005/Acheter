@@ -21,7 +21,9 @@
       "name": "tynai.s.95@gmail.com",
       "password": "butylka",
       "isAdmin": true,
-      "cart": [],
+      "cart": [
+        4
+      ],
       "library": [
         11
       ],
