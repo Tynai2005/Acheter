@@ -132,16 +132,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const { logged } = useAuth();
-
-  const [sortMenu, setSortMenu] = useState(false);
-  const [sortMenuMobile, setSortMenuMobile] = useState(false);
   const classes = useStyles();
+  const {logged} = useAuth()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { getGamesData, history } = useGames();
+  const { getGamesData, history,isAllGames,toHome,toGamesList } = useGames();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -198,22 +196,20 @@ export default function PrimarySearchAppBar() {
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <Button
-            onClick={() => {
-              history.push("/gameslist");
-              setSortMenuMobile(!sortMenuMobile);
-              setSortMenu(false);
-            }}
-          >
-            Filter
-          </Button>
+        {!isAllGames ? 
+              <Button
+              className={classes.navbarBtn}
+              onClick={toGamesList}
+            >
+              All Games
+            </Button> : 
+            <Button
+                className={classes.navbarBtn}
+                onClick={toHome}
+              >
+                Home
+              </Button>}
         </MenuItem>
-        {logged ? (
-          <MenuItem>
-            <Button onClick={() => history.push("/library")}>Library</Button>
-          </MenuItem>
-        ) : null}
-
         <MenuItem onClick={handleProfileMenuOpen}>
           <Button>Cart</Button>
         </MenuItem>
@@ -227,14 +223,19 @@ export default function PrimarySearchAppBar() {
         <Toolbar className={classes.navbar}>
           <div className={classes.navbarSel}>
             <div className={classes.sectionDesktop}>
+            {!isAllGames ? 
               <Button
+              className={classes.navbarBtn}
+              onClick={toGamesList}
+            >
+              Home
+            </Button> : 
+            <Button
                 className={classes.navbarBtn}
-                onClick={() => {
-                  history.push("/gameslist");
-                }}
+                onClick={toHome}
               >
                 All Games
-              </Button>
+              </Button>}
               {logged ? (
                 <Button
                   className={classes.navbarBtn}
@@ -243,7 +244,6 @@ export default function PrimarySearchAppBar() {
                   Library
                 </Button>
               ) : null}
-
               <Button
                 onClick={() => history.push("/cart")}
                 className={classes.navbarBtn}
@@ -251,8 +251,6 @@ export default function PrimarySearchAppBar() {
                 Cart
               </Button>
             </div>
-
-            {/* </ClickAwayListener> */}
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"

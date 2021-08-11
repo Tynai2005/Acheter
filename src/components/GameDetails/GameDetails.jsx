@@ -28,6 +28,7 @@ const useStyles = makeStyles(() => ({
   detailsContainer: {
     display: "flex",
     justifyContent: "center",
+    width: '100%'
   },
   hr: {
     color: "white",
@@ -208,10 +209,10 @@ const GameDetails = () => {
               </div>
             </Grid>
           </div>
+          <hr className={classes.hr} />
+          <GameComments />
         </div>
       </div>
-      <GameComments />
-
       <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
           Game has been added to your library!
