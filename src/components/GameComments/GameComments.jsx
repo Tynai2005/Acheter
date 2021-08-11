@@ -36,58 +36,60 @@ const useStyles = makeStyles(() => ({
 }));
 
 const GameComments = () => {
-    const [newComment,setNewComment] = useState('')
-    const [addingComment,setAddingComment] = useState()
-    const [editingComment,setEditingComment] = useState()
-    const [curId,setCurId] = useState('')
-    const [isEditing,setIsEditing] = useState(false)
-    const {gameDetails,toggleComment} = useGames()
-    const classes = useStyles()
-    const sendComment = async (comment) => {
-        if(comment.trim()){
-            const createdComment = {
-                authorNickname: (JSON.parse(localStorage.getItem('user')).nickname),
-                authorMail: (JSON.parse(localStorage.getItem('user')).name),
-                date: (new Date()).toString().slice(0,24),
-                text: comment,
-                id: Date.now(),
-                isChanged: null
-            }
-            gameDetails.comments.push(createdComment)
-            toggleComment(gameDetails.id, gameDetails)
-        }else{
-            alert('Comment cannot be empty')
-        }
+  const [newComment, setNewComment] = useState("");
+  const [addingComment, setAddingComment] = useState();
+  const [editingComment, setEditingComment] = useState();
+  const [curId, setCurId] = useState("");
+  const [isEditing, setIsEditing] = useState(false);
+  const { gameDetails, toggleComment } = useGames();
+  const classes = useStyles();
+  const sendComment = async (comment) => {
+    if (comment.trim()) {
+      const createdComment = {
+        authorNickname: JSON.parse(localStorage.getItem("user")).nickname,
+        authorMail: JSON.parse(localStorage.getItem("user")).name,
+        date: new Date().toString().slice(0, 24),
+        text: comment,
+        id: Date.now(),
+        isChanged: null,
+      };
+      gameDetails.comments.push(createdComment);
+      toggleComment(gameDetails.id, gameDetails);
+    } else {
+      alert("Comment cannot be empty");
     }
   };
 
-    const deleteComment = async (removableComment) => {
-        const newComments = gameDetails.comments.filter((comment) => comment.id != removableComment.id )
-        gameDetails.comments = newComments
-        toggleComment(gameDetails.id, gameDetails)
-    }
+  const deleteComment = async (removableComment) => {
+    const newComments = gameDetails.comments.filter(
+      (comment) => comment.id != removableComment.id
+    );
+    gameDetails.comments = newComments;
+    toggleComment(gameDetails.id, gameDetails);
+  };
 
-    const saveEditedComment = async (id) => {
-        if (editingComment.trim()){
-            const newComments = await gameDetails.comments.map((comment) => {
-                if(comment.id == id){
-                    if (!comment.isChanged){
-                   return({...comment,text : editingComment, authorNickname : comment.authorNickname, isChanged: ' (changed)'})
-                    }
-                    return({...comment,text : editingComment, authorNickname : comment.authorNickname })
-                }
-                return comment
-                })
-            gameDetails.comments = newComments
-            await toggleComment(gameDetails.id, gameDetails)
-            setIsEditing(false)
-        }else{
-            alert('Comment cannot be empty')
+  const saveEditedComment = async (id) => {
+    if (editingComment.trim()) {
+      const newComments = await gameDetails.comments.map((comment) => {
+        if (comment.id == id) {
+          if (!comment.isChanged) {
+            return {
+              ...comment,
+              text: editingComment,
+              authorNickname: comment.authorNickname,
+              isChanged: " (changed)",
+            };
+          }
+          return {
+            ...comment,
+            text: editingComment,
+            authorNickname: comment.authorNickname,
+          };
         }
         return comment;
       });
       gameDetails.comments = newComments;
-      await saveEditedGame(gameDetails.id, gameDetails);
+      await toggleComment(gameDetails.id, gameDetails);
       setIsEditing(false);
     } else {
       alert("Comment cannot be empty");
@@ -130,7 +132,7 @@ const GameComments = () => {
               ? gameDetails?.comments?.map((comment) => {
                   return (
                     <div className={classes.inpColor}>
-                      <div>{comment.authorNickname}</div>
+                      <h5>{comment.authorNickname}</h5>
                       <div>{comment.isChanged}</div>
                       <div>{comment.date}</div>
                       {isEditing && curId == comment.id ? (

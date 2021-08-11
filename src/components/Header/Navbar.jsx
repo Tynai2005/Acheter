@@ -19,7 +19,7 @@ import {
 import { useGames } from "../../contexts/GameContext";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import zIndex from "@material-ui/core/styles/zIndex";
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -27,6 +27,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navbarBtn: {
     color: "white",
+    textDecoration: "none",
   },
 
   menuButton: {
@@ -269,8 +270,9 @@ export default function PrimarySearchAppBar() {
           </Button>
         </MenuItem>
         <MenuItem>
-          <Button>Promotions</Button>
+          <Button>Library</Button>
         </MenuItem>
+
         <MenuItem onClick={handleProfileMenuOpen}>
           <Button>Cart</Button>
         </MenuItem>
@@ -367,10 +369,16 @@ export default function PrimarySearchAppBar() {
               >
                 Filter
               </Button>
-              <Button className={classes.navbarBtn}>Stocks</Button>
-              <Button className={classes.navbarBtn}>Cart</Button>
+              <Button className={classes.navbarBtn}>Library</Button>
+
+              <Button
+                onClick={() => history.push("/cart")}
+                className={classes.navbarBtn}
+              >
+                Cart
+              </Button>
             </div>
-            {/* <ClickAwayListener onClickAway={() => setSortMenu(false)}> */}
+
             {sortMenu ? (
               <div className={classes.menu}>
                 <RadioGroup value={genre} onChange={changeGenre}>
