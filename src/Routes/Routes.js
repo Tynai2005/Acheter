@@ -13,6 +13,8 @@ import LogIn from "../components/Auth/LogIn";
 import AuthContextProvider from "../contexts/AuthContext";
 import SignUp from "../components/Auth/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
+import { CardTravel } from "@material-ui/icons";
+import Cart from "../components/Cart/Cart";
 
 const Routes = () => {
   return (
@@ -22,6 +24,7 @@ const Routes = () => {
           <GameContextProvider>
             <Header />
             <Switch>
+              <ProtectedRoute exact path="/cart" component={Cart} />
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/" component={Home} />

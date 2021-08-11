@@ -24,8 +24,8 @@ const reducer = (state = INIT_STATE, action) => {
       return {
         ...state,
         gamesData: action.payload.data,
-        pages: Math.ceil(action.payload.headers['x-total-count'] / gamesCount),
-      }
+        pages: Math.ceil(action.payload.headers["x-total-count"] / gamesCount),
+      };
     case ACTIONS.MODAL:
       return { ...state, modal: action.payload };
     case ACTIONS.CHANGE_ID:
@@ -37,7 +37,7 @@ const reducer = (state = INIT_STATE, action) => {
   }
 };
 
-let gamesCount = 4
+let gamesCount = 5;
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
@@ -45,7 +45,7 @@ const GameContextProvider = ({ children }) => {
 
   const getGamesData = async () => {
     const search = new URLSearchParams(history.location.search);
-    search.set('_limit', gamesCount);
+    search.set("_limit", gamesCount);
     history.push(`${history.location.pathname}?${search.toString()}`);
     const data = await axios(`${GAMES_API}/${window.location.search}`);
     dispatch({
@@ -95,6 +95,12 @@ const GameContextProvider = ({ children }) => {
     getGamesData();
   };
 
+  const toggleComment = async (id, editedGame) => {
+    console.log(editedGame);
+    const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
+    getGamesData();
+  };
+
   const changeId = (id) => {
     dispatch({
       type: ACTIONS.CHANGE_ID,
@@ -104,14 +110,14 @@ const GameContextProvider = ({ children }) => {
   };
 
   const changeGenre = async (selectedGenre) => {
-    const {data} = await axios(GAMES_API)
-    console.log(data)
-    let newData = data.filter((game) => game.genre == selectedGenre) 
+    const { data } = await axios(GAMES_API);
+    console.log(data);
+    let newData = data.filter((game) => game.genre == selectedGenre);
     dispatch({
       type: ACTIONS.GET_GAMES_DATA,
       payload: newData,
     });
-  }
+  };
 
   const values = {
     getGamesData,
@@ -123,8 +129,9 @@ const GameContextProvider = ({ children }) => {
     saveEditedGame,
     changeId,
     changeGenre,
+    toggleComment,
     pages: state.pages,
-    history,  
+    history,
     id: state.id,
     gamesData: state.gamesData,
     modal: state.modal,

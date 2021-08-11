@@ -11,6 +11,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",
+    marginTop: "30px",
   },
   review: {
     display: "flex",
@@ -20,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
   },
   seeMore: {
     display: "flex",
-    justifyContent: "flex-end",
+    justifyContent: "space-between",
   },
 }));
 const GamesListPreview = () => {
@@ -35,10 +36,10 @@ const GamesListPreview = () => {
 
   return (
     <Container className={classes.container}>
-      <Grid style={{ color: "white", fontFamily: "Noto Sans JP" }}>
-        Best games of this summer
-      </Grid>
       <Grid className={classes.seeMore}>
+        <h4 style={{ color: "white", fontFamily: "Noto Sans JP" }}>
+          All games
+        </h4>
         <Button
           variant="contained"
           color="primary"
