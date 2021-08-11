@@ -56,7 +56,16 @@
   "games": [
     {
       "name": "Minecraft",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Mon Aug 09 2021 15:35:42",
+          "text": "Amantay lox loxovich",
+          "id": 1628501742736,
+          "isChanged": " (changed)"
+        }
+      ],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
       "image": "https://latestnews.fresherslive.com/images/articles/origin/2020/10/20/how-to-download-minecraft-in-pc-5f8e8c4c02a2b-1603177548.jpg",
       "price": 100,

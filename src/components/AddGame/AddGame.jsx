@@ -28,6 +28,7 @@ const AddGame = () => {
     genre: "",
     discount: 0,
     isDiscount: false,
+    comments: []
   });
   return (
     <Container
