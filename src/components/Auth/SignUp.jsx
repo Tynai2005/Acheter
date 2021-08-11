@@ -57,6 +57,7 @@ const SignUp = () => {
     name: "",
     password: "",
     cart: [],
+    library: [],
     isAdmin: false,
   });
   return (
@@ -149,11 +150,11 @@ const SignUp = () => {
           </Grid>
           <Button
             className={classes.btns}
-            style={{marginRight:'25px'}}
+            style={{ marginRight: "25px" }}
             variant="contained"
             color="secondary"
             onClick={() => {
-              history.goBack()
+              history.goBack();
             }}
           >
             Close

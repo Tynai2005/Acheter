@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
   addBtn: {
     backgroundColor: "green",
     color: "white",
-    border: "1px white solid",
   },
 }));
 const GamesList = () => {

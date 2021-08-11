@@ -13,6 +13,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.libraryCardImg {
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
+}
+.libraryCardImg:hover {
+  width: 300px;
+  height: 300px;
+}
 
 .game-card {
   width: 217px;

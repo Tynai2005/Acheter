@@ -6,7 +6,13 @@
       "password": "coolboy2005",
       "isAdmin": true,
       "cart": [
-        1
+        1,
+        6,
+        2
+      ],
+      "library": [
+        11,
+        7
       ],
       "id": 1
     },
@@ -16,43 +22,8 @@
       "password": "butylka",
       "isAdmin": true,
       "cart": [],
+      "library": [],
       "id": 2
-    },
-    {
-      "nickname": "Sheva",
-      "name": "sheva@gmail.com",
-      "password": "bestrussianfootballer",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "bestrussianfootballer",
-      "id": 3
-    },
-    {
-      "nickname": "Bakai",
-      "name": "bakai.k@gmail.com",
-      "password": "bakai",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "bakai",
-      "id": 4
-    },
-    {
-      "nickname": "Amantai_lox",
-      "name": "atay@gmail.com",
-      "password": "tynai lox",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "tynai lox",
-      "id": 5
-    },
-    {
-      "nickname": "dvsfgfhg",
-      "name": "dafestrfy@gmail.com",
-      "password": "123456tynai",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "123456tynai",
-      "id": 6
     }
   ],
   "games": [
@@ -92,7 +63,16 @@
     {
       "name": "Witcher III",
       "creator": "CD Projekt",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Genshin4ever",
+          "authorMail": "kozhon.amantay@gmail.com",
+          "date": "Wed Aug 11 2021 13:56:30",
+          "text": "I dont like this game, it is so govno",
+          "id": 1628668590259,
+          "isChanged": null
+        }
+      ],
       "description": "The Witcher 3: Wild Hunt is an action role-playing game with a third-person perspective. Players control Geralt of Rivia, a monster slayer known as a Witcher. Geralt walks, runs, rolls and dodges, and (for the first time in the series) jumps, climbs and swims. He has a variety of weapons, including bombs, a crossbow and two swords (one steel and one silver). The steel sword is used primarily to kill humans while the silver sword is more effective against creatures and monsters. Players can draw out, switch and sheathe their swords at will. There are two modes of melee attack; light attacks are fast but weak, and heavy attacks are slow but strong. Players can block and counter enemy attacks with their swords. Swords have limited endurance and require regular repair. In addition to physical attacks, Geralt has five magical signs at his disposal: Aard, Axii, Igni, Yrden and Quen. Aard prompts Geralt to unleash a telekinetic blast, Axii confuses enemies, Igni burns them, Yrden slows them down and Quen offers players a temporary, protective shield. The signs use stamina, and cannot be used indefinitely. Players can use mutagens to increase Geralt's magic power. Geralt loses health when attacked by enemies, although wearing armour can help reduce health loss. Health is restored with meditation or consumables, such as food and potions. Players occasionally control Ciri, Geralt's adoptive daughter who can teleport short distances.",
       "image": "https://www.ixbt.com/img/n1/news/2021/6/6/E531CN9WQAMmK-h_large.jpg",
       "video": "https://www.youtube.com/embed/c0i88t0Kacs",
@@ -178,7 +158,7 @@
       "creator": "Mihoyo",
       "description": "Genshin Impact takes place in the fantasy world of Teyvat, which is home to seven distinct nations, each of which is tied to an element and ruled by a god associated with it. The story follows a twin, referred to as the Traveler, who has traveled across many other worlds but has become separated from their twin sibling in Teyvat. The Traveler travels in search of the lost sibling with their companion Paimon and becomes involved in the affairs of Teyvat's nations and gods.",
       "image": "https://wallpapercave.com/wp/wp7487062.jpg",
-      "video": "https://www.youtube.com/embed/",
+      "video": "https://www.youtube.com/embed/gEOI-Ae_aaU",
       "price": 0,
       "genre": "RPG",
       "comments": [
@@ -214,6 +194,50 @@
       "genre": "Shooter",
       "comments": [],
       "id": 12
+    },
+    {
+      "name": "Apex Legends",
+      "description": "Apex Legends is an online multiplayer battle royale game featuring squads of three players using pre-made characters with distinctive abilities, called \"Legends\", similar to those of hero shooters. Alternate modes have been introduced allowing for single and for two-player squads since the game's release.",
+      "image": "https://images6.alphacoders.com/992/thumb-1920-992033.jpg",
+      "video": "https://www.youtube.com/embed/oshvcDjEKZc",
+      "price": 0,
+      "creator": "Respawn Entertainment",
+      "genre": "Shooter",
+      "comments": [],
+      "id": 13
+    },
+    {
+      "name": "Counter Strike: GO",
+      "description": "Counter-Strike: Global Offensive (CS:GO) is a multiplayer first-person shooter developed by Valve and Hidden Path Entertainment. It is the fourth game in the Counter-Strike series. ... The game pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based game modes.",
+      "image": "https://www.mithesports.com/wp-content/uploads/2015/09/CSGO.jpg",
+      "video": "https://www.youtube.com/embed/edYCtaNueQY",
+      "price": 5,
+      "creator": "Valve",
+      "genre": "Shooter",
+      "comments": [],
+      "id": 14
+    },
+    {
+      "name": "Grand Theft Auto V",
+      "description": "Grand Theft Auto V is an action-adventure game played from either a third-person or first-person perspective. Players complete missions—linear scenarios with set objectives—to progress through the story. Outside of the missions, players may freely roam the open world.",
+      "image": "https://akket.com/wp-content/uploads/2021/08/GTA-V-vyshla-besplatno-dlya-ustroi-stv-na-Android-i-iOS-1.jpg",
+      "video": "https://www.youtube.com/embed/QkkoHAzjnUs",
+      "price": 50,
+      "creator": "Rockstar Games",
+      "genre": "Shooter",
+      "comments": [],
+      "id": 15
+    },
+    {
+      "name": "Plants vs Zombies",
+      "description": "Tower defense game (Mainline games) Third-person shooter (Garden Warfare games) Digital collectible card game (Plants vs. Zombies Heroes)",
+      "image": "https://images6.alphacoders.com/530/thumb-1920-530939.jpg",
+      "video": "https://www.youtube.com/embed/CHAbHz8iYHc",
+      "price": 8,
+      "creator": "PopCap Games",
+      "genre": "Shooter",
+      "comments": [],
+      "id": 16
     }
   ],
   "likes": [],
