@@ -1,7 +1,6 @@
 import { Button, Container, makeStyles, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import Cards from "react-credit-cards";
-import "react-credit-cards/es/styles-compiled.css";
 const useStyles = makeStyles((theme) => ({
   inps: {
     margin: "10px 0",
