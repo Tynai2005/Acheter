@@ -182,6 +182,28 @@ const AddGame = () => {
             />
             MOBA
           </div>
+          <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setGameInfo({ ...gameInfo, genre: "Sport" });
+                }}
+              />
+              Sport
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setGameInfo({ ...gameInfo, genre: "Open World" });
+                }}
+              />
+              Open World
+            </div>
         </div>
         <br />
         <Button

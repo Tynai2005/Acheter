@@ -26,6 +26,7 @@ const useStyles = makeStyles(() => ({
   detailsContainer: {
     display: "flex",
     justifyContent: "center",
+    width: '100%'
   },
   hr: {
     color: "white",
@@ -184,9 +185,10 @@ const GameDetails = () => {
               </div>
             </Grid>
           </div>
+          <hr className={classes.hr} />
+          <GameComments />
         </div>
       </div>
-      <GameComments />
     </Container>
   );
 };

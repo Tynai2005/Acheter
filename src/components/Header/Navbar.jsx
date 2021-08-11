@@ -131,32 +131,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PrimarySearchAppBar() {
-  const [sortMenu, setSortMenu] = useState(false);
   const [sortMenuMobile, setSortMenuMobile] = useState(false);
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { getGamesData, history } = useGames();
-  const [genre, setGenre] = useState(getGenre());
-  const [minPrice, setMinPrice] = useState(getMinPrice());
-  const [maxPrice, setMaxPrice] = useState(getMaxPrice());
+  const { getGamesData, history,isAllGames,toHome,toGamesList } = useGames();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  function getGenre() {
-    const search = new URLSearchParams(history.location.search);
-    return search.get("genre");
-  }
-
-  function getMinPrice() {
-    const search = new URLSearchParams(history.location.search);
-    return search.get("price_gte");
-  }
-
-  function getMaxPrice() {
-    const search = new URLSearchParams(history.location.search);
-    return search.get("price_lte");
-  }
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -181,52 +163,6 @@ export default function PrimarySearchAppBar() {
     search.set("q", e.target.value);
     history.push(`${history.location.pathname}?${search.toString()}`);
     getGamesData();
-  };
-
-  const changeGenre = (e) => {
-    if (e.target.value == "all") {
-      const search = new URLSearchParams(history.location.search);
-      search.delete("genre");
-      history.push(`${history.location.pathname}?${search.toString()}}`);
-      getGamesData();
-      setGenre(e.target.value);
-      return;
-    }
-    const search = new URLSearchParams(history.location.search);
-    search.set("genre", e.target.value);
-    history.push(`${history.location.pathname}?${search.toString()}`);
-    getGamesData();
-    setGenre(e.target.value);
-  };
-
-  const changeMinPrice = (value) => {
-    console.log(value);
-    const search = new URLSearchParams(history.location.search);
-    search.set("price_gte", value);
-    console.log(search);
-    history.push(`${history.location.pathname}?${search.toString()}`);
-    getGamesData();
-    setMinPrice(value);
-  };
-
-  const changeMaxPrice = (value) => {
-    console.log(value);
-    const search = new URLSearchParams(history.location.search);
-    search.set("price_lte", value);
-    console.log(search);
-    history.push(`${history.location.pathname}?${search.toString()}`);
-    getGamesData();
-    setMaxPrice(value);
-  };
-
-  const resetPrice = () => {
-    const search = new URLSearchParams(history.location.search);
-    search.delete("price_gte");
-    search.delete("price_lte");
-    history.push(`${history.location.pathname}?${search.toString()}`);
-    getGamesData();
-    setMinPrice(getMinPrice());
-    setMaxPrice(getMaxPrice());
   };
 
   const menuId = "primary-search-account-menu";
@@ -259,15 +195,19 @@ export default function PrimarySearchAppBar() {
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          <Button
-            onClick={() => {
-              history.push("/gameslist");
-              setSortMenuMobile(!sortMenuMobile);
-              setSortMenu(false);
-            }}
-          >
-            Filter
-          </Button>
+        {!isAllGames ? 
+              <Button
+              className={classes.navbarBtn}
+              onClick={toGamesList}
+            >
+              All Games
+            </Button> : 
+            <Button
+                className={classes.navbarBtn}
+                onClick={toHome}
+              >
+                Home
+              </Button>}
         </MenuItem>
         <MenuItem>
           <Button>Library</Button>
@@ -277,79 +217,6 @@ export default function PrimarySearchAppBar() {
           <Button>Cart</Button>
         </MenuItem>
       </Menu>
-      {sortMenuMobile ? (
-        <div className={classes.menuMobile}>
-          <RadioGroup value={genre} onChange={changeGenre}>
-            <h5>By Genre:</h5>
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="RPG"
-              control={<Radio />}
-              label="RPG"
-            />
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="Survival"
-              control={<Radio />}
-              label="Survival"
-            />
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="MOBA"
-              control={<Radio />}
-              label="MOBA"
-            />
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="Sandbox"
-              control={<Radio />}
-              label="Sandbox"
-            />
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="Shooter"
-              control={<Radio />}
-              label="Shooter"
-            />
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="Fighting"
-              control={<Radio />}
-              label="Fighting"
-            />
-            <FormControlLabel
-              className={classes.mobileMenuItem}
-              value="all"
-              control={<Radio />}
-              label="All"
-            />
-          </RadioGroup>
-          <h5>By Price:</h5>
-          <div className={classes.mobilePriceFilter}>
-            <TextField
-              className={classes.priceInputs}
-              value={minPrice}
-              onChange={(e) => changeMinPrice(e.target.value)}
-              type="number"
-              label="Min Price($)"
-              defaultValue="100"
-            />
-            <TextField
-              className={classes.priceInputs}
-              value={maxPrice}
-              onChange={(e) => changeMaxPrice(e.target.value)}
-              type="number"
-              label="Max Price($)"
-              defaultValue="1000"
-            />
-          </div>
-          <div>
-            <Button variant="outlined" onClick={resetPrice}>
-              Reset Price Filter
-            </Button>
-          </div>
-        </div>
-      ) : null}
     </>
   );
 
@@ -359,16 +226,19 @@ export default function PrimarySearchAppBar() {
         <Toolbar className={classes.navbar}>
           <div className={classes.navbarSel}>
             <div className={classes.sectionDesktop}>
+            {!isAllGames ? 
               <Button
+              className={classes.navbarBtn}
+              onClick={toGamesList}
+            >
+              Home
+            </Button> : 
+            <Button
                 className={classes.navbarBtn}
-                onClick={() => {
-                  history.push("/gameslist");
-                  setSortMenu(!sortMenu);
-                  setSortMenuMobile(false);
-                }}
+                onClick={toHome}
               >
-                Filter
-              </Button>
+                All Games
+              </Button>}
               <Button className={classes.navbarBtn}>Library</Button>
 
               <Button
@@ -378,72 +248,6 @@ export default function PrimarySearchAppBar() {
                 Cart
               </Button>
             </div>
-
-            {sortMenu ? (
-              <div className={classes.menu}>
-                <RadioGroup value={genre} onChange={changeGenre}>
-                  <h5>By Genre:</h5>
-                  <FormControlLabel
-                    value="RPG"
-                    control={<Radio />}
-                    label="RPG"
-                  />
-                  <FormControlLabel
-                    value="Survival"
-                    control={<Radio />}
-                    label="Survival"
-                  />
-                  <FormControlLabel
-                    value="MOBA"
-                    control={<Radio />}
-                    label="MOBA"
-                  />
-                  <FormControlLabel
-                    value="Sandbox"
-                    control={<Radio />}
-                    label="Sandbox"
-                  />
-                  <FormControlLabel
-                    value="Shooter"
-                    control={<Radio />}
-                    label="Shooter"
-                  />
-                  <FormControlLabel
-                    value="Fighting"
-                    control={<Radio />}
-                    label="Fighting"
-                  />
-                  <FormControlLabel
-                    value="all"
-                    control={<Radio />}
-                    label="All"
-                  />
-                </RadioGroup>
-                <h5>By Price:</h5>
-                <TextField
-                  className={classes.priceInputs}
-                  value={minPrice}
-                  onChange={(e) => changeMinPrice(e.target.value)}
-                  type="number"
-                  label="Min Price($)"
-                  defaultValue="100"
-                />
-                <TextField
-                  className={classes.priceInputs}
-                  value={maxPrice}
-                  onChange={(e) => changeMaxPrice(e.target.value)}
-                  type="number"
-                  label="Max Price($)"
-                  defaultValue="1000"
-                />
-                <div>
-                  <Button variant="outlined" onClick={resetPrice}>
-                    Reset Price Filter
-                  </Button>
-                </div>
-              </div>
-            ) : null}
-            {/* </ClickAwayListener> */}
             <div className={classes.sectionMobile}>
               <IconButton
                 aria-label="show more"

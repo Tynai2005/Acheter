@@ -1,7 +1,6 @@
 import axios from "axios";
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 import { useHistory } from "react-router-dom";
-
 import { ACTIONS, GAMES_API } from "../helper/consts";
 
 export const gameContext = createContext();
@@ -41,6 +40,7 @@ let gamesCount = 5;
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
+  const [isAllGames,setIsAllGames] = useState(false)
   const history = useHistory();
 
   const getGamesData = async () => {
@@ -119,6 +119,16 @@ const GameContextProvider = ({ children }) => {
     });
   };
 
+  const toHome = () => {
+    setIsAllGames(false)
+    history.push('/gameslist')
+  }
+
+  const toGamesList = () => {
+    setIsAllGames(true)
+    history.push('/')
+  }
+
   const values = {
     getGamesData,
     addNewGame,
@@ -130,6 +140,10 @@ const GameContextProvider = ({ children }) => {
     changeId,
     changeGenre,
     toggleComment,
+    setIsAllGames,
+    toHome,
+    toGamesList,
+    isAllGames,
     pages: state.pages,
     history,
     id: state.id,
