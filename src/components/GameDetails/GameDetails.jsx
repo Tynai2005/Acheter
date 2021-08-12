@@ -19,6 +19,8 @@ import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { Alert } from "@material-ui/lab";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
 
 const useStyles = makeStyles(() => ({
   details: {
@@ -89,17 +91,34 @@ function HomeIcon(props) {
 const GameDetails = () => {
   window.scrollTo(0, 0);
   const [open, setOpen] = useState(false);
+  const [isLiked,setIsLiked] = useState()
+  const [likesCount,setLikesCount] = useState(0)
   const { gameDetails, getGameDetails, history, toLibrary } = useGames();
   const { logged } = useAuth();
-  const [buttonColorBoolean, setButtonColorBoolean] = useState(false);
   const [buttonColor, setButtonColor] = useState("primary");
   const classes = useStyles();
   const search = window.location.href;
+  const curUser = JSON.parse(localStorage.getItem("user"));
+  const curGameId = search.slice(34, search.length)
+
+  useEffect(async () => {
+    getGameDetails(search.slice(34, search.length));        
+    const {data} = await axios(`${GAMES_API}/${curGameId}`)
+    data.likes.map((like) => {
+      if(like == curUser.id){
+        console.log('dksnjbfvcj');
+        setIsLiked(true)
+      }
+    })
+    const likes = await axios(`${GAMES_API}/${curGameId}`)
+    console.log(likes.data.likes);
+    setLikesCount(likes.data.likes.length)
+  }, []);
+
   const addGameCart = async () => {
-    const curUser = JSON.parse(localStorage.getItem("user"));
     const usersCart = await axios(JSON_API_USERS);
     const gameToCart = await axios(
-      `${GAMES_API}/${search.slice(34, search.length)}`
+      `${GAMES_API}/${curGameId}`
     );
 
     usersCart.data.map((user) => {
@@ -120,6 +139,26 @@ const GameDetails = () => {
   useEffect(() => {
     getGameDetails(search.slice(34, search.length));
   }, []);
+
+  const like = async () => {  
+    const {data} = await axios(`${GAMES_API}/${curGameId}`)
+    data.likes.push(curUser.id)
+    await axios.patch(`${GAMES_API}/${curGameId}`, data)
+    setIsLiked(true)
+    setLikesCount(data.likes.length)
+  }
+
+  const dislike = async () => {
+    const {data} = await axios(`${GAMES_API}/${curGameId}`)
+    const newLikes = data.likes.filter((like) => like != curUser.id)
+    console.log(newLikes);
+    const newData = {...data, likes: newLikes}
+    await axios.patch(`${GAMES_API}/${curGameId}`, newData)
+    setIsLiked(false)
+    setLikesCount(newLikes.length)
+
+  }
+
   return (
     <Container>
       <div className={classes.detailsContainer}>
@@ -158,6 +197,11 @@ const GameDetails = () => {
                   src={gameDetails.image}
                   alt="game img"
                 />
+              </div>
+              <div style={{color:'white'}}>
+                {isLiked ? <FavoriteIcon onClick={dislike} style={{color: 'red',margin: '5px'}}/>
+                : <FavoriteBorderSharpIcon onClick={like} style={{color: 'red',margin: '5px'}}/>}
+                {likesCount} likes
               </div>
               {gameDetails.price > 0 ? (
                 <>
