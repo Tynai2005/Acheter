@@ -2,7 +2,8 @@ import { Button, Container, makeStyles, TextField } from "@material-ui/core";
 import React, { useState } from "react";
 import Cards from "react-credit-cards";
 
-import 'react-credit-cards/es/styles-compiled.css';
+import "react-credit-cards/es/styles-compiled.css";
+import { useGames } from "../../contexts/GameContext";
 const useStyles = makeStyles((theme) => ({
   inps: {
     margin: "10px 0",
@@ -30,6 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Purchase = () => {
+  const { toLibrary } = useGames();
   const classes = useStyles();
   const [cvc, setCvc] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -57,6 +59,8 @@ const Purchase = () => {
   const handleInputName = (e) => {
     setName(e.target.value);
   };
+
+  const curUser = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div id="PaymentForm" className={classes.container}>
@@ -128,7 +132,12 @@ const Purchase = () => {
           onChange={(e) => handleInputName(e)}
           onFocus={(e) => handleInputFocus(e)}
         />
-        <Button className={classes.payBtn}>Pay</Button>
+        <Button
+          className={classes.payBtn}
+          onClick={() => toLibrary(curUser.cart)}
+        >
+          Pay
+        </Button>
       </form>
     </div>
   );
