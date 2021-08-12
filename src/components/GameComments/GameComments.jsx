@@ -143,6 +143,7 @@ const GameComments = () => {
       alert("Comment cannot be empty");
     }
   };
+
   return (
     <div className={classes.commentsOuterContainer}>
       <div className={classes.commentsInnerContainer}>

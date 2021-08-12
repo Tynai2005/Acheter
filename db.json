@@ -92,6 +92,20 @@
       "id": 1
     },
     {
+<<<<<<< HEAD
+=======
+      "nickname": "dvsfgfhg",
+      "name": "dafestrfy@gmail.com",
+      "password": "123456tynai",
+      "cart": [],
+      "isAdmin": false,
+      "passwordSec": "123456tynai",
+      "id": 6
+    }
+  ],
+  "games": [
+    {
+>>>>>>> general
       "name": "Minecraft",
       "creator": "Mojang",
       "comments": [
