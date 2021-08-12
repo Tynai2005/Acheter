@@ -32,6 +32,7 @@ const AddGame = () => {
     creator: "",
     genre: "",
     comments: [],
+    likes: []
   });
   return (
     <Container
@@ -215,7 +216,6 @@ const AddGame = () => {
         </Button>
         <Button
           onClick={() => {
-            console.log(gameInfo);
             addNewGame(gameInfo);
           }}
           className={classes.btns}

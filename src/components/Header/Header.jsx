@@ -18,6 +18,7 @@ import ContactsIcon from "@material-ui/icons/Contacts";
 import InfoIcon from "@material-ui/icons/Info";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { useGames } from "../../contexts/GameContext";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -100,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   const { logout, logged } = useAuth();
+  const {toGamesList} = useGames()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -190,7 +192,7 @@ export default function Header() {
       <div className={classes.grow}>
         <AppBar position="sticky" className={classes.navbar}>
           <Toolbar>
-            <Link to="/" className={classes.logo}>
+            <Link to="/" onClick={toGamesList} className={classes.logo}>
               <Typography className={classes.title} variant="h4" noWrap>
                 <img src={logo} alt="logo" className={classes.logo} />
               </Typography>

@@ -89,7 +89,7 @@ function HomeIcon(props) {
 }
 
 const GameDetails = () => {
-  window.scrollTo(0, 0);
+
   const [open, setOpen] = useState(false);
   const [isLiked,setIsLiked] = useState()
   const [likesCount,setLikesCount] = useState(0)
@@ -113,6 +113,7 @@ const GameDetails = () => {
     const likes = await axios(`${GAMES_API}/${curGameId}`)
     console.log(likes.data.likes);
     setLikesCount(likes.data.likes.length)
+    window.scrollTo(0, 0);
   }, []);
 
   const addGameCart = async () => {

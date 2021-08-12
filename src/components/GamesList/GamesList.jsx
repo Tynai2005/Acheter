@@ -54,7 +54,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const GamesList = () => {
-  window.scrollTo(0, 0);
   const { logged } = useAuth();
   const classes = useStyles();
   const { getGamesData, gamesData, modal, pages, history } = useGames();
@@ -63,7 +62,12 @@ const GamesList = () => {
   const [genre, setGenre] = useState(getGenre());
   const [minPrice, setMinPrice] = useState(getMinPrice());
   const [maxPrice, setMaxPrice] = useState(getMaxPrice());
-
+  
+  useEffect(() => {
+    getGamesData();
+    window.scrollTo(0, 0);
+  }, []);
+  
   function getGenre() {
     const search = new URLSearchParams(history.location.search);
     return search.get("genre");
@@ -127,9 +131,6 @@ const GamesList = () => {
     setMaxPrice(getMaxPrice());
   };
 
-  useEffect(() => {
-    getGamesData();
-  }, []);
 
   const handlePage = (e, page) => {
     const search = new URLSearchParams(window.location.search);

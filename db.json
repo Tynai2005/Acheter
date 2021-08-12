@@ -5,18 +5,33 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
-      "cart": [8],
-      "library": [11, 1, 7, 8, 8, 8],
+      "cart": [
+        8
+      ],
+      "library": [
+        11,
+        1,
+        7,
+        8,
+        8,
+        8
+      ],
       "id": 1
     },
     {
       "nickname": "Tynai",
       "name": "tynai.s.95@gmail.com",
-      "password": "butylka",
+      "password": "tynai",
       "isAdmin": true,
-<<<<<<< HEAD
-      "cart": [4],
-      "library": [11],
+      "cart": [
+        1
+      ],
+      "library": [
+        11,
+        4,
+        2,
+        1
+      ],
       "id": 2
     },
     {
@@ -27,48 +42,47 @@
       "library": [],
       "isAdmin": false,
       "passwordSec": "adil",
-=======
-      "cart": [
-        4,
-        2
-      ],
-      "library": [
-        11,
-        11,
-        11
-      ],
-      "id": 2
+      "id": 3
+    },
+    {
+      "nickname": "tynatay_lox(not atai)",
+      "name": "atay@gmail.com",
+      "password": "tynailox",
+      "cart": [],
+      "library": [],
+      "isAdmin": false,
+      "passwordSec": "tynailox",
+      "id": 4
     },
     {
       "nickname": "Bakai",
       "name": "bakai.k@gmail.com",
       "password": "bakai",
       "cart": [],
-      "library": [],
+      "library": [
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11
+      ],
       "isAdmin": false,
       "passwordSec": "bakai",
->>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
-      "id": 3
+      "id": 5
     }
   ],
   "games": [
     {
       "name": "Rocket League",
       "description": "Rocket League is a fantastical sport-based video game, developed by Psyonix (it's “soccer with cars”). It features a competitive game mode based on teamwork and outmaneuvering opponents. Players work with their team to advance the ball down the field, and score goals in their opponents' net.",
-      "image": "https://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
-      "video": "https://www.youtube.com/embed/OmMF9EDbmQQ",
+      "image": "http://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
+      "video": "http://www.youtube.com/embed/OmMF9EDbmQQ",
       "price": 0,
       "creator": "Psyonix LLC",
       "genre": "Sport",
       "comments": [
-        {
-          "authorNickname": "Sheva",
-          "authorMail": "sheva@gmail.com",
-          "date": "Wed Aug 11 2021 12:51:23",
-          "text": "Фууууууу",
-          "id": 1628664683336,
-          "isChanged": null
-        },
         {
           "authorNickname": "Tynai",
           "authorMail": "tynai.s.95@gmail.com",
@@ -78,7 +92,9 @@
           "isChanged": null
         }
       ],
-      "likes": [],
+      "likes": [
+        2
+      ],
       "id": 11
     },
     {
@@ -107,7 +123,9 @@
           "isChanged": " (changed)"
         }
       ],
-      "likes": [],
+      "likes": [
+        2
+      ],
       "id": 1
     },
     {
@@ -187,12 +205,7 @@
       "image": "https://static.cdprojektred.com/cms.cdprojektred.com/16x9_big/12aaa3b137a18e180bb92682e8f81674dcb7451f-1920x1080.jpg",
       "video": "https://www.youtube.com/embed/LembwKDo1Dk",
       "price": 100,
-<<<<<<< HEAD
       "genre": "Open World",
-=======
-      "genre": "Shooter",
-      "likes": [],
->>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
       "id": 4
     },
     {
@@ -224,12 +237,7 @@
       "image": "https://compass-ssl.xbox.com/assets/64/02/6402981a-9446-46d8-8289-e370f3158746.jpg?n=Red-Dead-Redemption-II_GLP-Page-Hero-1084_1920x1080.jpg",
       "video": "https://www.youtube.com/embed/eaW0tYpxyp0",
       "price": 70,
-<<<<<<< HEAD
       "genre": "Open World",
-=======
-      "genre": "Shooter",
-      "likes": [],
->>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
       "id": 6
     },
     {
