@@ -54,17 +54,24 @@ const LibraryCard = () => {
   const getGames = async () => {
     const curUser = JSON.parse(localStorage.getItem("user"));
     const { data } = await axios(GAMES_API);
-    data.map((game) => {
-      curUser.library.map((libGame) => {
-        if (game.id === libGame) {
-          library.push(game);
-        }
+    console.log(data);
+    console.log(curUser.library);
+    if (data.length > 0 && curUser.library.length > 0){
+      data.map((game) => {
+        curUser.library.map((libGame) => {
+          if (game.id === libGame) {
+            library.push(game);
+          }
+        });
       });
-    });
+    }else{
+      alert("You don't have games in your library")
+    }
     setLibraryGame(library);
   };
   useEffect(() => {
     getGames();
+
   }, []);
 
   return (

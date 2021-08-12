@@ -22,12 +22,25 @@
       "password": "butylka",
       "isAdmin": true,
       "cart": [
-        4
+        4,
+        2
       ],
       "library": [
+        11,
+        11,
         11
       ],
       "id": 2
+    },
+    {
+      "nickname": "Bakai",
+      "name": "bakai.k@gmail.com",
+      "password": "bakai",
+      "cart": [],
+      "library": [],
+      "isAdmin": false,
+      "passwordSec": "bakai",
+      "id": 3
     }
   ],
   "games": [
@@ -47,8 +60,17 @@
           "text": "Фууууууу",
           "id": 1628664683336,
           "isChanged": null
+        },
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Thu Aug 12 2021 12:59:25",
+          "text": "defrgtrhythyrterf",
+          "id": 1628751565301,
+          "isChanged": null
         }
       ],
+      "likes": [],
       "id": 11
     },
     {
@@ -76,6 +98,9 @@
           "id": 1628662722463,
           "isChanged": " (changed)"
         }
+      ],
+      "likes": [
+        2
       ],
       "id": 1
     },
@@ -105,6 +130,9 @@
       "video": "https://www.youtube.com/embed/0G1hVQxkTBE",
       "price": 20,
       "genre": "Sandbox",
+      "likes": [
+        3
+      ],
       "id": 2
     },
     {
@@ -125,6 +153,7 @@
       "video": "https://www.youtube.com/embed/c0i88t0Kacs",
       "price": 50,
       "genre": "RPG",
+      "likes": [],
       "id": 3
     },
     {
@@ -145,6 +174,7 @@
       "video": "https://www.youtube.com/embed/LembwKDo1Dk",
       "price": 100,
       "genre": "Shooter",
+      "likes": [],
       "id": 4
     },
     {
@@ -165,6 +195,7 @@
       "video": "https://www.youtube.com/embed/JSRtYpNRoN0",
       "price": 49,
       "genre": "RPG",
+      "likes": [],
       "id": 5
     },
     {
@@ -176,6 +207,7 @@
       "video": "https://www.youtube.com/embed/eaW0tYpxyp0",
       "price": 70,
       "genre": "Shooter",
+      "likes": [],
       "id": 6
     },
     {
@@ -196,6 +228,7 @@
       "video": "https://www.youtube.com/embed/-cSFPIwMEq4",
       "price": 0,
       "genre": "MOBA",
+      "likes": [],
       "id": 7
     },
     {
@@ -207,6 +240,7 @@
       "video": "https://www.youtube.com/embed/W01L70IGBgE",
       "price": 40,
       "genre": "Survival",
+      "likes": [],
       "id": 8
     },
     {
@@ -227,6 +261,7 @@
           "isChanged": " (changed)"
         }
       ],
+      "likes": [],
       "id": 9
     },
     {
@@ -238,6 +273,7 @@
       "creator": "Innersloth",
       "genre": "Survival",
       "comments": [],
+      "likes": [],
       "id": 10
     },
     {
@@ -249,6 +285,7 @@
       "creator": " Ubisoft Montreal",
       "genre": "Shooter",
       "comments": [],
+      "likes": [],
       "id": 12
     },
     {
@@ -260,6 +297,7 @@
       "creator": "Respawn Entertainment",
       "genre": "Shooter",
       "comments": [],
+      "likes": [],
       "id": 13
     },
     {
@@ -271,6 +309,7 @@
       "creator": "Valve",
       "genre": "Shooter",
       "comments": [],
+      "likes": [],
       "id": 14
     },
     {
@@ -282,6 +321,7 @@
       "creator": "Rockstar Games",
       "genre": "Shooter",
       "comments": [],
+      "likes": [],
       "id": 15
     },
     {
@@ -293,6 +333,7 @@
       "creator": "PopCap Games",
       "genre": "Shooter",
       "comments": [],
+      "likes": [],
       "id": 16
     }
   ],
