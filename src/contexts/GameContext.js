@@ -2,9 +2,7 @@ import axios from "axios";
 import React, { createContext, useContext, useReducer, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-
 import { ACTIONS, GAMES_API, JSON_API_USERS } from "../helper/consts";
-
 
 export const gameContext = createContext();
 
@@ -43,7 +41,7 @@ let gamesCount = 10;
 
 const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const [isAllGames,setIsAllGames] = useState(false)
+  const [isAllGames, setIsAllGames] = useState(false);
   const history = useHistory();
 
   const getGamesData = async () => {
@@ -122,16 +120,15 @@ const GameContextProvider = ({ children }) => {
     });
   };
 
-
   const toHome = () => {
-    setIsAllGames(false)
-    history.push('/gameslist')
-  }
+    setIsAllGames(false);
+    history.push("/gameslist");
+  };
 
   const toGamesList = () => {
-    setIsAllGames(true)
-    history.push('/')
-  }
+    setIsAllGames(true);
+    history.push("/");
+  };
 
   const deleteCartGame = async (id) => {
     const curUser = JSON.parse(localStorage.getItem("user"));
@@ -145,7 +142,16 @@ const GameContextProvider = ({ children }) => {
     const curUser = JSON.parse(localStorage.getItem("user"));
     const { data } = await axios(JSON_API_USERS);
     data.map((user) => {
-      if (user.name === curUser.name) {
+      if (Array.isArray(id)) {
+        id.map((cartGame) => {
+          if (user.name === curUser.name) {
+            const edittedUser = { ...user };
+            edittedUser.library.push(cartGame);
+            axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
+            localStorage.setItem("user", JSON.stringify(edittedUser));
+          }
+        });
+      } else if (!Array.isArray(id) && user.name === curUser.name) {
         const edittedUser = { ...user };
         edittedUser.library.push(id);
         axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
@@ -153,7 +159,6 @@ const GameContextProvider = ({ children }) => {
       }
     });
   };
-
 
   const values = {
     toLibrary,

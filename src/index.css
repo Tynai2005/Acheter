@@ -13,21 +13,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.libraryCardImg {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-}
-.libraryCardImg:hover {
-  width: 300px;
-  height: 300px;
-}
 
 .game-card {
   width: 217px;
   height: 400px;
   border-radius: 5px;
   margin: 12px;
+}
+.card {
+  display: flex;
+  background-color: #262626 !important;
+  margin: 10px;
+  width: 230px;
+  height: 230px;
+  position: relative;
+  transition: 1s;
+}
+
+.card:hover {
+  width: 460px;
 }
 
 .game-card-img {
