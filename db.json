@@ -5,15 +5,8 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
-      "cart": [
-        1,
-        6,
-        2
-      ],
-      "library": [
-        11,
-        7
-      ],
+      "cart": [8],
+      "library": [11, 1, 7, 8, 8, 8],
       "id": 1
     },
     {
@@ -21,6 +14,20 @@
       "name": "tynai.s.95@gmail.com",
       "password": "butylka",
       "isAdmin": true,
+<<<<<<< HEAD
+      "cart": [4],
+      "library": [11],
+      "id": 2
+    },
+    {
+      "nickname": "Adil",
+      "name": "adil@gmail.com",
+      "password": "adil",
+      "cart": [],
+      "library": [],
+      "isAdmin": false,
+      "passwordSec": "adil",
+=======
       "cart": [
         4,
         2
@@ -40,6 +47,7 @@
       "library": [],
       "isAdmin": false,
       "passwordSec": "bakai",
+>>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
       "id": 3
     }
   ],
@@ -123,6 +131,14 @@
           "text": "aaaaaaaaaaaaasthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
           "id": 1628658124522,
           "isChanged": " (changed)"
+        },
+        {
+          "authorNickname": "Genshin4ever",
+          "authorMail": "kozhon.amantay@gmail.com",
+          "date": "Thu Aug 12 2021 13:09:30",
+          "text": "hgduwdkwadkajwb",
+          "id": 1628752170741,
+          "isChanged": null
         }
       ],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
@@ -173,8 +189,12 @@
       "image": "https://static.cdprojektred.com/cms.cdprojektred.com/16x9_big/12aaa3b137a18e180bb92682e8f81674dcb7451f-1920x1080.jpg",
       "video": "https://www.youtube.com/embed/LembwKDo1Dk",
       "price": 100,
+<<<<<<< HEAD
+      "genre": "Open World",
+=======
       "genre": "Shooter",
       "likes": [],
+>>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
       "id": 4
     },
     {
@@ -206,8 +226,12 @@
       "image": "https://compass-ssl.xbox.com/assets/64/02/6402981a-9446-46d8-8289-e370f3158746.jpg?n=Red-Dead-Redemption-II_GLP-Page-Hero-1084_1920x1080.jpg",
       "video": "https://www.youtube.com/embed/eaW0tYpxyp0",
       "price": 70,
+<<<<<<< HEAD
+      "genre": "Open World",
+=======
       "genre": "Shooter",
       "likes": [],
+>>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
       "id": 6
     },
     {
@@ -283,7 +307,7 @@
       "video": "https://www.youtube.com/embed/hh9x4NqW0Dw",
       "price": 24,
       "creator": " Ubisoft Montreal",
-      "genre": "Shooter",
+      "genre": "Open World",
       "comments": [],
       "likes": [],
       "id": 12
@@ -319,7 +343,7 @@
       "video": "https://www.youtube.com/embed/QkkoHAzjnUs",
       "price": 50,
       "creator": "Rockstar Games",
-      "genre": "Shooter",
+      "genre": "Open World",
       "comments": [],
       "likes": [],
       "id": 15

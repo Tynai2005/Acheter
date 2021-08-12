@@ -56,7 +56,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "green",
   },
   main: {
-    height: "100vh",
+    minHeight: "100vh",
+    margin: "20px auto",
   },
 }));
 const Cart = () => {
