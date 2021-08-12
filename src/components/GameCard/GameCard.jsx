@@ -3,6 +3,7 @@ import React from "react";
 import { useAuth } from "../../contexts/AuthContext";
 import { useGames } from "../../contexts/GameContext";
 import { makeStyles } from "@material-ui/core";
+
 const useStyles = makeStyles(() => ({
   editBtn: {
     backgroundColor: "inherit",
@@ -22,6 +23,7 @@ const GameCard = ({ game }) => {
   const classes = useStyles();
   const { deleteGame, setEditGameInfo, history } = useGames();
   const { logged } = useAuth();
+
   return (
     <div className="game-card" style={{ marginBottom: "30px" }}>
       <div

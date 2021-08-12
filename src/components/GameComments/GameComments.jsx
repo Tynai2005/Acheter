@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
   },
   commentsOuterContainer: {
     height: "100%",
-    width: '100%',
+    width: "100%",
   },
   inps: {
     margin: "10px 0",
@@ -29,58 +29,58 @@ const useStyles = makeStyles(() => ({
     justifyContent: "space-evenly",
     marginBottom: 0,
     flexDirection: "column",
-    width: '100%'
+    width: "100%",
   },
   inpColor: {
     color: "white",
   },
-  secondaryText:{
-    color: 'grey',
-    lineHeight: '20px',
-    fontSize: '14px'
+  secondaryText: {
+    color: "grey",
+    lineHeight: "20px",
+    fontSize: "14px",
   },
-  commentDelete:{
+  commentDelete: {
     border: "0",
     borderRadius: "5px",
     backgroundColor: "red",
     color: "white",
   },
-  commentEdit:{
+  commentEdit: {
     backgroundColor: "inherit",
     color: "white",
     border: "1px white solid",
     borderRadius: "5px",
     marginLeft: "10px",
   },
-  commmentSave:{
+  commmentSave: {
     backgroundColor: "inherit",
     color: "green",
     border: "1px white solid",
     borderRadius: "5px",
     marginLeft: "10px",
   },
-  commentClose:{
+  commentClose: {
     backgroundColor: "inherit",
     color: "red",
     border: "1px white solid",
     borderRadius: "5px",
   },
-  usersComment:{
+  usersComment: {
     color: "white",
-    width: '100%',
-    wordWrap: "break-word"
+    width: "100%",
+    wordWrap: "break-word",
   },
-  editInput:{
-    marginBottom: '10px'
+  editInput: {
+    marginBottom: "10px",
   },
-  arrow:{
-    color: 'white',
-    marginLeft: '10px'
+  arrow: {
+    color: "white",
+    marginLeft: "10px",
   },
-  inpAndArrowDiv:{
-    display:'flex',
-    alignItems: 'center'
-  }
+  inpAndArrowDiv: {
+    display: "flex",
+    alignItems: "center",
+  },
 }));
 
 const GameComments = () => {
@@ -143,7 +143,6 @@ const GameComments = () => {
       alert("Comment cannot be empty");
     }
   };
-
   return (
     <div className={classes.commentsOuterContainer}>
       <div className={classes.commentsInnerContainer}>
@@ -181,8 +180,12 @@ const GameComments = () => {
                   return (
                     <div className={classes.usersComment}>
                       <h5>{comment.authorNickname}</h5>
-                      <div className={classes.secondaryText}>{comment.isChanged}</div>
-                      <div className={classes.secondaryText}>{comment.date}</div>
+                      <div className={classes.secondaryText}>
+                        {comment.isChanged}
+                      </div>
+                      <div className={classes.secondaryText}>
+                        {comment.date}
+                      </div>
                       {isEditing && curId == comment.id ? (
                         <>
                           <input
@@ -192,23 +195,33 @@ const GameComments = () => {
                             onChange={(e) => {
                               setEditingComment(e.target.value);
                             }}
-                          /><br />
-                          <button className={classes.commentClose} onClick={() => setIsEditing(false)}>
+                          />
+                          <br />
+                          <button
+                            className={classes.commentClose}
+                            onClick={() => setIsEditing(false)}
+                          >
                             Close
                           </button>
-                          <button className={classes.commmentSave} onClick={() => saveEditedComment(comment.id)}>
+                          <button
+                            className={classes.commmentSave}
+                            onClick={() => saveEditedComment(comment.id)}
+                          >
                             Save
                           </button>
                         </>
                       ) : (
                         <>
-                          <div className={classes.usersComment}>{comment.text}</div>
+                          <div className={classes.usersComment}>
+                            {comment.text}
+                          </div>
                           {(localStorage.getItem("user") &&
                             JSON.parse(localStorage.getItem("user")).isAdmin) ||
                           (localStorage.getItem("user") &&
                             JSON.parse(localStorage.getItem("user")).nickname ==
                               comment.authorNickname) ? (
-                            <button className={classes.commentDelete}
+                            <button
+                              className={classes.commentDelete}
                               onClick={() => {
                                 deleteComment(comment);
                               }}
@@ -219,7 +232,8 @@ const GameComments = () => {
                           {localStorage.getItem("user") &&
                           JSON.parse(localStorage.getItem("user")).name ==
                             comment.authorMail ? (
-                            <button className={classes.commentEdit}
+                            <button
+                              className={classes.commentEdit}
                               onClick={() => {
                                 setIsEditing(true);
                                 setEditingComment(comment.text);
