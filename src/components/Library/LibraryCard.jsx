@@ -15,22 +15,26 @@ import { useEffect } from "react";
 import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: "flex",
-    margin: "10px",
-  },
-
   container: {
     display: "flex",
     flexWrap: "wrap",
+    justifyContent: "center",
   },
-  //   details: {
-  //     display: "flex",
-  //     flexDirection: "column",
-  //   },
-  //   content: {
-  //     flex: "1 0 auto",
-  //   },
+
+  cardImg: {
+    width: "230px",
+    height: "230px",
+    objectFit: "cover",
+    position: "absolute",
+  },
+  details: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+  },
+  content: {
+    width: "230px",
+  },
   //   cover: {
   //     width: 151,
   //   },
@@ -44,6 +48,20 @@ const useStyles = makeStyles((theme) => ({
   //     height: 38,
   //     width: 38,
   //   },
+  gameTitle: {
+    textAlign: "center",
+    color: "white",
+    fontSize: "20px",
+  },
+  gameCreator: {
+    textAlign: "center",
+    color: "grey",
+    fontSize: "15px",
+  },
+  gameDescr: {
+    color: "white",
+    fontSize: "15px",
+  },
 }));
 
 const LibraryCard = () => {
@@ -77,20 +95,27 @@ const LibraryCard = () => {
   return (
     <Container className={classes.container}>
       {libraryGame.map((game) => (
-        <Card className={classes.root}>
-          {/* <div className={classes.details}>
+        <div className="card">
+          <img src={game.image} alt={game.name} className={classes.cardImg} />
+          <div className={classes.details}>
             <CardContent className={classes.content}>
-              <Typography component="h5" variant="h5">
-                {game.name}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography className={classes.gameTitle}>{game.name}</Typography>
+              <Typography
+                variant="subtitle1"
+                color="textSecondary"
+                className={classes.gameCreator}
+              >
                 {game.creator}
               </Typography>
+              <Typography className={classes.gameDescr}>
+                {game.description.length > 60
+                  ? game.description.slice(0, 60) + "..."
+                  : game.description}
+              </Typography>
             </CardContent>
-          </div> */}
-          <img src={game.image} alt={game.name} className="libraryCardImg" />
+          </div>
           {/* <CardMedia className={classes.cover} image={game.image} /> */}
-        </Card>
+        </div>
       ))}
     </Container>
   );

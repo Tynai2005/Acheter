@@ -3,7 +3,7 @@ import LibraryCard from "./LibraryCard";
 
 const Library = () => {
   return (
-    <div>
+    <div style={{ minHeight: "80vh" }}>
       <LibraryCard />
     </div>
   );
