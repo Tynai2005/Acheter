@@ -5,17 +5,8 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
-      "cart": [
-        8
-      ],
-      "library": [
-        11,
-        1,
-        7,
-        8,
-        8,
-        8
-      ],
+      "cart": [8],
+      "library": [11, 1, 7, 8, 8, 8],
       "id": 1
     },
     {
@@ -23,12 +14,8 @@
       "name": "tynai.s.95@gmail.com",
       "password": "butylka",
       "isAdmin": true,
-      "cart": [
-        4
-      ],
-      "library": [
-        11
-      ],
+      "cart": [4],
+      "library": [11],
       "id": 2
     },
     {
@@ -92,20 +79,6 @@
       "id": 1
     },
     {
-<<<<<<< HEAD
-=======
-      "nickname": "dvsfgfhg",
-      "name": "dafestrfy@gmail.com",
-      "password": "123456tynai",
-      "cart": [],
-      "isAdmin": false,
-      "passwordSec": "123456tynai",
-      "id": 6
-    }
-  ],
-  "games": [
-    {
->>>>>>> general
       "name": "Minecraft",
       "creator": "Mojang",
       "comments": [
