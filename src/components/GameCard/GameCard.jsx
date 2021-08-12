@@ -1,26 +1,37 @@
-<<<<<<< .merge_file_a02872
 import { Link } from "react-router-dom";
 import React from "react";
-=======
-
-import { Link } from 'react-router-dom';
-import React from 'react';
->>>>>>> .merge_file_a01796
 import { useAuth } from "../../contexts/AuthContext";
 import { useGames } from "../../contexts/GameContext";
+import { makeStyles } from "@material-ui/core";
 
+const useStyles = makeStyles(() => ({
+  editBtn: {
+    backgroundColor: "inherit",
+    color: "white",
+    border: "1px white solid",
+    borderRadius: "5px",
+    marginLeft: "10px",
+  },
+  deleteBtn: {
+    border: "0",
+    borderRadius: "5px",
+    backgroundColor: "red",
+    color: "white",
+  },
+}));
 const GameCard = ({ game }) => {
-<<<<<<< .merge_file_a02872
-  const { deleteGame, setEditGameInfo,history } = useGames();
-=======
-  const {deleteGame,setEditGameInfo,id,changeId} = useGames()
->>>>>>> .merge_file_a01796
+  const classes = useStyles();
+  const { deleteGame, setEditGameInfo, history } = useGames();
   const { logged } = useAuth();
-<<<<<<< HEAD
 
   return (
-    <div className="game-card">
-      <div className="game-img-div">
+    <div className="game-card" style={{ marginBottom: "30px" }}>
+      <div
+        className="game-img-div"
+        onClick={() => {
+          history.push(`gameDetails/${game.id}`);
+        }}
+      >
         <img
           className="game-card-img"
           src={game.image}
@@ -32,142 +43,28 @@ const GameCard = ({ game }) => {
           {game.name}
         </div>
         <div style={{ color: "silver", fontSize: "12px" }}>{game.creator}</div>
-        {game.isDiscount ? (
-          <div
-            style={{
-              fontSize: "14px",
-              display: "flex",
-              width: "80%",
-              justifyContent: "space-around",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "40px",
-                height: "20px",
-                backgroundColor: "royalblue",
-                borderRadius: "5px",
-                color: "gainsboro",
-                fontSize: "11px",
-              }}
-            >
-              -{game.discount}%
-            </div>
-            <div
-              style={{
-                textDecoration: "line-through",
-                color: "silver",
-                fontSize: "12px",
-              }}
-            >
-              {game.price}$
-            </div>
-            <div style={{ color: "gainsboro", fontSize: "15px" }}>
-              {Math.ceil(
-                Number(game.price) -
-                  (Number(game.price) / 100) * Number(game.discount)
-              )}
-              $
-            </div>
-          </div>
-        ) : (
-          <div style={{ color: "gainsboro", fontSize: "15px" }}>
-            {game.price}$
-=======
-    return(
-        <div className="game-card">
-<<<<<<< .merge_file_a02872
-          <div className="game-img-div" onClick={() => {history.push(`gameDetails/${game.id}`)}}>
-            <img
-              className="game-card-img"
-              src={game.image}
-              alt={`${game.name} img`}
-            />
->>>>>>> f8433d2e2d124720ba42f19672fdb843d2b7f0ae
-=======
-          <div className="game-img-div">
-            <img
-              className="game-card-img"
-              src={game.image}
-              alt={'${game.name} img'}
-            />
->>>>>>> 1bd7afa7d27edd4091c2c67dfda66733cf73e51e
->>>>>>> .merge_file_a01796
-          </div>
-          <div className="game-card-info">
-            <div style={{ fontFamily: "Roboto", color: "gainsboro" }}>
-              {game.name}
-            </div>
-            <div style={{ color: "silver", fontSize: "12px" }}>{game.creator}</div>
-<<<<<<< .merge_file_a02872
-              <div style={{ color: "gainsboro", fontSize: "15px" }}>
-                {game.price}$
-              </div>
-=======
-            {game.isDiscount ? (
-              <div
-                style={{
-                  fontSize: "14px",
-                  display: "flex",
-                  width: "80%",
-                  justifyContent: "space-around",
-                }}
-              >
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    width: "40px",
-                    height: "20px",
-                    backgroundColor: "royalblue",
-                    borderRadius: "5px",
-                    color: "gainsboro",
-                    fontSize: "11px",
-                  }}
-                >
-                  -{game.discount}%
-                </div>
-                <div
-                  style={{
-                    textDecoration: "line-through",
-                    color: "silver",
-                    fontSize: "12px",
-                  }}
-                >
-                  {game.price}$
-                </div>
-                <div style={{ color: "gainsboro", fontSize: "15px" }}>
-                  {Math.ceil(
-                    Number(game.price) -
-                      (Number(game.price) / 100) * Number(game.discount)
-                  )}
-                  $
-                </div>
-              </div>
-            ) : (
-              <div style={{ color: "gainsboro", fontSize: "15px" }}>
-                {game.price}$
-              </div>
-            )}
->>>>>>> .merge_file_a01796
-            {logged && logged.isAdmin ? (
-              <div>
-                <button onClick={() => deleteGame(game.id)}>DELETE</button>
-                <button onClick={() => setEditGameInfo(game.id)}>EDIT</button>
-              </div>
-            ) : null}
-          </div>
-<<<<<<< .merge_file_a02872
-      </div>
-  );
-=======
+        <div style={{ color: "gainsboro", fontSize: "15px" }}>
+          {game.price == 0 ? "Free to play" : game.price + "$"}
         </div>
-      );
->>>>>>> .merge_file_a01796
+        {logged && logged.isAdmin ? (
+          <div>
+            <button
+              className={classes.deleteBtn}
+              onClick={() => deleteGame(game.id)}
+            >
+              DELETE
+            </button>
+            <button
+              className={classes.editBtn}
+              onClick={() => setEditGameInfo(game.id)}
+            >
+              EDIT
+            </button>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
 };
 
 export default GameCard;
