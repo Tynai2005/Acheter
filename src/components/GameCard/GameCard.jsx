@@ -4,6 +4,10 @@ import { useAuth } from "../../contexts/AuthContext";
 import { useGames } from "../../contexts/GameContext";
 import { makeStyles } from "@material-ui/core";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0e21aa4c40e3ade5dadac55e2f5b4a660ec59c2d
 const useStyles = makeStyles(() => ({
   editBtn: {
     backgroundColor: "inherit",
