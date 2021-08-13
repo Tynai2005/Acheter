@@ -89,12 +89,10 @@ const GamesList = () => {
   const [genre, setGenre] = useState(getGenre());
   const [minPrice, setMinPrice] = useState(getMinPrice());
   const [maxPrice, setMaxPrice] = useState(getMaxPrice());
-
   useEffect(() => {
     getGamesData();
     window.scrollTo(0, 0);
   }, []);
-
   function getGenre() {
     const search = new URLSearchParams(history.location.search);
     return search.get("genre");
@@ -155,7 +153,6 @@ const GamesList = () => {
     setMinPrice(getMinPrice());
     setMaxPrice(getMaxPrice());
   };
-
   const handlePage = (e, page) => {
     const search = new URLSearchParams(window.location.search);
     search.set("_page", page);

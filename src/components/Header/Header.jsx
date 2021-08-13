@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   const { logout, logged } = useAuth();
-  const { history } = useGames();
+  const {toGamesList,history} = useGames()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -192,7 +192,7 @@ export default function Header() {
       <div className={classes.grow}>
         <AppBar position="sticky" className={classes.navbar}>
           <Toolbar>
-            <Link to="/" className={classes.logo}>
+            <Link to="/" onClick={toGamesList} className={classes.logo}>
               <Typography className={classes.title} variant="h4" noWrap>
                 <img src={logo} alt="logo" className={classes.logo} />
               </Typography>
