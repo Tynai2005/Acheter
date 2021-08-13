@@ -20,6 +20,19 @@ code {
   border-radius: 5px;
   margin: 12px;
 }
+.card {
+  display: flex;
+  background-color: #262626 !important;
+  margin: 10px;
+  width: 230px;
+  height: 230px;
+  position: relative;
+  transition: 1s;
+}
+
+.card:hover {
+  width: 460px;
+}
 
 .game-card-img {
   width: 100%;

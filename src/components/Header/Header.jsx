@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "./5777704462_e401e742-bab4-4b56-b277-e21100d57b0c.png";
+import logo from "./5777879891_5b3ad33c-5853-4bef-9990-1b35d0c4496e.png";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -18,6 +18,7 @@ import ContactsIcon from "@material-ui/icons/Contacts";
 import InfoIcon from "@material-ui/icons/Info";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+import { useGames } from "../../contexts/GameContext";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -89,7 +90,7 @@ const useStyles = makeStyles((theme) => ({
   logo: {
     color: "inherit",
     textDecoration: "none",
-    width: "50px",
+    width: "100px",
   },
   a: {
     textDecoration: "none",
@@ -100,6 +101,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   const { logout, logged } = useAuth();
+  const { history } = useGames();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -159,13 +161,13 @@ export default function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={() => history.push("/contacts")}>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <ContactsIcon />
         </IconButton>
         <p>Contacts</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => history.push("/aboutus")}>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <InfoIcon />
         </IconButton>
@@ -198,11 +200,17 @@ export default function Header() {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Button className={classes.navbarBtn}>
+              <Button
+                className={classes.navbarBtn}
+                onClick={() => history.push("/contacts")}
+              >
                 <ContactsIcon style={{ marginRight: "5px" }} />
                 Contacts
               </Button>
-              <Button className={classes.navbarBtn}>
+              <Button
+                className={classes.navbarBtn}
+                onClick={() => history.push("/aboutus")}
+              >
                 <InfoIcon style={{ marginRight: "5px" }} />
                 About us
               </Button>
