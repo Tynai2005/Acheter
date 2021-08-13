@@ -101,7 +101,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Header() {
   const classes = useStyles();
   const { logout, logged } = useAuth();
-  const {toGamesList} = useGames()
+  const {toGamesList,history} = useGames()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -161,13 +161,13 @@ export default function Header() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={() => history.push("/contacts")}>
         <IconButton aria-label="show 4 new mails" color="inherit">
           <ContactsIcon />
         </IconButton>
         <p>Contacts</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => history.push("/aboutus")}>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <InfoIcon />
         </IconButton>
@@ -200,11 +200,17 @@ export default function Header() {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Button className={classes.navbarBtn}>
+              <Button
+                className={classes.navbarBtn}
+                onClick={() => history.push("/contacts")}
+              >
                 <ContactsIcon style={{ marginRight: "5px" }} />
                 Contacts
               </Button>
-              <Button className={classes.navbarBtn}>
+              <Button
+                className={classes.navbarBtn}
+                onClick={() => history.push("/aboutus")}
+              >
                 <InfoIcon style={{ marginRight: "5px" }} />
                 About us
               </Button>

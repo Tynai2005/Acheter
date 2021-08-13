@@ -1,4 +1,11 @@
-import { Button, Container, makeStyles, TextField } from "@material-ui/core";
+import {
+  Button,
+  Container,
+  makeStyles,
+  Snackbar,
+  TextField,
+} from "@material-ui/core";
+import { Alert } from "@material-ui/lab";
 import React, { useState } from "react";
 import Cards from "react-credit-cards";
 
@@ -31,7 +38,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const Purchase = () => {
-  const { toLibrary } = useGames();
+  const [open, setOpen] = useState(false);
+  const { toLibrary, history } = useGames();
   const classes = useStyles();
   const [cvc, setCvc] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -59,7 +67,12 @@ const Purchase = () => {
   const handleInputName = (e) => {
     setName(e.target.value);
   };
-
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   const curUser = JSON.parse(localStorage.getItem("user"));
 
   return (
@@ -134,11 +147,22 @@ const Purchase = () => {
         />
         <Button
           className={classes.payBtn}
-          onClick={() => toLibrary(curUser.cart)}
+          onClick={() => {
+            toLibrary(curUser.cart);
+            handleOpen();
+            setTimeout(() => {
+              history.push("/cart");
+            }, 1500);
+          }}
         >
           Pay
         </Button>
       </form>
+      <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="success">
+          Game has been added to your library!
+        </Alert>
+      </Snackbar>
     </div>
   );
 };

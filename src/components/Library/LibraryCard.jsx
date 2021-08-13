@@ -1,18 +1,12 @@
 import React from "react";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import SkipPreviousIcon from "@material-ui/icons/SkipPrevious";
-import PlayArrowIcon from "@material-ui/icons/PlayArrow";
-import SkipNextIcon from "@material-ui/icons/SkipNext";
 import axios from "axios";
 import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Container } from "@material-ui/core";
+import { Container, Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -26,28 +20,23 @@ const useStyles = makeStyles((theme) => ({
     height: "230px",
     objectFit: "cover",
     position: "absolute",
+    zIndex: "1",
   },
   details: {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-end",
+    height: "100%",
   },
   content: {
     width: "230px",
+    height: "100%",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-between",
+    paddingBottom: "10px !important",
   },
-  //   cover: {
-  //     width: 151,
-  //   },
-  //   controls: {
-  //     display: "flex",
-  //     alignItems: "center",
-  //     paddingLeft: theme.spacing(1),
-  //     paddingBottom: theme.spacing(1),
-  //   },
-  //   playIcon: {
-  //     height: 38,
-  //     width: 38,
-  //   },
+
   gameTitle: {
     textAlign: "center",
     color: "white",
@@ -62,6 +51,25 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     fontSize: "15px",
   },
+  noGame: {
+    color: "white",
+    height: "80vh",
+    textAlign: "center",
+    marginTop: "20px",
+  },
+  libraryText: {
+    color: "white",
+    margin: "20px",
+  },
+  playBtn: {
+    color: "white",
+    backgroundColor: "green",
+    border: "0",
+    borderRadius: "5px",
+    zIndex: "0",
+
+    width: "100%",
+  },
 }));
 
 const LibraryCard = () => {
@@ -69,55 +77,66 @@ const LibraryCard = () => {
   const classes = useStyles();
   const theme = useTheme();
   let library = [];
+  const curUser = JSON.parse(localStorage.getItem("user"));
   const getGames = async () => {
-    const curUser = JSON.parse(localStorage.getItem("user"));
     const { data } = await axios(GAMES_API);
-    console.log(data);
-    console.log(curUser.library);
-    if (data.length > 0 && curUser.library.length > 0){
-      data.map((game) => {
-        curUser.library.map((libGame) => {
-          if (game.id === libGame) {
-            library.push(game);
-          }
-        });
+
+    data.map((game) => {
+      curUser.library.map((libGame) => {
+        if (game.id === libGame) {
+          library.push(game);
+        }
       });
-    }else{
-      alert("You don't have games in your library")
-    }
+    });
+
     setLibraryGame(library);
   };
   useEffect(() => {
     getGames();
-
   }, []);
 
   return (
-    <Container className={classes.container}>
-      {libraryGame.map((game) => (
-        <div className="card">
-          <img src={game.image} alt={game.name} className={classes.cardImg} />
-          <div className={classes.details}>
-            <CardContent className={classes.content}>
-              <Typography className={classes.gameTitle}>{game.name}</Typography>
-              <Typography
-                variant="subtitle1"
-                color="textSecondary"
-                className={classes.gameCreator}
-              >
-                {game.creator}
-              </Typography>
-              <Typography className={classes.gameDescr}>
-                {game.description.length > 60
-                  ? game.description.slice(0, 60) + "..."
-                  : game.description}
-              </Typography>
-            </CardContent>
-          </div>
-          {/* <CardMedia className={classes.cover} image={game.image} /> */}
-        </div>
-      ))}
-    </Container>
+    <>
+      <h2 className={classes.libraryText}>Your library</h2>
+      {curUser.library.length > 0 ? (
+        <Container className={classes.container}>
+          {libraryGame.map((game) => (
+            <div className="card">
+              <img
+                src={game.image}
+                alt={game.name}
+                className={classes.cardImg}
+              />
+              <div className={classes.details}>
+                <CardContent className={classes.content}>
+                  <div>
+                    <Typography className={classes.gameTitle}>
+                      {game.name}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      color="textSecondary"
+                      className={classes.gameCreator}
+                    >
+                      {game.creator}
+                    </Typography>
+                    <Typography className={classes.gameDescr}>
+                      {game.description.length > 60
+                        ? game.description.slice(0, 60) + "..."
+                        : game.description}
+                    </Typography>
+                  </div>
+                  <Button className={classes.playBtn}>Play</Button>
+                </CardContent>
+              </div>
+              {/* <CardMedia className={classes.cover} image={game.image} /> */}
+            </div>
+          ))}
+        </Container>
+      ) : (
+        <h2 className={classes.noGame}>There isn't games in your library</h2>
+      )}
+    </>
   );
 };
 

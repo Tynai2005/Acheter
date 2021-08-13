@@ -17,6 +17,8 @@ import { CardTravel } from "@material-ui/icons";
 import Cart from "../components/Cart/Cart";
 import Purchase from "../components/Purchase/Purchase";
 import Library from "../components/Library/Library";
+import AboutUs from "../components/Information/AboutUs";
+import Contacts from "../components/Information/Contacts";
 
 const Routes = () => {
   return (
@@ -26,6 +28,8 @@ const Routes = () => {
           <GameContextProvider>
             <Header />
             <Switch>
+              <Route exact path="/aboutus" component={AboutUs} />
+              <Route exact path="/contacts" component={Contacts} />
               <Route exact path="/library" component={Library} />
               <Route exact path="/purchase" component={Purchase} />
               <ProtectedRoute exact path="/cart" component={Cart} />

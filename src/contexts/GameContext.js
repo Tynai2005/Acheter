@@ -164,6 +164,7 @@ const GameContextProvider = ({ children }) => {
           if (user.name === curUser.name) {
             const edittedUser = { ...user };
             edittedUser.library.push(cartGame);
+            edittedUser.cart = [];
             axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
             localStorage.setItem("user", JSON.stringify(edittedUser));
           }

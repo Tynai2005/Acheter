@@ -19,8 +19,8 @@ import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
 import axios from "axios";
 import { useAuth } from "../../contexts/AuthContext";
 import { Alert } from "@material-ui/lab";
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import FavoriteBorderSharpIcon from '@material-ui/icons/FavoriteBorderSharp';
+import FavoriteIcon from "@material-ui/icons/Favorite";
+import FavoriteBorderSharpIcon from "@material-ui/icons/FavoriteBorderSharp";
 
 const useStyles = makeStyles(() => ({
   details: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles(() => ({
   detailsContainer: {
     display: "flex",
     justifyContent: "center",
-    width: '100%'
+    width: "100%",
   },
   hr: {
     color: "white",
@@ -89,38 +89,35 @@ function HomeIcon(props) {
 }
 
 const GameDetails = () => {
-
   const [open, setOpen] = useState(false);
-  const [isLiked,setIsLiked] = useState()
-  const [likesCount,setLikesCount] = useState(0)
-  const { gameDetails, getGameDetails, history, toLibrary } = useGames();
+  const [isLiked, setIsLiked] = useState();
+  const [likesCount, setLikesCount] = useState(0);
+  const { gameDetails, getGameDetails, history, toLibrary, deleteCartGame } =
+    useGames();
   const { logged } = useAuth();
+
   const [buttonColor, setButtonColor] = useState("primary");
   const classes = useStyles();
   const search = window.location.href;
   const curUser = JSON.parse(localStorage.getItem("user"));
-  const curGameId = search.slice(34, search.length)
+  const curGameId = search.slice(34, search.length);
 
   useEffect(async () => {
-    getGameDetails(search.slice(34, search.length));        
-    const {data} = await axios(`${GAMES_API}/${curGameId}`)
+    getGameDetails(search.slice(34, search.length));
+    const { data } = await axios(`${GAMES_API}/${curGameId}`);
     data.likes.map((like) => {
-      if(like == curUser.id){
-        console.log('dksnjbfvcj');
-        setIsLiked(true)
+      if (like == curUser.id) {
+        setIsLiked(true);
       }
-    })
-    const likes = await axios(`${GAMES_API}/${curGameId}`)
-    console.log(likes.data.likes);
-    setLikesCount(likes.data.likes.length)
+    });
+    const likes = await axios(`${GAMES_API}/${curGameId}`);
+    setLikesCount(likes.data.likes.length);
     window.scrollTo(0, 0);
   }, []);
 
   const addGameCart = async () => {
     const usersCart = await axios(JSON_API_USERS);
-    const gameToCart = await axios(
-      `${GAMES_API}/${curGameId}`
-    );
+    const gameToCart = await axios(`${GAMES_API}/${curGameId}`);
 
     usersCart.data.map((user) => {
       if (curUser.name == user.name) {
@@ -131,6 +128,7 @@ const GameDetails = () => {
       }
     });
   };
+
   const handleOpen = () => {
     setOpen(true);
   };
@@ -141,24 +139,39 @@ const GameDetails = () => {
     getGameDetails(search.slice(34, search.length));
   }, []);
 
-  const like = async () => {  
-    const {data} = await axios(`${GAMES_API}/${curGameId}`)
-    data.likes.push(curUser.id)
-    await axios.patch(`${GAMES_API}/${curGameId}`, data)
-    setIsLiked(true)
-    setLikesCount(data.likes.length)
-  }
+  const like = async () => {
+    const { data } = await axios(`${GAMES_API}/${curGameId}`);
+    data.likes.push(curUser.id);
+    await axios.patch(`${GAMES_API}/${curGameId}`, data);
+    setIsLiked(true);
+    setLikesCount(data.likes.length);
+  };
 
   const dislike = async () => {
-    const {data} = await axios(`${GAMES_API}/${curGameId}`)
-    const newLikes = data.likes.filter((like) => like != curUser.id)
+    const { data } = await axios(`${GAMES_API}/${curGameId}`);
+    const newLikes = data.likes.filter((like) => like != curUser.id);
     console.log(newLikes);
-    const newData = {...data, likes: newLikes}
-    await axios.patch(`${GAMES_API}/${curGameId}`, newData)
-    setIsLiked(false)
-    setLikesCount(newLikes.length)
+    const newData = { ...data, likes: newLikes };
+    await axios.patch(`${GAMES_API}/${curGameId}`, newData);
+    setIsLiked(false);
+    setLikesCount(newLikes.length);
+  };
 
-  }
+  const [finda1, setFinda1] = useState("");
+  useEffect(() => {
+    let findCart = curUser.cart.filter(
+      (cartGame) => cartGame == gameDetails.id
+    );
+    setFinda1(findCart);
+  }, []);
+  const [finda, setFinda] = useState("");
+  useEffect(() => {
+    let findLib = curUser.library.filter(
+      (libGame) => libGame == gameDetails.id
+    );
+    setFinda(findLib);
+    console.log(finda);
+  }, []);
 
   return (
     <Container>
@@ -199,9 +212,18 @@ const GameDetails = () => {
                   alt="game img"
                 />
               </div>
-              <div style={{color:'white'}}>
-                {isLiked ? <FavoriteIcon onClick={dislike} style={{color: 'red',margin: '5px'}}/>
-                : <FavoriteBorderSharpIcon onClick={like} style={{color: 'red',margin: '5px'}}/>}
+              <div style={{ color: "white" }}>
+                {isLiked ? (
+                  <FavoriteIcon
+                    onClick={dislike}
+                    style={{ color: "red", margin: "5px" }}
+                  />
+                ) : (
+                  <FavoriteBorderSharpIcon
+                    onClick={like}
+                    style={{ color: "red", margin: "5px" }}
+                  />
+                )}
                 {likesCount} likes
               </div>
               {gameDetails.price > 0 ? (
@@ -216,16 +238,23 @@ const GameDetails = () => {
               ) : (
                 <>
                   <h3 style={{ color: "white" }}>Free to play</h3>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    onClick={() => {
-                      handleOpen();
-                      toLibrary(gameDetails.id);
-                    }}
-                  >
-                    Add to library
-                  </Button>
+
+                  {finda.length > 0 ? (
+                    <Button variant="contained" color="primary">
+                      Delete from library
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => {
+                        handleOpen();
+                        toLibrary(gameDetails.id);
+                      }}
+                    >
+                      Add to library
+                    </Button>
+                  )}
                 </>
               )}
 
@@ -233,13 +262,27 @@ const GameDetails = () => {
                 {gameDetails.price > 0 ? (
                   <>
                     {logged ? (
-                      <Button
-                        variant="outlined"
-                        color={buttonColor}
-                        onClick={() => addGameCart()}
-                      >
-                        Add to wishlist
-                      </Button>
+                      curUser.cart.map((cartGame) => {
+                        cartGame == curGameId ? (
+                          <Button
+                            variant="outlined"
+                            color={buttonColor}
+                            onClick={() => deleteCartGame(curGameId)}
+                          >
+                            Delete from wishlist
+                          </Button>
+                        ) : (
+                          <Button
+                            variant="outlined"
+                            color={buttonColor}
+                            onClick={() => {
+                              addGameCart();
+                            }}
+                          >
+                            Add to wishlist
+                          </Button>
+                        );
+                      })
                     ) : (
                       <Button
                         variant="outlined"
