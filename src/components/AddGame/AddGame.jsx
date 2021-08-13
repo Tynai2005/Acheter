@@ -14,28 +14,32 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#0099ff",
     color: "white",
     padding: "10px 20px",
+    margin: "0 10px",
   },
 }));
 const AddGame = () => {
+  const [vid, setVid] = useState("https://www.youtube.com/embed/");
   const classes = useStyles();
-  const { addNewGame ,history} = useGames();
+  const { addNewGame, history } = useGames();
+  const [priceRadios, setPriceRadios] = useState(false);
+
   const [gameInfo, setGameInfo] = useState({
     name: "",
     description: "",
     image: "",
-    video: null,
+    video: "",
     price: 0,
+    creator: "",
     genre: "",
-    discount: 0,
-    isDiscount: false,
-    comments: []
+    comments: [],
+    likes: [],
   });
   return (
     <Container
       style={{
         display: "flex",
         justifyContent: "center",
-        margin: "50px",
+        margin: "50px 0",
         color: "white",
       }}
     >
@@ -53,12 +57,30 @@ const AddGame = () => {
         <br />
         <input
           onChange={(e) => {
+            setGameInfo({ ...gameInfo, creator: e.target.value });
+          }}
+          type="text"
+          placeholder="Creator"
+        />
+        <br />
+        <input
+          onChange={(e) => {
             setGameInfo({ ...gameInfo, description: e.target.value });
           }}
           type="text"
           placeholder="Description"
         />
-
+        <br />
+        <textarea
+          onChange={(e) => {
+            setGameInfo({ ...gameInfo, video: e.target.value });
+            setVid(e.target.value);
+          }}
+          style={{ width: "188px" }}
+          type="text"
+          placeholder="Trailer"
+          value={vid}
+        />
         <br />
         <input
           onChange={(e) => {
@@ -68,14 +90,30 @@ const AddGame = () => {
           placeholder="Image"
         />
         <br />
-        <input
-          onChange={(e) => {
-            setGameInfo({ ...gameInfo, price: Number(e.target.value) });
-          }}
-          type="number"
-          placeholder="Price($)"
-        />
-        <br />
+        {!priceRadios ? (
+          <div>
+            <input
+              onChange={(e) => {
+                setGameInfo({ ...gameInfo, price: Number(e.target.value) });
+              }}
+              type="number"
+              placeholder="Price($)"
+            />
+            <br />
+          </div>
+        ) : null}
+        <div>
+          <input
+            type="radio"
+            name="priceRadio"
+            id=""
+            onChange={() => {
+              setGameInfo({ ...gameInfo, price: Number(0) });
+              setPriceRadios(!priceRadios);
+            }}
+          />
+          Free to play
+        </div>
         <div>
           <p> Choose game genre:</p>
 
@@ -145,14 +183,39 @@ const AddGame = () => {
             />
             MOBA
           </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "Sport" });
+              }}
+            />
+            Sport
+          </div>
+          <div>
+            <input
+              type="radio"
+              name="genreRadio"
+              id=""
+              onChange={() => {
+                setGameInfo({ ...gameInfo, genre: "Open World" });
+              }}
+            />
+            Open World
+          </div>
         </div>
         <br />
-        <Button variant='secondary' onClick={() => history.push('/gameslist')}>
+        <Button
+          className={classes.btns}
+          variant="secondary"
+          onClick={() => history.push("/gameslist")}
+        >
           Close
         </Button>
         <Button
           onClick={() => {
-            console.log(gameInfo);
             addNewGame(gameInfo);
           }}
           className={classes.btns}

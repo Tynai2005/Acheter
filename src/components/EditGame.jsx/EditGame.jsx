@@ -10,17 +10,18 @@ const useStyles = makeStyles((theme) => ({
 }));
 const EditGame = () => {
   const { modal, gameDetails, saveEditedGame, toggleModal } = useGames();
+  const [priceRadios, setPriceRadios] = useState(false);
   const classes = useStyles();
   let [editedGame, setEditedGame] = useState({
     name: gameDetails.name,
     description: gameDetails.description,
+    creator: gameDetails.creator,
     image: gameDetails.image,
     video: gameDetails.video,
     price: gameDetails.price,
     genre: gameDetails.genre,
-    discount: gameDetails.discount,
-    isDiscount: gameDetails.discount,
     comments: gameDetails.comments,
+    likes: gameDetails.likes,
   });
 
   return (
@@ -29,60 +30,6 @@ const EditGame = () => {
         <Modal.Title>Redacting</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, name: e.target.value });
-            gameDetails.name = e.target.value;
-          }}
-          type="text"
-          name=""
-          id=""
-          placeholder="Name"
-          value={gameDetails.name}
-        />
-      </div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, description: e.target.value });
-            gameDetails.description = e.target.value;
-          }}
-          type="text"
-          name=""
-          id=""
-          placeholder="Description"
-          value={gameDetails.description}
-        />
-      </div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, image: e.target.value });
-            gameDetails.image = e.target.value;
-          }}
-          type="text"
-          name=""
-          id=""
-          placeholder="Phono"
-          value={gameDetails.image}
-        />
-      </div>
-      <div>
-        <input
-          onChange={(e) => {
-            setEditedGame({ ...editedGame, price: Number(e.target.value) });
-            gameDetails.price = e.target.value;
-          }}
-          type="number"
-          name=""
-          id=""
-          placeholder="Price"
-          value={gameDetails.price}
-        />
-      </div>
-      <div>
-        Choose game genre:
         <div>
           <input
             onChange={(e) => {
@@ -99,6 +46,19 @@ const EditGame = () => {
         <div>
           <input
             onChange={(e) => {
+              setEditedGame({ ...editedGame, creator: e.target.value });
+              gameDetails.creator = e.target.value;
+            }}
+            type="text"
+            name=""
+            id=""
+            placeholder="Creator"
+            value={gameDetails.creator}
+          />
+        </div>
+        <div>
+          <input
+            onChange={(e) => {
               setEditedGame({ ...editedGame, description: e.target.value });
               gameDetails.description = e.target.value;
             }}
@@ -110,6 +70,20 @@ const EditGame = () => {
           />
         </div>
         <div>
+          <textarea
+            onChange={(e) => {
+              setEditedGame({ ...editedGame, video: e.target.value });
+              gameDetails.video = e.target.value;
+            }}
+            style={{ width: "189px" }}
+            type="text"
+            name=""
+            id=""
+            placeholder="Trailer"
+            value={gameDetails.video}
+          />
+        </div>
+        <div>
           <input
             onChange={(e) => {
               setEditedGame({ ...editedGame, image: e.target.value });
@@ -118,80 +92,132 @@ const EditGame = () => {
             type="text"
             name=""
             id=""
-            placeholder="img(url)"
+            placeholder="Phono"
             value={gameDetails.image}
           />
         </div>
-        <div>
-          Choose game genre:
+
+        {!priceRadios ? (
           <div>
             <input
-              type="radio"
-              name="genreRadio"
-              id=""
-              onChange={() => {
-                setEditedGame({ ...editedGame, genre: "RPG" });
+              onChange={(e) => {
+                setEditedGame({ ...editedGame, price: Number(e.target.value) });
+                gameDetails.price = e.target.value;
               }}
-            />
-            RPG
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="genreRadio"
+              type="number"
+              name=""
               id=""
-              onChange={() => {
-                setEditedGame({ ...editedGame, genre: "Survival" });
-              }}
+              placeholder="Price"
+              value={gameDetails.price}
             />
-            Survival
+            <br />
           </div>
-          <div>
-            <input
-              type="radio"
-              name="genreRadio"
-              id=""
-              onChange={() => {
-                setEditedGame({ ...editedGame, genre: "Sandbox" });
-              }}
-            />
-            Sandbox
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="genreRadio"
-              id=""
-              onChange={() => {
-                setEditedGame({ ...editedGame, genre: "Shooter" });
-              }}
-            />
-            Shooter
-          </div>
-          <div>
-            <input
-              type="radio"
-              name="genreRadio"
-              id=""
-              onChange={() => {
-                setEditedGame({ ...editedGame, genre: "Fighting" });
-              }}
-            />
-            Fighting
-          </div>
+        ) : null}
         <div>
           <input
             type="radio"
-            name="genreRadio"
+            name="priceRadio"
             id=""
             onChange={() => {
-              setEditedGame({ ...editedGame, genre: "MOBA" });
+              setEditedGame({ ...editedGame, price: Number(0) });
+              setPriceRadios(!priceRadios);
             }}
           />
-          MOBA
+          Free to play
         </div>
-      </div>
-      </div>
+        <div>
+          <div>
+            Choose game genre:
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "RPG" });
+                }}
+              />
+              RPG
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Survival" });
+                }}
+              />
+              Survival
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Sandbox" });
+                }}
+              />
+              Sandbox
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Shooter" });
+                }}
+              />
+              Shooter
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Fighting" });
+                }}
+              />
+              Fighting
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "MOBA" });
+                }}
+              />
+              MOBA
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Sport" });
+                }}
+              />
+              Sport
+            </div>
+            <div>
+              <input
+                type="radio"
+                name="genreRadio"
+                id=""
+                onChange={() => {
+                  setEditedGame({ ...editedGame, genre: "Open World" });
+                }}
+              />
+              Open World
+            </div>
+          </div>
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={toggleModal}>
@@ -205,7 +231,7 @@ const EditGame = () => {
         </Button>
       </Modal.Footer>
     </Modal>
-    );
+  );
 };
 
 export default EditGame;
