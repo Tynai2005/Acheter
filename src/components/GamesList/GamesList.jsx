@@ -45,16 +45,42 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "green",
     color: "white",
   },
+  mobileMenuItem: {
+    backgroundColor: "#262626",
+    paddingRight: "15px",
+    margin: "0",
+    marginRight: "5px",
+    marginBottom: "5px",
+  },
   menuMobile: {
+    display: "flex",
     left: 15,
-    backgroundColor: "white",
+    backgroundColor: "inherit",
     color: "black",
     opacity: "80%",
-    zIndex: 1,
+    zIndex: "1",
+    flexDirection: "column",
+  },
+  genres: {
+    flexDirection: "row",
+    color: "white",
+  },
+  priceInputs: {
+    backgroundColor: "#262626",
+    color: "white",
+    marginRight: "5px",
+  },
+  inpColor: {
+    color: "white",
+  },
+  resetBtn: {
+    color: "white",
+    backgroundColor: "#262626",
+    borderRadius: "0",
+    padding: "10px 20px",
   },
 }));
 const GamesList = () => {
-  window.scrollTo(0, 0);
   const { logged } = useAuth();
   const classes = useStyles();
   const { getGamesData, gamesData, modal, pages, history } = useGames();
@@ -63,6 +89,11 @@ const GamesList = () => {
   const [genre, setGenre] = useState(getGenre());
   const [minPrice, setMinPrice] = useState(getMinPrice());
   const [maxPrice, setMaxPrice] = useState(getMaxPrice());
+
+  useEffect(() => {
+    getGamesData();
+    window.scrollTo(0, 0);
+  }, []);
 
   function getGenre() {
     const search = new URLSearchParams(history.location.search);
@@ -98,7 +129,6 @@ const GamesList = () => {
   };
 
   const changeMinPrice = (value) => {
-    console.log(value);
     const search = new URLSearchParams(history.location.search);
     search.set("price_gte", value);
     console.log(search);
@@ -108,7 +138,6 @@ const GamesList = () => {
   };
 
   const changeMaxPrice = (value) => {
-    console.log(value);
     const search = new URLSearchParams(history.location.search);
     search.set("price_lte", value);
     console.log(search);
@@ -126,10 +155,6 @@ const GamesList = () => {
     setMinPrice(getMinPrice());
     setMaxPrice(getMaxPrice());
   };
-
-  useEffect(() => {
-    getGamesData();
-  }, []);
 
   const handlePage = (e, page) => {
     const search = new URLSearchParams(window.location.search);
@@ -155,92 +180,107 @@ const GamesList = () => {
         style={{ justifyContent: "space-between", margin: "20px 0" }}
       >
         <div>
-          <button onClick={() => setSortMenu(!sortMenu)}>Filter</button>
-          {sortMenu ? (
-            <div className={classes.menuMobile}>
-              <RadioGroup value={genre} onChange={changeGenre}>
-                <h5>By Genre:</h5>
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="RPG"
-                  control={<Radio />}
-                  label="RPG"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="Survival"
-                  control={<Radio />}
-                  label="Survival"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="MOBA"
-                  control={<Radio />}
-                  label="MOBA"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="Sandbox"
-                  control={<Radio />}
-                  label="Sandbox"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="Shooter"
-                  control={<Radio />}
-                  label="Shooter"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="Fighting"
-                  control={<Radio />}
-                  label="Fighting"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="Sport"
-                  control={<Radio />}
-                  label="Sport"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="Open World"
-                  control={<Radio />}
-                  label="Open World"
-                />
-                <FormControlLabel
-                  className={classes.mobileMenuItem}
-                  value="all"
-                  control={<Radio />}
-                  label="All"
-                />
-              </RadioGroup>
-              <h5>By Price:</h5>
-              <div className={classes.mobilePriceFilter}>
-                <TextField
-                  className={classes.priceInputs}
-                  value={minPrice}
-                  onChange={(e) => changeMinPrice(e.target.value)}
-                  type="number"
-                  label="Min Price($)"
-                  defaultValue="100"
-                />
-                <TextField
-                  className={classes.priceInputs}
-                  value={maxPrice}
-                  onChange={(e) => changeMaxPrice(e.target.value)}
-                  type="number"
-                  label="Max Price($)"
-                  defaultValue="1000"
-                />
-              </div>
-              <div>
-                <Button variant="outlined" onClick={resetPrice}>
-                  Reset Price Filter
-                </Button>
-              </div>
+          <div className={classes.menuMobile}>
+            <RadioGroup
+              value={genre}
+              onChange={changeGenre}
+              className={classes.genres}
+            >
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="RPG"
+                control={<Radio />}
+                label="RPG"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="Survival"
+                control={<Radio />}
+                label="Survival"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="MOBA"
+                control={<Radio />}
+                label="MOBA"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="Sandbox"
+                control={<Radio />}
+                label="Sandbox"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="Shooter"
+                control={<Radio />}
+                label="Shooter"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="Fighting"
+                control={<Radio />}
+                label="Fighting"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="Sport"
+                control={<Radio />}
+                label="Sport"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="Open World"
+                control={<Radio />}
+                label="Open World"
+              />
+              <FormControlLabel
+                className={classes.mobileMenuItem}
+                value="all"
+                control={<Radio />}
+                label="All"
+              />
+            </RadioGroup>
+
+            <div className={classes.mobilePriceFilter}>
+              <TextField
+                className={classes.priceInputs}
+                value={minPrice}
+                onChange={(e) => changeMinPrice(e.target.value)}
+                type="number"
+                label="Min Price($)"
+                defaultValue="100"
+                InputProps={{
+                  className: classes.inpColor,
+                }}
+                InputLabelProps={{
+                  style: { color: "#fff" },
+                }}
+              />
+              <TextField
+                className={classes.priceInputs}
+                value={maxPrice}
+                onChange={(e) => changeMaxPrice(e.target.value)}
+                type="number"
+                label="Max Price($)"
+                defaultValue="1000"
+                InputProps={{
+                  className: classes.inpColor,
+                }}
+                InputLabelProps={{
+                  style: { color: "#fff" },
+                }}
+              />
+
+              <Button
+                variant="outlined"
+                onClick={resetPrice}
+                className={classes.resetBtn}
+              >
+                Reset Price Filter
+              </Button>
             </div>
-          ) : null}
+          </div>
         </div>
         {logged && logged.isAdmin ? (
           <Link to="/addgame" className={classes.addGame}>

@@ -9,10 +9,7 @@ const useStyles = makeStyles(() => ({
     maxWidth: "1000px",
     minHeight: "500px",
   },
-  commentsOuterContainer: {
-    height: "100%",
-    width: "100%",
-  },
+
   inps: {
     margin: "10px 0",
     borderBottom: "1px white solid",
