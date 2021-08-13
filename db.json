@@ -6,16 +6,7 @@
       "password": "coolboy2005",
       "isAdmin": true,
       "cart": [],
-      "library": [
-        11,
-        7,
-        9,
-        13,
-        3,
-        2,
-        8,
-        3
-      ],
+      "library": [11, 7, 9, 13, 3, 2, 8, 3],
       "id": 1
     },
     {
@@ -23,15 +14,8 @@
       "name": "tynai.s.95@gmail.com",
       "password": "tynai",
       "isAdmin": true,
-      "cart": [
-        1
-      ],
-      "library": [
-        11,
-        4,
-        2,
-        1
-      ],
+      "cart": [1],
+      "library": [11, 4, 2, 1],
       "id": 2
     },
     {
@@ -64,10 +48,8 @@
           "isChanged": null
         }
       ],
-      "likes": [
-        2
-      ],
-      "id": 11
+      "likes": [2],
+      "id": 1
     },
     {
       "name": "ARK: Survival Evolved",
@@ -87,26 +69,20 @@
           "isChanged": null
         }
       ],
-      "likes": [
-        2
-      ],
-      "id": 1
+      "likes": [2],
+      "id": 2
     },
     {
       "name": "Minecraft",
       "creator": "Mojang",
-      "comments": [
-      ],
+      "comments": [],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "video": "https://www.youtube.com/embed/0G1hVQxkTBE",
       "price": 20,
       "genre": "Sandbox",
-      "likes": [
-        3,
-        1
-      ],
-      "id": 2
+      "likes": [3, 1],
+      "id": 3
     },
     {
       "name": "Witcher III",
@@ -127,7 +103,7 @@
       "price": 50,
       "genre": "RPG",
       "likes": [],
-      "id": 3
+      "id": 4
     },
     {
       "name": "Cyberpunk",
@@ -148,7 +124,7 @@
       "price": 100,
       "genre": "Open World",
       "likes": [],
-      "id": 4
+      "id": 5
     },
     {
       "name": "Skyrim",
@@ -169,7 +145,7 @@
       "price": 49,
       "genre": "RPG",
       "likes": [],
-      "id": 5
+      "id": 6
     },
     {
       "name": "Red Dead Redemption 2",
@@ -181,7 +157,7 @@
       "price": 70,
       "genre": "Open World",
       "likes": [],
-      "id": 6
+      "id": 7
     },
     {
       "name": "Dota 2",
@@ -202,7 +178,7 @@
       "price": 0,
       "genre": "MOBA",
       "likes": [],
-      "id": 7
+      "id": 8
     },
     {
       "name": "The Last of Us",
@@ -214,7 +190,7 @@
       "price": 40,
       "genre": "Survival",
       "likes": [],
-      "id": 8
+      "id": 9
     },
     {
       "name": "Genshin Impact",
@@ -235,7 +211,7 @@
         }
       ],
       "likes": [],
-      "id": 9
+      "id": 10
     },
     {
       "name": "Among us",
@@ -247,7 +223,7 @@
       "genre": "Survival",
       "comments": [],
       "likes": [],
-      "id": 10
+      "id": 11
     },
     {
       "name": "Watch Dogs 2",
