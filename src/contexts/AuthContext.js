@@ -49,8 +49,10 @@ const AuthContextProvider = ({ children }) => {
         if (!localStorage.getItem("user")) {
           localStorage.setItem("user", JSON.stringify([]));
         }
+        e.id = user.id;
         e.isAdmin = user.isAdmin;
         e.cart = user.cart;
+        e.library = user.library;
         e.nickname = user.nickname;
         localStorage.setItem("user", JSON.stringify(e));
         dispatch({
@@ -60,7 +62,7 @@ const AuthContextProvider = ({ children }) => {
         setExist(true);
         setVisible(false);
         setInpType(false);
-        history.push('/');
+        history.push("/");
       } else {
         setExist(false);
       }

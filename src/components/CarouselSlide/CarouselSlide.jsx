@@ -13,12 +13,13 @@ const useStyles = makeStyles((theme) => ({
   },
   slides: {
     height: "100%",
+    width: "100%",
     objectFit: "fill",
   },
   btns: {
     backgroundColor: "#0099ff",
     color: "white",
-    padding: "15px 40px",
+    padding: "10px 30px",
   },
 }));
 const CarouselSlide = () => {
@@ -30,7 +31,7 @@ const CarouselSlide = () => {
   }, []);
 
   return (
-    <Container style={{ maxHeight: "800px" }}>
+    <Container style={{ maxHeight: "800px", maxWidth: "1300px" }}>
       <Carousel className={classes.carousel}>
         <Carousel.Item className={classes.slides}>
           <img
@@ -43,13 +44,6 @@ const CarouselSlide = () => {
               See more
             </Button>
           </Carousel.Caption>
-          {/* <video style={{ height: 700, width: "100%" }} controls>
-            <source
-              src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-              type="video/mp4"
-            ></source>
-            Sorry, your browser doesn't support videos.
-          </video> */}
         </Carousel.Item>
 
         <Carousel.Item className={classes.slides}>
