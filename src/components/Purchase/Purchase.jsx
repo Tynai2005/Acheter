@@ -46,6 +46,7 @@ const Purchase = () => {
   const [focus, setFocus] = useState("");
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
+  const buyNow = JSON.parse(localStorage.getItem("buyNow"));
 
   const handleInputFocus = (e) => {
     setFocus(e.target.name);
@@ -96,6 +97,7 @@ const Purchase = () => {
           }}
           type="tel"
           name="number"
+          value={number}
           placeholder="Card Number"
           onChange={(e) => handleInputNumber(e)}
           onFocus={(e) => handleInputFocus(e)}
@@ -103,6 +105,7 @@ const Purchase = () => {
         <TextField
           className={classes.inps}
           required
+          value={expiry}
           InputProps={{
             className: classes.inpColor,
           }}
@@ -118,6 +121,7 @@ const Purchase = () => {
         <TextField
           className={classes.inps}
           required
+          value={cvc}
           InputProps={{
             className: classes.inpColor,
           }}
@@ -133,6 +137,7 @@ const Purchase = () => {
         <TextField
           className={classes.inps}
           required
+          value={name}
           InputProps={{
             className: classes.inpColor,
           }}
@@ -148,11 +153,24 @@ const Purchase = () => {
         <Button
           className={classes.payBtn}
           onClick={() => {
-            toLibrary(curUser.cart);
-            handleOpen();
-            setTimeout(() => {
-              history.push("/cart");
-            }, 1500);
+            if (
+              number.length == 16 &&
+              expiry.length == 4 &&
+              cvc.length == 4 &&
+              name.length > 2
+            ) {
+              {
+                +buyNow > 0 ? toLibrary(+buyNow) : toLibrary(curUser.cart);
+              }
+
+              localStorage.setItem("buyNow", JSON.stringify([]));
+              handleOpen();
+              setTimeout(() => {
+                history.push("/cart");
+              }, 1500);
+            } else {
+              alert("Type valid information");
+            }
           }}
         >
           Pay

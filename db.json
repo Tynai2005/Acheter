@@ -6,7 +6,7 @@
       "password": "coolboy2005",
       "isAdmin": true,
       "cart": [],
-      "library": [11, 7, 9, 13, 3, 2, 8, 3],
+      "library": [1, 2, 3, 4, 5, 12],
       "id": 1
     },
     {
@@ -27,6 +27,16 @@
       "isAdmin": false,
       "passwordSec": "adil",
       "id": 3
+    },
+    {
+      "nickname": "123",
+      "name": "123@gmail.com",
+      "password": "123",
+      "cart": [],
+      "library": [3, 5, 2],
+      "isAdmin": false,
+      "passwordSec": "123",
+      "id": 4
     }
   ],
   "games": [

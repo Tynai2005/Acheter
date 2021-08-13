@@ -92,8 +92,14 @@ const GameDetails = () => {
   const [open, setOpen] = useState(false);
   const [isLiked, setIsLiked] = useState();
   const [likesCount, setLikesCount] = useState(0);
-  const { gameDetails, getGameDetails, history, toLibrary, deleteCartGame } =
-    useGames();
+  const {
+    gameDetails,
+    getGameDetails,
+    history,
+    toLibrary,
+    deleteCartGame,
+    toGamesList,
+  } = useGames();
   const { logged } = useAuth();
 
   const [buttonColor, setButtonColor] = useState("primary");
@@ -157,27 +163,19 @@ const GameDetails = () => {
     setLikesCount(newLikes.length);
   };
 
-  const [finda1, setFinda1] = useState("");
-  useEffect(() => {
-    let findCart = curUser.cart.filter(
-      (cartGame) => cartGame == gameDetails.id
-    );
-    setFinda1(findCart);
-  }, []);
-  const [finda, setFinda] = useState("");
-  useEffect(() => {
-    let findLib = curUser.library.filter(
-      (libGame) => libGame == gameDetails.id
-    );
-    setFinda(findLib);
-    console.log(finda);
-  }, []);
+  const toBuyNow = (id) => {
+    if (!localStorage.getItem("buyNow")) {
+      localStorage.setItem("buyNow", []);
+      localStorage.setItem("buyNow", JSON.stringify(id));
+    }
+    localStorage.setItem("buyNow", JSON.stringify(id));
+  };
 
   return (
     <Container>
       <div className={classes.detailsContainer}>
         <div className={classes.details}>
-          <Link to="/">
+          <Link to="/" onClick={toGamesList}>
             <HomeIcon />
           </Link>
           <hr className={classes.hr} />
@@ -230,7 +228,14 @@ const GameDetails = () => {
                 <>
                   <h3 style={{ color: "white" }}>{gameDetails.price}$</h3>
                   <div className={classes.buyBtns}>
-                    <Button variant="contained" color="primary">
+                    <Button
+                      variant="contained"
+                      color="primary"
+                      onClick={() => {
+                        history.push("/purchase");
+                        toBuyNow(curGameId);
+                      }}
+                    >
                       Buy now
                     </Button>
                   </div>
@@ -239,22 +244,22 @@ const GameDetails = () => {
                 <>
                   <h3 style={{ color: "white" }}>Free to play</h3>
 
-                  {finda.length > 0 ? (
+                  {/* {finda.length > 0 ? (
                     <Button variant="contained" color="primary">
                       Delete from library
                     </Button>
-                  ) : (
-                    <Button
-                      variant="contained"
-                      color="primary"
-                      onClick={() => {
-                        handleOpen();
-                        toLibrary(gameDetails.id);
-                      }}
-                    >
-                      Add to library
-                    </Button>
-                  )}
+                  ) : ( */}
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={() => {
+                      handleOpen();
+                      toLibrary(gameDetails.id);
+                    }}
+                  >
+                    Add to library
+                  </Button>
+                  {/* )} */}
                 </>
               )}
 
@@ -262,28 +267,43 @@ const GameDetails = () => {
                 {gameDetails.price > 0 ? (
                   <>
                     {logged ? (
-                      curUser.cart.map((cartGame) => {
-                        cartGame == curGameId ? (
-                          <Button
-                            variant="outlined"
-                            color={buttonColor}
-                            onClick={() => deleteCartGame(curGameId)}
-                          >
-                            Delete from wishlist
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="outlined"
-                            color={buttonColor}
-                            onClick={() => {
-                              addGameCart();
-                            }}
-                          >
-                            Add to wishlist
-                          </Button>
-                        );
-                      })
+                      // curUser.cart.length > 0 ? (
+                      //   curUser.cart.map((cartGame) => {
+                      //     cartGame == curGameId ? (
+                      //       <Button
+                      //         variant="outlined"
+                      //         color={buttonColor}
+                      //         onClick={() => {
+                      //           deleteCartGame(curGameId);
+                      //           getGameDetails(search.slice(34, search.length));
+                      //         }}
+                      //       >
+                      //         Delete from wishlist
+                      //       </Button>
+                      //     ) : (
+                      <Button
+                        variant="outlined"
+                        color={buttonColor}
+                        onClick={() => {
+                          addGameCart();
+                        }}
+                      >
+                        Add to wishlist
+                      </Button>
                     ) : (
+                      //     );
+                      //   })
+                      // ) : (
+                      //   <Button
+                      //     variant="outlined"
+                      //     color={buttonColor}
+                      //     onClick={() => {
+                      //       addGameCart();
+                      //       getGameDetails(search.slice(34, search.length));
+                      //     }}
+                      //   >
+                      //     Add to wishlist
+                      //   </Button>
                       <Button
                         variant="outlined"
                         color={buttonColor}

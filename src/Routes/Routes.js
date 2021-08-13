@@ -30,8 +30,8 @@ const Routes = () => {
             <Switch>
               <Route exact path="/aboutus" component={AboutUs} />
               <Route exact path="/contacts" component={Contacts} />
-              <Route exact path="/library" component={Library} />
-              <Route exact path="/purchase" component={Purchase} />
+              <ProtectedRoute exact path="/library" component={Library} />
+              <ProtectedRoute exact path="/purchase" component={Purchase} />
               <ProtectedRoute exact path="/cart" component={Cart} />
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/signup" component={SignUp} />

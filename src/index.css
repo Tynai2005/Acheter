@@ -60,3 +60,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.free-card-img {
+  width: 355px;
+  height: 199px;
+  opacity: 70%;
+}
+
+.free-card-img:hover {
+  opacity: 100%;
+}

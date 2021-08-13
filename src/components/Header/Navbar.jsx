@@ -186,11 +186,11 @@ export default function PrimarySearchAppBar() {
         <MenuItem>
           {!isAllGames ? (
             <Button className={classes.menuBtn} onClick={toGamesList}>
-              All Games
+              Home
             </Button>
           ) : (
             <Button className={classes.menuBtn} onClick={toHome}>
-              Home
+              All Games
             </Button>
           )}
         </MenuItem>

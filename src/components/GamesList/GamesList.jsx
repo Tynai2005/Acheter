@@ -23,6 +23,7 @@ import { useState } from "react";
 const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
+    minHeight: "80vh",
     display: "flex",
     flexWrap: "wrap",
     flexDirection: "column",

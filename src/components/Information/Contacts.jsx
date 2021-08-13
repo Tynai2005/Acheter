@@ -42,6 +42,9 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
   },
+  hrefs: {
+    textDecoration: "none",
+  },
 }));
 const Contacts = () => {
   const classes = useStyles();
@@ -69,9 +72,23 @@ const Contacts = () => {
           </div>
           <div className={classes.cards}>
             <Typography variant="h5" component="h5">
-              Youtube: Тынай Сманов
+              Youtube:{" "}
+              <a
+                target="_blank"
+                href="https://www.youtube.com/channel/UCzUYaZdrDfefH1vmzCMYfbA"
+                className={classes.hrefs}
+              >
+                Тынай Сманов
+              </a>
               <br />
-              Instagram: @akvamantai
+              Instagram:{" "}
+              <a
+                target="_blank"
+                href="https://www.instagram.com/akvamantai/"
+                className={classes.hrefs}
+              >
+                @akvamantai
+              </a>
             </Typography>
           </div>
         </CardContent>

@@ -83,11 +83,11 @@ const AboutUs = () => {
             <div className={classes.left}>
               <img
                 className={classes.imgs}
-                src="https://images.unsplash.com/photo-1605600659908-0ef719419d41?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z2FyYmFnZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
+                src="https://images.unsplash.com/photo-1586083702768-190ae093d34d?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTN8fG1hbnxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80"
               />
               <div className={classes.information}>
                 <p className={classes.text}>Name: Tynai</p>
-                <p className={classes.text}>Age: 15</p>
+                <p className={classes.text}>Age: 16</p>
                 <p className={classes.text}>Language: JS, Python</p>
                 <p className={classes.text}>Nationality: Kyrgyz</p>
               </div>
@@ -95,11 +95,11 @@ const AboutUs = () => {
             <div className={classes.left}>
               <img
                 className={classes.imgs}
-                src="https://game-roblox.ru/wp-content/uploads/2019/01/stiv1.jpg"
+                src="https://www.meme-arsenal.com/memes/6bb1c05df00b0dfd4fdda878e5858d29.jpg"
               />
               <div className={classes.information}>
                 <p className={classes.text}>Name: Amantay</p>
-                <p className={classes.text}>Age: 15</p>
+                <p className={classes.text}>Age: 16</p>
                 <p className={classes.text}>Language: JS</p>
                 <p className={classes.text}>Nationality: Kyrgyz</p>
               </div>

@@ -9,6 +9,7 @@ import GamesListPreview from "../GamesListPreview/GamesListPreview";
 
 import { Container } from "@material-ui/core";
 import { Button } from "bootstrap";
+import FreeGames from "../FreeGames/FreeGames";
 
 const Home = () => {
   const { modal } = useGames();
@@ -19,6 +20,8 @@ const Home = () => {
       {modal ? <EditGame /> : null}
 
       <GamesListPreview />
+
+      <FreeGames />
     </Container>
   );
 };

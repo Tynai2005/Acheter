@@ -42,9 +42,14 @@ const Footer = () => {
                 <InstagramIcon className={classes.icons} />
               </IconButton>
             </a>
-            <IconButton>
-              <YouTubeIcon className={classes.icons} />
-            </IconButton>
+            <a
+              target="_blank"
+              href="https://www.youtube.com/channel/UCzUYaZdrDfefH1vmzCMYfbA"
+            >
+              <IconButton>
+                <YouTubeIcon className={classes.icons} />
+              </IconButton>
+            </a>
           </div>
           <div className={classes.icons2}>
             <IconButton onClick={() => window.scrollTo(0, 0)}>

@@ -1,5 +1,11 @@
 import axios from "axios";
-import React, { createContext, useContext, useReducer, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import { useHistory } from "react-router-dom";
 
 import { ACTIONS, GAMES_API, JSON_API_USERS } from "../helper/consts";
@@ -43,6 +49,11 @@ const GameContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
   const [isAllGames, setIsAllGames] = useState(false);
   const history = useHistory();
+  const buyNow = JSON.parse(localStorage.getItem("buyNow"));
+
+  useEffect(() => {
+    localStorage.setItem("buyNow", JSON.stringify([]));
+  }, []);
 
   const getGamesData = async () => {
     const search = new URLSearchParams(history.location.search);
@@ -56,17 +67,24 @@ const GameContextProvider = ({ children }) => {
   };
 
   const addNewGame = async (newGame) => {
-    if(newGame.creator.trim().length > 0 && newGame.description.trim().length > 0 && newGame.genre.trim().length > 0 && newGame.image.trim().length > 0 && newGame.name.trim().length > 0  && newGame.video.trim().length > 0){
-      if(Number(newGame.price) >= 0){
+    if (
+      newGame.creator.trim().length > 0 &&
+      newGame.description.trim().length > 0 &&
+      newGame.genre.trim().length > 0 &&
+      newGame.image.trim().length > 0 &&
+      newGame.name.trim().length > 0 &&
+      newGame.video.trim().length > 0
+    ) {
+      if (Number(newGame.price) >= 0) {
         await axios.post(GAMES_API, newGame);
         await getGamesData();
-        history.push('/gameslist');
-      }else{
-        alert('The price cannot be negative')
+        history.push("/gameslist");
+      } else {
+        alert("The price cannot be negative");
       }
-    }else{
-        alert('Fill all the fields')
-      }
+    } else {
+      alert("Fill all the fields");
+    }
   };
 
   const deleteGame = async (id) => {
@@ -99,18 +117,24 @@ const GameContextProvider = ({ children }) => {
 
   const saveEditedGame = async (id, editedGame) => {
     console.log(editedGame);
-    if(editedGame?.creator?.length > 0 && editedGame?.description?.length > 0 && editedGame?.genre?.length > 0 && editedGame?.image?.length > 0 && editedGame?.name?.length > 0  && editedGame?.video?.length > 0){
-      if(Number(editedGame.price) >= 0){
+    if (
+      editedGame?.creator?.length > 0 &&
+      editedGame?.description?.length > 0 &&
+      editedGame?.genre?.length > 0 &&
+      editedGame?.image?.length > 0 &&
+      editedGame?.name?.length > 0 &&
+      editedGame?.video?.length > 0
+    ) {
+      if (Number(editedGame.price) >= 0) {
         const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
         toggleModal();
         getGamesData();
-      }else{
-        alert('The price cannot be negative')
+      } else {
+        alert("The price cannot be negative");
       }
-    }else{
-        alert('Fill all the fields')
+    } else {
+      alert("Fill all the fields");
     }
-
   };
 
   const toggleComment = async (id, editedGame) => {
@@ -158,24 +182,36 @@ const GameContextProvider = ({ children }) => {
   const toLibrary = async (id) => {
     const curUser = JSON.parse(localStorage.getItem("user"));
     const { data } = await axios(JSON_API_USERS);
-    data.map((user) => {
-      if (Array.isArray(id)) {
-        id.map((cartGame) => {
-          if (user.name === curUser.name) {
-            const edittedUser = { ...user };
-            edittedUser.library.push(cartGame);
-            edittedUser.cart = [];
-            axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
-            localStorage.setItem("user", JSON.stringify(edittedUser));
-          }
-        });
-      } else if (!Array.isArray(id) && user.name === curUser.name) {
-        const edittedUser = { ...user };
-        edittedUser.library.push(id);
-        axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
-        localStorage.setItem("user", JSON.stringify(edittedUser));
-      }
-    });
+
+    if (buyNow > 0) {
+      data.map((user) => {
+        if (user.name === curUser.name) {
+          const edittedUser = { ...user };
+          edittedUser.library.push(buyNow);
+          axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
+          localStorage.setItem("user", JSON.stringify(edittedUser));
+        }
+      });
+    } else {
+      data.map((user) => {
+        if (Array.isArray(id)) {
+          id.map((cartGame) => {
+            if (user.name === curUser.name) {
+              const edittedUser = { ...user };
+              edittedUser.library.push(cartGame);
+              edittedUser.cart = [];
+              axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
+              localStorage.setItem("user", JSON.stringify(edittedUser));
+            }
+          });
+        } else if (!Array.isArray(id) && user.name === curUser.name) {
+          const edittedUser = { ...user };
+          edittedUser.library.push(id);
+          axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
+          localStorage.setItem("user", JSON.stringify(edittedUser));
+        }
+      });
+    }
   };
 
   const values = {

@@ -19,7 +19,7 @@ const useStyles = makeStyles((theme) => ({
   btns: {
     backgroundColor: "#0099ff",
     color: "white",
-    padding: "15px 40px",
+    padding: "10px 30px",
   },
 }));
 const CarouselSlide = () => {
