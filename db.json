@@ -135,25 +135,9 @@
         {
           "authorNickname": "Tynai",
           "authorMail": "tynai.s.95@gmail.com",
-          "date": "Wed Aug 11 2021 10:24:34",
-          "text": "Minecraft is bullshit!!!!!!!!",
-          "id": 1628655874486,
-          "isChanged": " (changed)"
-        },
-        {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Wed Aug 11 2021 11:02:04",
-          "text": "aaaaaaaaaaaaasthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          "id": 1628658124522,
-          "isChanged": " (changed)"
-        },
-        {
-          "authorNickname": "Genshin4ever",
-          "authorMail": "kozhon.amantay@gmail.com",
-          "date": "Thu Aug 12 2021 13:09:30",
-          "text": "hgduwdkwadkajwb",
-          "id": 1628752170741,
+          "date": "Fri Aug 13 2021 11:17:42",
+          "text": "3fewgehtrjy",
+          "id": 1628831862087,
           "isChanged": null
         }
       ],
@@ -362,7 +346,24 @@
       "price": 8,
       "creator": "PopCap Games",
       "genre": "Shooter",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Fri Aug 13 2021 10:51:53",
+          "text": "qsdwewfgerdgefwedw",
+          "id": 1628830313514,
+          "isChanged": null
+        },
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Fri Aug 13 2021 10:51:55",
+          "text": "qsdwewfgerdgefwedw",
+          "id": 1628830315655,
+          "isChanged": null
+        }
+      ],
       "likes": [],
       "id": 16
     }
