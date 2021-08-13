@@ -111,7 +111,6 @@ const GameDetails = () => {
       }
     });
     const likes = await axios(`${GAMES_API}/${curGameId}`);
-
     setLikesCount(likes.data.likes.length);
     window.scrollTo(0, 0);
   }, []);

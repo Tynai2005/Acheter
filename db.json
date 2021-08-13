@@ -6,29 +6,16 @@
       "password": "coolboy2005",
       "isAdmin": true,
       "cart": [],
-      "library": [
-        11,
-        7,
-        9,
-        13,
-        3,
-        2,
-        8,
-        3
-      ],
+      "library": [11, 7, 9, 13, 3, 2, 8, 3],
       "id": 1
     },
     {
       "nickname": "Tynai",
       "name": "tynai.s.95@gmail.com",
-      "password": "butylka",
+      "password": "tynai",
       "isAdmin": true,
-      "cart": [
-        4
-      ],
-      "library": [
-        11
-      ],
+      "cart": [1],
+      "library": [11, 4, 2, 1],
       "id": 2
     },
     {
@@ -46,20 +33,12 @@
     {
       "name": "Rocket League",
       "description": "Rocket League is a fantastical sport-based video game, developed by Psyonix (it's “soccer with cars”). It features a competitive game mode based on teamwork and outmaneuvering opponents. Players work with their team to advance the ball down the field, and score goals in their opponents' net.",
-      "image": "https://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
-      "video": "https://www.youtube.com/embed/OmMF9EDbmQQ",
+      "image": "http://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
+      "video": "http://www.youtube.com/embed/OmMF9EDbmQQ",
       "price": 0,
       "creator": "Psyonix LLC",
       "genre": "Sport",
       "comments": [
-        {
-          "authorNickname": "Sheva",
-          "authorMail": "sheva@gmail.com",
-          "date": "Wed Aug 11 2021 12:51:23",
-          "text": "Фууууууу",
-          "id": 1628664683336,
-          "isChanged": null
-        },
         {
           "authorNickname": "Tynai",
           "authorMail": "tynai.s.95@gmail.com",
@@ -69,10 +48,8 @@
           "isChanged": null
         }
       ],
-      "likes": [
-        1
-      ],
-      "id": 11
+      "likes": [2],
+      "id": 1
     },
     {
       "name": "ARK: Survival Evolved",
@@ -92,34 +69,20 @@
           "isChanged": null
         }
       ],
-      "likes": [
-        2
-      ],
-      "id": 1
+      "likes": [2],
+      "id": 2
     },
     {
       "name": "Minecraft",
       "creator": "Mojang",
-      "comments": [
-        {
-          "authorNickname": "Genshin4ever",
-          "authorMail": "kozhon.amantay@gmail.com",
-          "date": "Thu Aug 12 2021 22:50:37",
-          "text": "Minecraft is the best game",
-          "id": 1628787037351,
-          "isChanged": null
-        }
-      ],
+      "comments": [],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
       "video": "https://www.youtube.com/embed/0G1hVQxkTBE",
       "price": 20,
       "genre": "Sandbox",
-      "likes": [
-        3,
-        1
-      ],
-      "id": 2
+      "likes": [3, 1],
+      "id": 3
     },
     {
       "name": "Witcher III",
@@ -140,7 +103,7 @@
       "price": 50,
       "genre": "RPG",
       "likes": [],
-      "id": 3
+      "id": 4
     },
     {
       "name": "Cyberpunk",
@@ -161,7 +124,7 @@
       "price": 100,
       "genre": "Open World",
       "likes": [],
-      "id": 4
+      "id": 5
     },
     {
       "name": "Skyrim",
@@ -182,7 +145,7 @@
       "price": 49,
       "genre": "RPG",
       "likes": [],
-      "id": 5
+      "id": 6
     },
     {
       "name": "Red Dead Redemption 2",
@@ -194,7 +157,7 @@
       "price": 70,
       "genre": "Open World",
       "likes": [],
-      "id": 6
+      "id": 7
     },
     {
       "name": "Dota 2",
@@ -215,7 +178,7 @@
       "price": 0,
       "genre": "MOBA",
       "likes": [],
-      "id": 7
+      "id": 8
     },
     {
       "name": "The Last of Us",
@@ -227,7 +190,7 @@
       "price": 40,
       "genre": "Survival",
       "likes": [],
-      "id": 8
+      "id": 9
     },
     {
       "name": "Genshin Impact",
@@ -248,7 +211,7 @@
         }
       ],
       "likes": [],
-      "id": 9
+      "id": 10
     },
     {
       "name": "Among us",
@@ -260,7 +223,7 @@
       "genre": "Survival",
       "comments": [],
       "likes": [],
-      "id": 10
+      "id": 11
     },
     {
       "name": "Watch Dogs 2",
@@ -318,7 +281,24 @@
       "price": 8,
       "creator": "PopCap Games",
       "genre": "Shooter",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Fri Aug 13 2021 10:51:53",
+          "text": "qsdwewfgerdgefwedw",
+          "id": 1628830313514,
+          "isChanged": null
+        },
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Fri Aug 13 2021 10:51:55",
+          "text": "qsdwewfgerdgefwedw",
+          "id": 1628830315655,
+          "isChanged": null
+        }
+      ],
       "likes": [],
       "id": 16
     },

@@ -1,4 +1,4 @@
-import { makeStyles, TextField } from "@material-ui/core";
+import { makeStyles, TextField, Button } from "@material-ui/core";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import React from "react";
 import { useState } from "react";
@@ -78,6 +78,13 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
   },
+  addComment: {
+    backgroundColor: "inherit",
+    backgroundColor: "green",
+    borderRadius: "5px",
+    marginBottom: "10px",
+    color: "white",
+  },
 }));
 
 const GameComments = () => {
@@ -86,6 +93,7 @@ const GameComments = () => {
   const [editingComment, setEditingComment] = useState();
   const [curId, setCurId] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [isAdding, setIsAdding] = useState(false);
   const { gameDetails, toggleComment } = useGames();
   const classes = useStyles();
   const sendComment = async (comment) => {
@@ -148,29 +156,41 @@ const GameComments = () => {
           <h5 className={classes.inpColor}>Comments:</h5>
           <div className={classes.inputDiv}>
             <div className={classes.inpAndArrowDiv}>
-              <TextField
-                InputProps={{
-                  className: classes.inpColor,
-                }}
-                InputLabelProps={{
-                  style: { color: "#fff" },
-                }}
-                className={classes.inps}
-                value={addingComment}
-                onChange={(e) => {
-                  setAddingComment(e.target.value);
-                }}
-                id="outlined-basic"
-                label="Add Comment"
-                variant="filled"
-                onChange={(e) => setNewComment(e.target.value)}
-              />
-              <ArrowForwardRoundedIcon
-                className={classes.arrow}
-                onClick={(e) => {
-                  sendComment(newComment, e);
-                }}
-              />
+              {isAdding ? (
+                <>
+                  <TextField
+                    InputProps={{
+                      className: classes.inpColor,
+                    }}
+                    InputLabelProps={{
+                      style: { color: "#fff" },
+                    }}
+                    className={classes.inps}
+                    value={addingComment}
+                    onChange={(e) => {
+                      setAddingComment(e.target.value);
+                    }}
+                    id="outlined-basic"
+                    label="Add Comment"
+                    variant="filled"
+                    onChange={(e) => setNewComment(e.target.value)}
+                  />
+                  <ArrowForwardRoundedIcon
+                    className={classes.arrow}
+                    onClick={(e) => {
+                      sendComment(newComment, e);
+                      setIsAdding(!isAdding);
+                    }}
+                  />
+                </>
+              ) : (
+                <Button
+                  onClick={() => setIsAdding(true)}
+                  className={classes.addComment}
+                >
+                  Add Comment
+                </Button>
+              )}
             </div>
 
             {gameDetails?.comments?.length
@@ -195,18 +215,18 @@ const GameComments = () => {
                             }}
                           />
                           <br />
-                          <button
+                          <Button
                             className={classes.commentClose}
                             onClick={() => setIsEditing(false)}
                           >
                             Close
-                          </button>
-                          <button
+                          </Button>
+                          <Button
                             className={classes.commmentSave}
                             onClick={() => saveEditedComment(comment.id)}
                           >
                             Save
-                          </button>
+                          </Button>
                         </>
                       ) : (
                         <>
@@ -218,19 +238,19 @@ const GameComments = () => {
                           (localStorage.getItem("user") &&
                             JSON.parse(localStorage.getItem("user")).nickname ==
                               comment.authorNickname) ? (
-                            <button
+                            <Button
                               className={classes.commentDelete}
                               onClick={() => {
                                 deleteComment(comment);
                               }}
                             >
                               DELETE
-                            </button>
+                            </Button>
                           ) : null}
                           {localStorage.getItem("user") &&
                           JSON.parse(localStorage.getItem("user")).name ==
                             comment.authorMail ? (
-                            <button
+                            <Button
                               className={classes.commentEdit}
                               onClick={() => {
                                 setIsEditing(true);
@@ -239,7 +259,7 @@ const GameComments = () => {
                               }}
                             >
                               EDIT
-                            </button>
+                            </Button>
                           ) : null}
                         </>
                       )}

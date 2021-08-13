@@ -15,12 +15,13 @@ const EditGame = () => {
   let [editedGame, setEditedGame] = useState({
     name: gameDetails.name,
     description: gameDetails.description,
+    creator: gameDetails.creator,
     image: gameDetails.image,
     video: gameDetails.video,
     price: gameDetails.price,
     genre: gameDetails.genre,
-    likes: gameDetails.likes,
     comments: gameDetails.comments,
+    likes: gameDetails.likes,
   });
 
   return (

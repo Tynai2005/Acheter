@@ -37,9 +37,11 @@ const Footer = () => {
       <Container>
         <div className={classes.iconsFooter}>
           <div className={classes.icons1}>
-            <IconButton>
-              <InstagramIcon className={classes.icons} />
-            </IconButton>
+            <a target="_blank" href="https://www.instagram.com/akvamantai/">
+              <IconButton>
+                <InstagramIcon className={classes.icons} />
+              </IconButton>
+            </a>
             <IconButton>
               <YouTubeIcon className={classes.icons} />
             </IconButton>
