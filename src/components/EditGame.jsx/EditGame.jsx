@@ -19,7 +19,7 @@ const EditGame = () => {
     video: gameDetails.video,
     price: gameDetails.price,
     genre: gameDetails.genre,
-
+    likes: gameDetails.likes,
     comments: gameDetails.comments,
   });
 

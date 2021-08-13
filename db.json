@@ -5,16 +5,16 @@
       "name": "kozhon.amantay@gmail.com",
       "password": "coolboy2005",
       "isAdmin": true,
-      "cart": [
-        8
-      ],
+      "cart": [],
       "library": [
         11,
-        1,
         7,
+        9,
+        13,
+        3,
+        2,
         8,
-        8,
-        8
+        3
       ],
       "id": 1
     },
@@ -84,20 +84,12 @@
       "genre": "Survival",
       "comments": [
         {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Wed Aug 11 2021 12:17:52",
-          "text": "Не не норм игра",
-          "id": 1628662672637,
-          "isChanged": " (changed)"
-        },
-        {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Wed Aug 11 2021 12:18:42",
-          "text": "иаиаиаиаиаывсам",
-          "id": 1628662722463,
-          "isChanged": " (changed)"
+          "authorNickname": "Genshin4ever",
+          "authorMail": "kozhon.amantay@gmail.com",
+          "date": "Thu Aug 12 2021 15:58:32",
+          "text": "wadwadaw",
+          "id": 1628762312606,
+          "isChanged": null
         }
       ],
       "likes": [
@@ -110,27 +102,11 @@
       "creator": "Mojang",
       "comments": [
         {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Wed Aug 11 2021 10:24:34",
-          "text": "Minecraft is bullshit!!!!!!!!",
-          "id": 1628655874486,
-          "isChanged": " (changed)"
-        },
-        {
-          "authorNickname": "Tynai",
-          "authorMail": "tynai.s.95@gmail.com",
-          "date": "Wed Aug 11 2021 11:02:04",
-          "text": "aaaaaaaaaaaaasthhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhddddddddddddddddddddddddddddddddhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhheeeeeeeeeeeeeeeeeeeeeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-          "id": 1628658124522,
-          "isChanged": " (changed)"
-        },
-        {
           "authorNickname": "Genshin4ever",
           "authorMail": "kozhon.amantay@gmail.com",
-          "date": "Thu Aug 12 2021 13:09:30",
-          "text": "hgduwdkwadkajwb",
-          "id": 1628752170741,
+          "date": "Thu Aug 12 2021 22:50:37",
+          "text": "Minecraft is the best game",
+          "id": 1628787037351,
           "isChanged": null
         }
       ],
@@ -140,7 +116,8 @@
       "price": 20,
       "genre": "Sandbox",
       "likes": [
-        3
+        3,
+        1
       ],
       "id": 2
     },
@@ -183,6 +160,7 @@
       "video": "https://www.youtube.com/embed/LembwKDo1Dk",
       "price": 100,
       "genre": "Open World",
+      "likes": [],
       "id": 4
     },
     {
@@ -215,6 +193,7 @@
       "video": "https://www.youtube.com/embed/eaW0tYpxyp0",
       "price": 70,
       "genre": "Open World",
+      "likes": [],
       "id": 6
     },
     {
@@ -342,6 +321,18 @@
       "comments": [],
       "likes": [],
       "id": 16
+    },
+    {
+      "name": "Final Fantasy VII: Remake",
+      "description": "Final Fantasy VII Remake is a 2020 action role-playing game developed and published by Square Enix. It is the first in a planned series of games remaking the 1997 PlayStation game Final Fantasy VII. Set in the dystopian cyberpunk metropolis of Midgar, players control mercenary Cloud Strife.",
+      "image": "https://lordsofgaming.net/wp-content/uploads/2020/01/thumb-1920-928770.jpg",
+      "video": "https://www.youtube.com/embed/ERgrFVhL-n4",
+      "price": 50,
+      "creator": "Square Enix",
+      "genre": "RPG",
+      "comments": [],
+      "likes": [],
+      "id": 17
     }
   ],
   "likes": [],

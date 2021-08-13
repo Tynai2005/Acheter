@@ -23,6 +23,9 @@ import { NavLink, useHistory } from "react-router-dom";
 import zIndex from "@material-ui/core/styles/zIndex";
 import { useAuth } from "../../contexts/AuthContext";
 const useStyles = makeStyles((theme) => ({
+  menuBtn: {
+    textDecoration: "none",
+  },
   grow: {
     flexGrow: 1,
   },
@@ -133,13 +136,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const {logged} = useAuth()
+  const { logged } = useAuth();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { getGamesData, history,isAllGames,toHome,toGamesList } = useGames();
+  const { getGamesData, history, isAllGames, toHome, toGamesList } = useGames();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -167,20 +169,6 @@ export default function PrimarySearchAppBar() {
   };
 
   const menuId = "primary-search-account-menu";
-  const renderMenu = (
-    <Menu
-      anchorEl={anchorEl}
-      anchorOrigin={{ vertical: "top", horizontal: "right" }}
-      id={menuId}
-      keepMounted
-      transformOrigin={{ vertical: "top", horizontal: "right" }}
-      open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
-  );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
@@ -196,21 +184,27 @@ export default function PrimarySearchAppBar() {
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-        {!isAllGames ? 
-              <Button
-              className={classes.navbarBtn}
-              onClick={toGamesList}
-            >
+          {!isAllGames ? (
+            <Button className={classes.menuBtn} onClick={toGamesList}>
               All Games
-            </Button> : 
-            <Button
-                className={classes.navbarBtn}
-                onClick={toHome}
-              >
-                Home
-              </Button>}
+            </Button>
+          ) : (
+            <Button className={classes.menuBtn} onClick={toHome}>
+              Home
+            </Button>
+          )}
         </MenuItem>
-        <MenuItem onClick={handleProfileMenuOpen}>
+        <MenuItem>
+          {logged ? (
+            <Button
+              className={classes.menuBtn}
+              onClick={() => history.push("/library")}
+            >
+              Library
+            </Button>
+          ) : null}
+        </MenuItem>
+        <MenuItem onClick={() => history.push("/cart")}>
           <Button>Cart</Button>
         </MenuItem>
       </Menu>
@@ -223,19 +217,15 @@ export default function PrimarySearchAppBar() {
         <Toolbar className={classes.navbar}>
           <div className={classes.navbarSel}>
             <div className={classes.sectionDesktop}>
-            {!isAllGames ? 
-              <Button
-              className={classes.navbarBtn}
-              onClick={toGamesList}
-            >
-              Home
-            </Button> : 
-            <Button
-                className={classes.navbarBtn}
-                onClick={toHome}
-              >
-                All Games
-              </Button>}
+              {!isAllGames ? (
+                <Button className={classes.navbarBtn} onClick={toGamesList}>
+                  Home
+                </Button>
+              ) : (
+                <Button className={classes.navbarBtn} onClick={toHome}>
+                  All Games
+                </Button>
+              )}
               {logged ? (
                 <Button
                   className={classes.navbarBtn}
@@ -283,7 +273,6 @@ export default function PrimarySearchAppBar() {
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
-      {renderMenu}
     </>
   );
 }
