@@ -21,13 +21,16 @@
     {
       "nickname": "Tynai",
       "name": "tynai.s.95@gmail.com",
-      "password": "butylka",
+      "password": "tynai",
       "isAdmin": true,
       "cart": [
-        4
+        1
       ],
       "library": [
-        11
+        11,
+        4,
+        2,
+        1
       ],
       "id": 2
     },
@@ -46,20 +49,12 @@
     {
       "name": "Rocket League",
       "description": "Rocket League is a fantastical sport-based video game, developed by Psyonix (it's “soccer with cars”). It features a competitive game mode based on teamwork and outmaneuvering opponents. Players work with their team to advance the ball down the field, and score goals in their opponents' net.",
-      "image": "https://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
-      "video": "https://www.youtube.com/embed/OmMF9EDbmQQ",
+      "image": "http://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
+      "video": "http://www.youtube.com/embed/OmMF9EDbmQQ",
       "price": 0,
       "creator": "Psyonix LLC",
       "genre": "Sport",
       "comments": [
-        {
-          "authorNickname": "Sheva",
-          "authorMail": "sheva@gmail.com",
-          "date": "Wed Aug 11 2021 12:51:23",
-          "text": "Фууууууу",
-          "id": 1628664683336,
-          "isChanged": null
-        },
         {
           "authorNickname": "Tynai",
           "authorMail": "tynai.s.95@gmail.com",
@@ -70,7 +65,7 @@
         }
       ],
       "likes": [
-        1
+        2
       ],
       "id": 11
     },
@@ -101,14 +96,6 @@
       "name": "Minecraft",
       "creator": "Mojang",
       "comments": [
-        {
-          "authorNickname": "Genshin4ever",
-          "authorMail": "kozhon.amantay@gmail.com",
-          "date": "Thu Aug 12 2021 22:50:37",
-          "text": "Minecraft is the best game",
-          "id": 1628787037351,
-          "isChanged": null
-        }
       ],
       "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
       "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
@@ -318,7 +305,24 @@
       "price": 8,
       "creator": "PopCap Games",
       "genre": "Shooter",
-      "comments": [],
+      "comments": [
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Fri Aug 13 2021 10:51:53",
+          "text": "qsdwewfgerdgefwedw",
+          "id": 1628830313514,
+          "isChanged": null
+        },
+        {
+          "authorNickname": "Tynai",
+          "authorMail": "tynai.s.95@gmail.com",
+          "date": "Fri Aug 13 2021 10:51:55",
+          "text": "qsdwewfgerdgefwedw",
+          "id": 1628830315655,
+          "isChanged": null
+        }
+      ],
       "likes": [],
       "id": 16
     },

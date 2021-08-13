@@ -1,5 +1,6 @@
 import { makeStyles, TextField } from "@material-ui/core";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
+import { Button } from "bootstrap";
 import React from "react";
 import { useState } from "react";
 import { useGames } from "../../contexts/GameContext";
@@ -78,6 +79,12 @@ const useStyles = makeStyles(() => ({
     display: "flex",
     alignItems: "center",
   },
+  addComment:{
+    backgroundColor: "inherit",
+    backgroundColor: "green",
+    borderRadius: "5px",
+    marginBottom: "10px",
+  }
 }));
 
 const GameComments = () => {
@@ -86,6 +93,7 @@ const GameComments = () => {
   const [editingComment, setEditingComment] = useState();
   const [curId, setCurId] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [isAdding,setIsAdding] = useState(false)
   const { gameDetails, toggleComment } = useGames();
   const classes = useStyles();
   const sendComment = async (comment) => {
@@ -148,7 +156,7 @@ const GameComments = () => {
           <h5 className={classes.inpColor}>Comments:</h5>
           <div className={classes.inputDiv}>
             <div className={classes.inpAndArrowDiv}>
-              <TextField
+             {isAdding ? <><TextField
                 InputProps={{
                   className: classes.inpColor,
                 }}
@@ -164,13 +172,13 @@ const GameComments = () => {
                 label="Add Comment"
                 variant="filled"
                 onChange={(e) => setNewComment(e.target.value)}
-              />
-              <ArrowForwardRoundedIcon
-                className={classes.arrow}
-                onClick={(e) => {
-                  sendComment(newComment, e);
-                }}
-              />
+              /><ArrowForwardRoundedIcon
+              className={classes.arrow}
+              onClick={(e) => {
+                sendComment(newComment, e);
+                setIsAdding(!isAdding)
+              }}
+            /></> : <button onClick={() => setIsAdding(true)}  className={classes.addComment}>Add Comment</button>}
             </div>
 
             {gameDetails?.comments?.length

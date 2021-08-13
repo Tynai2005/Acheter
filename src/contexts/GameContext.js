@@ -56,9 +56,17 @@ const GameContextProvider = ({ children }) => {
   };
 
   const addNewGame = async (newGame) => {
-    await axios.post(GAMES_API, newGame);
-    await getGamesData();
-    history.push("/");
+    if(newGame.creator.trim().length > 0 && newGame.description.trim().length > 0 && newGame.genre.trim().length > 0 && newGame.image.trim().length > 0 && newGame.name.trim().length > 0  && newGame.video.trim().length > 0){
+      if(Number(newGame.price) >= 0){
+        await axios.post(GAMES_API, newGame);
+        await getGamesData();
+        history.push('/gameslist');
+      }else{
+        alert('The price cannot be negative')
+      }
+    }else{
+        alert('Fill all the fields')
+      }
   };
 
   const deleteGame = async (id) => {
@@ -91,9 +99,18 @@ const GameContextProvider = ({ children }) => {
 
   const saveEditedGame = async (id, editedGame) => {
     console.log(editedGame);
-    const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
-    toggleModal();
-    getGamesData();
+    if(editedGame?.creator?.length > 0 && editedGame?.description?.length > 0 && editedGame?.genre?.length > 0 && editedGame?.image?.length > 0 && editedGame?.name?.length > 0  && editedGame?.video?.length > 0){
+      if(Number(editedGame.price) >= 0){
+        const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
+        toggleModal();
+        getGamesData();
+      }else{
+        alert('The price cannot be negative')
+      }
+    }else{
+        alert('Fill all the fields')
+    }
+
   };
 
   const toggleComment = async (id, editedGame) => {

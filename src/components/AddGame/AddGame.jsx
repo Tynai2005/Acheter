@@ -216,7 +216,6 @@ const AddGame = () => {
         </Button>
         <Button
           onClick={() => {
-            console.log(gameInfo);
             addNewGame(gameInfo);
           }}
           className={classes.btns}
