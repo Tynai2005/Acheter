@@ -6,7 +6,7 @@
       "password": "coolboy2005",
       "isAdmin": true,
       "cart": [],
-      "library": [1, 2, 3, 4, 5, 12],
+      "library": [],
       "id": 1
     },
     {
@@ -14,8 +14,10 @@
       "name": "tynai.s.95@gmail.com",
       "password": "tynai",
       "isAdmin": true,
-      "cart": [1],
-      "library": [11, 4, 2, 1],
+      "cart": [],
+      "library": [
+        5
+      ],
       "id": 2
     },
     {
@@ -33,7 +35,11 @@
       "name": "123@gmail.com",
       "password": "123",
       "cart": [],
-      "library": [3, 5, 2],
+      "library": [
+        2,
+        11,
+        5
+      ],
       "isAdmin": false,
       "passwordSec": "123",
       "id": 4
@@ -56,56 +62,29 @@
           "text": "defrgtrhythyrterf",
           "id": 1628751565301,
           "isChanged": null
-        }
-      ],
-      "likes": [2],
-      "id": 1
-    },
-    {
-      "name": "ARK: Survival Evolved",
-      "description": "Ark: Survival Evolved is a sandbox survival game developed and published by Studio Wildcard. Players are stranded on a lush tropical island inhabited by mammoth dinosaurs. Survive by scavenging resources to craft tools and build a home to withstand the elements. Pick seeds and plant them, collecting dinosaur excrement to fertilize your farm. Or build improvised weapons to hunt prehistoric beasts for their hides and meat. As you play you level up in RPG-fashion, earning points to increase your stats and unlocking new craftable items. Tame ancient reptiles with food to assist you as pack mules, or ride them to fly, swim, and run faster across the sprawling landscape. Every animal in Ark obeys a predatorial hierarchy and wanders a specific ecosystem; tamed Dodo birds won’t do much good against a pack of velociraptors. While dinosaurs pose a threat, it’s humans who will kill you without mercy or provocation. Join a tribe with other players and create a thriving community, sharing resources and working together to survive. Or, raid other tribes for loot, in fast-paced and brutal PvP.",
-      "image": "https://vistapointe.net/images/ark-survival-evolved-3.jpg",
-      "video": "https://www.youtube.com/embed/FW9vsrPWujI",
-      "price": 30,
-      "creator": "Studio Wildcard",
-      "genre": "Survival",
-      "comments": [
+        },
         {
-          "authorNickname": "Genshin4ever",
-          "authorMail": "kozhon.amantay@gmail.com",
-          "date": "Thu Aug 12 2021 15:58:32",
-          "text": "wadwadaw",
-          "id": 1628762312606,
+          "authorNickname": "aha",
+          "authorMail": "aha@gmail.com",
+          "date": "Fri Aug 13 2021 18:58:45",
+          "text": "awdgawdhakuwd",
+          "id": 1628859525725,
           "isChanged": null
-        }
-      ],
-      "likes": [2],
-      "id": 2
-    },
-    {
-      "name": "Minecraft",
-<<<<<<< HEAD
-      "comments": [
+        },
         {
           "authorNickname": "Tynai",
           "authorMail": "tynai.s.95@gmail.com",
-          "date": "Mon Aug 09 2021 15:35:42",
-          "text": "Amantay lox loxovich",
-          "id": 1628501742736,
-          "isChanged": " (changed)"
+          "date": "Mon Aug 16 2021 20:58:12",
+          "text": "uybhkjml,;",
+          "id": 1629125892110,
+          "isChanged": null
         }
       ],
-=======
-      "creator": "Mojang",
-      "comments": [],
->>>>>>> 3249b028cdc89997ed2144e10812566572380649
-      "description": "Minecraft is a video game in which players create and break apart various kinds of blocks in three-dimensional worlds. The game's two main modes are Survival and Creative. In Survival, players must find their own building supplies and food. They also interact with blocklike mobs, or moving creatures.",
-      "image": "https://images4.alphacoders.com/112/thumb-1920-1128578.jpg",
-      "video": "https://www.youtube.com/embed/0G1hVQxkTBE",
-      "price": 20,
-      "genre": "Sandbox",
-      "likes": [3, 1],
-      "id": 3
+      "likes": [
+        2,
+        5
+      ],
+      "id": 11
     },
     {
       "name": "Witcher III",
@@ -125,29 +104,22 @@
       "video": "https://www.youtube.com/embed/c0i88t0Kacs",
       "price": 50,
       "genre": "RPG",
-      "likes": [],
-      "id": 4
+      "likes": [
+        6
+      ],
+      "id": 3
     },
     {
       "name": "Cyberpunk",
       "creator": "CD Projekt",
-      "comments": [
-        {
-          "authorNickname": "Sheva",
-          "authorMail": "sheva@gmail.com",
-          "date": "Wed Aug 11 2021 12:31:03",
-          "text": "Комментарий смертного",
-          "id": 1628663463488,
-          "isChanged": " (changed)"
-        }
-      ],
+      "comments": [],
       "description": "Cyberpunk 2077 is an open-world, action-adventure story set in Night City, a megalopolis obsessed with power, glamour and body modification. ... You can customize your character's cyberware, skillset and playstyle, and explore a vast city where the choices you make shape the story and the world around you.",
       "image": "https://static.cdprojektred.com/cms.cdprojektred.com/16x9_big/12aaa3b137a18e180bb92682e8f81674dcb7451f-1920x1080.jpg",
       "video": "https://www.youtube.com/embed/LembwKDo1Dk",
       "price": 100,
       "genre": "Open World",
       "likes": [],
-      "id": 5
+      "id": 4
     },
     {
       "name": "Skyrim",
@@ -168,7 +140,7 @@
       "price": 49,
       "genre": "RPG",
       "likes": [],
-      "id": 6
+      "id": 5
     },
     {
       "name": "Red Dead Redemption 2",
@@ -180,7 +152,7 @@
       "price": 70,
       "genre": "Open World",
       "likes": [],
-      "id": 7
+      "id": 6
     },
     {
       "name": "Dota 2",
@@ -201,7 +173,7 @@
       "price": 0,
       "genre": "MOBA",
       "likes": [],
-      "id": 8
+      "id": 7
     },
     {
       "name": "The Last of Us",
@@ -213,7 +185,7 @@
       "price": 40,
       "genre": "Survival",
       "likes": [],
-      "id": 9
+      "id": 8
     },
     {
       "name": "Genshin Impact",
@@ -234,7 +206,7 @@
         }
       ],
       "likes": [],
-      "id": 10
+      "id": 9
     },
     {
       "name": "Among us",
@@ -246,10 +218,10 @@
       "genre": "Survival",
       "comments": [],
       "likes": [],
-      "id": 11
+      "id": 10
     },
     {
-      "name": "Watch Dogs 2",
+      "name": "Watch",
       "description": "In 2016, three years after the events of Chicago, San Francisco becomes the first city to install the next generation of ctOS (central Operating System) – a computing network connecting every device together into a single system, developed by technology company Blume. Hacker Marcus Holloway, punished for a crime he did not commit through ctOS 2.0, decides to join the hacking group DedSec (composed of hackers Sitara Dhawan, Josh Sauchak, Horatio Carlin, and \"Wrench\"), and conducts an initiation test by hacking a Blume server farm to wipe his profile from the system. DedSec determines that the new ctOS can covertly harm innocent citizens across the city, and thus decides to bring about awareness of their goals through conducting a social media campaign to recruit, by exposing corruption and crimes being conducted through the system, before bringing down Blume.",
       "image": "https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/7f194f72-6f98-4bf7-81eb-fee3db8848e9/db0kgiy-df7f749e-63bb-4f2a-b08c-5a6ecec13d8c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzdmMTk0ZjcyLTZmOTgtNGJmNy04MWViLWZlZTNkYjg4NDhlOVwvZGIwa2dpeS1kZjdmNzQ5ZS02M2JiLTRmMmEtYjA4Yy01YTZlY2VjMTNkOGMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.T0mOVLXhUisKLJYk39kDLSkgeGd1BSuiJPMbMrnM3cw",
       "video": "https://www.youtube.com/embed/hh9x4NqW0Dw",
