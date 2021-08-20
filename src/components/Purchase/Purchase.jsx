@@ -10,7 +10,7 @@ import React, { useState } from "react";
 import Cards from "react-credit-cards";
 
 import "react-credit-cards/es/styles-compiled.css";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 const useStyles = makeStyles((theme) => ({
   inps: {
     margin: "10px 0",
@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Purchase = () => {
   const [open, setOpen] = useState(false);
-  const { toLibrary, history } = useGames();
+  const { toLibrary, history } = useProducts();
   const classes = useStyles();
   const [cvc, setCvc] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -178,7 +178,7 @@ const Purchase = () => {
       </form>
       <Snackbar open={open} autoHideDuration={1500} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success">
-          Game has been added to your library!
+          Product has been added to your library!
         </Alert>
       </Snackbar>
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -16,12 +16,12 @@ import {
   TextField,
   ClickAwayListener,
 } from "@material-ui/core";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 import MenuIcon from "@material-ui/icons/Menu";
 import { useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import zIndex from "@material-ui/core/styles/zIndex";
-import { useAuth } from "../../contexts/AuthContext";
+import { AuthContext, useAuth } from "../../contexts/AuthContext";
 const useStyles = makeStyles((theme) => ({
   menuBtn: {
     textDecoration: "none",
@@ -95,11 +95,11 @@ const useStyles = makeStyles((theme) => ({
   navbar: {
     display: "flex",
     justifyContent: "space-between",
-    backgroundColor: "#1a1a1a",
+    backgroundColor: "peachpuff",
     height: "20%",
   },
   appBar: {
-    backgroundColor: "#1a1a1a",
+    backgroundColor: "peachpuff",
     opacity: "90%",
   },
 
@@ -136,10 +136,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
-  const { logged } = useAuth();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { getGamesData, history, isAllGames, toHome, toGamesList } = useGames();
+  const { currentUser } = useContext(AuthContext);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+  const { getProductsData, history, isAllProducts, toHome, toProductsList } = useProducts();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -161,11 +161,11 @@ export default function PrimarySearchAppBar() {
   };
 
   const searching = (e) => {
-    history.push("/gameslist");
+    history.push("/productslist");
     const search = new URLSearchParams(history.location.search);
     search.set("q", e.target.value);
     history.push(`${history.location.pathname}?${search.toString()}`);
-    getGamesData();
+    getProductsData();
   };
 
   const menuId = "primary-search-account-menu";
@@ -184,18 +184,18 @@ export default function PrimarySearchAppBar() {
         onClose={handleMobileMenuClose}
       >
         <MenuItem>
-          {!isAllGames ? (
-            <Button className={classes.menuBtn} onClick={toGamesList}>
+          {!isAllProducts ? (
+            <Button className={classes.menuBtn} onClick={toProductsList}>
               Home
             </Button>
           ) : (
             <Button className={classes.menuBtn} onClick={toHome}>
-              All Games
+              All Products
             </Button>
           )}
         </MenuItem>
         <MenuItem>
-          {logged ? (
+          {currentUser ? (
             <Button
               className={classes.menuBtn}
               onClick={() => history.push("/library")}
@@ -217,16 +217,16 @@ export default function PrimarySearchAppBar() {
         <Toolbar className={classes.navbar}>
           <div className={classes.navbarSel}>
             <div className={classes.sectionDesktop}>
-              {!isAllGames ? (
-                <Button className={classes.navbarBtn} onClick={toGamesList}>
+              {!isAllProducts ? (
+                <Button className={classes.navbarBtn} onClick={toProductsList}>
                   Home
                 </Button>
               ) : (
                 <Button className={classes.navbarBtn} onClick={toHome}>
-                  All Games
+                  All Products
                 </Button>
               )}
-              {logged ? (
+              {currentUser ? (
                 <Button
                   className={classes.navbarBtn}
                   onClick={() => history.push("/library")}

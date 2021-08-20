@@ -1,27 +1,23 @@
 import React, { useEffect } from "react";
-
 import CarouselSlide from "../CarouselSlide/CarouselSlide";
 import { Link } from "react-router-dom";
-import { useGames } from "../../contexts/GameContext";
-import EditGame from "../EditGame.jsx/EditGame";
-
-import GamesListPreview from "../GamesListPreview/GamesListPreview";
-
+import { useProducts } from "../../contexts/ProductContext";
+import EditProduct from "../EditProduct/EditProduct";
+import ProductsListPreview from "../ProductsListPreview/ProductsListPreview";
 import { Container } from "@material-ui/core";
-import { Button } from "bootstrap";
-import FreeGames from "../FreeGames/FreeGames";
+import FreeProducts from "../FreeProducts/FreeProducts";
 
 const Home = () => {
-  const { modal } = useGames();
+  const { modal } = useProducts();
   return (
     <Container>
       <CarouselSlide />
 
-      {modal ? <EditGame /> : null}
+      {modal ? <EditProduct /> : null}
 
-      <GamesListPreview />
+      <ProductsListPreview />
 
-      <FreeGames />
+      <FreeProducts />
     </Container>
   );
 };

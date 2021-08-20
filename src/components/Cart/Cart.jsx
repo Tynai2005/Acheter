@@ -9,9 +9,9 @@ import axios from "axios";
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
+import { PRODUCTS_API, JSON_API_USERS } from "../../helper/consts";
 import DeleteIcon from "@material-ui/icons/Delete";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 
 const useStyles = makeStyles((theme) => ({
   text: {
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
   deleteBtn: {
     color: "white",
   },
-  noGame: {
+  noProduct: {
     color: "white",
     height: "80vh",
     textAlign: "center",
@@ -62,48 +62,48 @@ const useStyles = makeStyles((theme) => ({
 }));
 const Cart = () => {
   const classes = useStyles();
-  const [cartGames, setCartGames] = useState([]);
+  const [cartProducts, setCartProducts] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
-  const { deleteCartGame, history } = useGames();
+  const { deleteCartProduct, history } = useProducts();
   let cart = [];
 
-  const getGameFromCart = async () => {
+  const getProductFromCart = async () => {
     const curUser = JSON.parse(localStorage.getItem("user"));
-    const gamesData = await axios(GAMES_API);
+    const productsData = await axios(PRODUCTS_API);
     let sum = 0;
-    gamesData.data.map((game) => {
-      curUser.cart.map((gameId) => {
-        if (game.id == gameId) {
-          cart.push(game);
-          sum += game.price;
+    productsData.data.map((product) => {
+      curUser.cart.map((productId) => {
+        if (product.id == productId) {
+          cart.push(product);
+          sum += product.price;
           setTotalPrice(sum);
         }
       });
     });
-    setCartGames(cart);
+    setCartProducts(cart);
   };
   useEffect(() => {
-    getGameFromCart();
+    getProductFromCart();
     window.scrollTo(0, 0);
   }, []);
 
   return (
     <>
-      {cartGames.length > 0 ? (
+      {cartProducts.length > 0 ? (
         <Container className={classes.main}>
           <h2 className={classes.title}>Your cart</h2>
-          {cartGames.map((game) => (
+          {cartProducts.map((product) => (
             <Container className={classes.container}>
               <Grid className={classes.grids}>
-                <img src={game.image} className={classes.img} />
-                <div className={classes.text}>{game.name}</div>
+                <img src={product.image} className={classes.img} />
+                <div className={classes.text}>{product.name}</div>
               </Grid>
               <Grid className={classes.grids}>
-                <div className={classes.price}>{game.price}$</div>
+                <div className={classes.price}>{product.price}$</div>
                 <IconButton
                   onClick={async () => {
-                    await deleteCartGame(game.id);
-                    getGameFromCart();
+                    await deleteCartProduct(product.id);
+                    getProductFromCart();
                   }}
                 >
                   <DeleteIcon className={classes.deleteBtn} />
@@ -122,7 +122,7 @@ const Cart = () => {
           </Grid>
         </Container>
       ) : (
-        <h2 className={classes.noGame}>There isn't games in your cart</h2>
+        <h2 className={classes.noProduct}>There isn't products in your cart</h2>
       )}
     </>
   );

@@ -1,3 +1,4 @@
+
 import {
   Button,
   Container,
@@ -7,8 +8,10 @@ import {
   TextField,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import React, { useCallback, useState,useContext } from "react";
+import { withRouter, Redirect } from "react-router";
+import {app} from "../../base";
+import { AuthContext } from "../../contexts/AuthContext";
 import { Link } from "react-router-dom";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
@@ -47,9 +50,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const LogIn = () => {
+// const LogIn = () => {
+//   const classes = useStyles();
+//   const {
+//     login,
+//     exist,
+//     visible,
+//     handleVisible,
+//     typePass,
+//     handleInpType,
+//     history,
+//   } = useContext(AuthContext);
+//   const [newUser, setNewUser] = useState({
+//     nickname: "",
+//     name: "",
+//     password: "",
+//     cart: [],
+//     library: [],
+//     isAdmin: false,
+//     id: "", 
+//   });
+
+
+const Login = () => {
+
   const classes = useStyles();
-  const {
+
+    const {
     login,
     exist,
     visible,
@@ -57,7 +84,8 @@ const LogIn = () => {
     typePass,
     handleInpType,
     history,
-  } = useAuth();
+  } = useContext(AuthContext);
+
   const [newUser, setNewUser] = useState({
     nickname: "",
     name: "",
@@ -65,8 +93,22 @@ const LogIn = () => {
     cart: [],
     library: [],
     isAdmin: false,
-    id: "",
+    id: "", 
   });
+
+  const handleLogin = async (event) => {
+      event.preventDefault();
+      try {
+        await app
+          .auth()
+          .signInWithEmailAndPassword(newUser.name, newUser.password);
+        history.push("/");
+      } catch (error) {
+        alert(error);
+      }
+    };
+
+  const { currentUser } = useContext(AuthContext);
 
   return (
     <Container component="main" maxWidth="xs">
@@ -147,7 +189,7 @@ const LogIn = () => {
               className={classes.btns}
               variant="contained"
               color="primary"
-              onClick={() => login(newUser)}
+              onClick={(e) => handleLogin(e)}
             >
               Log in
             </Button>
@@ -158,4 +200,4 @@ const LogIn = () => {
   );
 };
 
-export default LogIn;
+export default Login;

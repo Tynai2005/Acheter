@@ -2,26 +2,26 @@ import { makeStyles } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 const useStyles = makeStyles((theme) => ({
   modalMarg: {
     marginTop: "40px",
   },
 }));
-const EditGame = () => {
-  const { modal, gameDetails, saveEditedGame, toggleModal } = useGames();
+const EditProduct = () => {
+  const { modal, productDetails, saveEditedProduct, toggleModal } = useProducts();
   const [priceRadios, setPriceRadios] = useState(false);
   const classes = useStyles();
-  let [editedGame, setEditedGame] = useState({
-    name: gameDetails.name,
-    description: gameDetails.description,
-    creator: gameDetails.creator,
-    image: gameDetails.image,
-    video: gameDetails.video,
-    price: gameDetails.price,
-    genre: gameDetails.genre,
-    comments: gameDetails.comments,
-    likes: gameDetails.likes,
+  let [editedProduct, setEditedProduct] = useState({
+    name: productDetails.name,
+    description: productDetails.description,
+    creator: productDetails.creator,
+    image: productDetails.image,
+    video: productDetails.video,
+    price: productDetails.price,
+    genre: productDetails.genre,
+    comments: productDetails.comments,
+    likes: productDetails.likes,
   });
 
   return (
@@ -33,67 +33,67 @@ const EditGame = () => {
         <div>
           <input
             onChange={(e) => {
-              setEditedGame({ ...editedGame, name: e.target.value });
-              gameDetails.name = e.target.value;
+              setEditedProduct({ ...editedProduct, name: e.target.value });
+              productDetails.name = e.target.value;
             }}
             type="text"
             name=""
             id=""
             placeholder="Name"
-            value={gameDetails.name}
+            value={productDetails.name}
           />
         </div>
         <div>
           <input
             onChange={(e) => {
-              setEditedGame({ ...editedGame, creator: e.target.value });
-              gameDetails.creator = e.target.value;
+              setEditedProduct({ ...editedProduct, creator: e.target.value });
+              productDetails.creator = e.target.value;
             }}
             type="text"
             name=""
             id=""
             placeholder="Creator"
-            value={gameDetails.creator}
+            value={productDetails.creator}
           />
         </div>
         <div>
           <input
             onChange={(e) => {
-              setEditedGame({ ...editedGame, description: e.target.value });
-              gameDetails.description = e.target.value;
+              setEditedProduct({ ...editedProduct, description: e.target.value });
+              productDetails.description = e.target.value;
             }}
             type="text"
             name=""
             id=""
             placeholder="Description"
-            value={gameDetails.description}
+            value={productDetails.description}
           />
         </div>
         <div>
           <textarea
             onChange={(e) => {
-              setEditedGame({ ...editedGame, video: e.target.value });
-              gameDetails.video = e.target.value;
+              setEditedProduct({ ...editedProduct, video: e.target.value });
+              productDetails.video = e.target.value;
             }}
             style={{ width: "189px" }}
             type="text"
             name=""
             id=""
             placeholder="Trailer"
-            value={gameDetails.video}
+            value={productDetails.video}
           />
         </div>
         <div>
           <input
             onChange={(e) => {
-              setEditedGame({ ...editedGame, image: e.target.value });
-              gameDetails.image = e.target.value;
+              setEditedProduct({ ...editedProduct, image: e.target.value });
+              productDetails.image = e.target.value;
             }}
             type="text"
             name=""
             id=""
             placeholder="Phono"
-            value={gameDetails.image}
+            value={productDetails.image}
           />
         </div>
 
@@ -101,14 +101,14 @@ const EditGame = () => {
           <div>
             <input
               onChange={(e) => {
-                setEditedGame({ ...editedGame, price: Number(e.target.value) });
-                gameDetails.price = e.target.value;
+                setEditedProduct({ ...editedProduct, price: Number(e.target.value) });
+                productDetails.price = e.target.value;
               }}
               type="number"
               name=""
               id=""
               placeholder="Price"
-              value={gameDetails.price}
+              value={productDetails.price}
             />
             <br />
           </div>
@@ -119,7 +119,7 @@ const EditGame = () => {
             name="priceRadio"
             id=""
             onChange={() => {
-              setEditedGame({ ...editedGame, price: Number(0) });
+              setEditedProduct({ ...editedProduct, price: Number(0) });
               setPriceRadios(!priceRadios);
             }}
           />
@@ -127,14 +127,14 @@ const EditGame = () => {
         </div>
         <div>
           <div>
-            Choose game genre:
+            Choose product genre:
             <div>
               <input
                 type="radio"
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "RPG" });
+                  setEditedProduct({ ...editedProduct, genre: "RPG" });
                 }}
               />
               RPG
@@ -145,7 +145,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "Survival" });
+                  setEditedProduct({ ...editedProduct, genre: "Survival" });
                 }}
               />
               Survival
@@ -156,7 +156,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "Sandbox" });
+                  setEditedProduct({ ...editedProduct, genre: "Sandbox" });
                 }}
               />
               Sandbox
@@ -167,7 +167,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "Shooter" });
+                  setEditedProduct({ ...editedProduct, genre: "Shooter" });
                 }}
               />
               Shooter
@@ -178,7 +178,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "Fighting" });
+                  setEditedProduct({ ...editedProduct, genre: "Fighting" });
                 }}
               />
               Fighting
@@ -189,7 +189,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "MOBA" });
+                  setEditedProduct({ ...editedProduct, genre: "MOBA" });
                 }}
               />
               MOBA
@@ -200,7 +200,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "Sport" });
+                  setEditedProduct({ ...editedProduct, genre: "Sport" });
                 }}
               />
               Sport
@@ -211,7 +211,7 @@ const EditGame = () => {
                 name="genreRadio"
                 id=""
                 onChange={() => {
-                  setEditedGame({ ...editedGame, genre: "Open World" });
+                  setEditedProduct({ ...editedProduct, genre: "Open World" });
                 }}
               />
               Open World
@@ -225,7 +225,7 @@ const EditGame = () => {
         </Button>
         <Button
           variant="primary"
-          onClick={() => saveEditedGame(gameDetails.id, editedGame)}
+          onClick={() => saveEditedProduct(productDetails.id, editedProduct)}
         >
           Save Changes
         </Button>
@@ -234,4 +234,4 @@ const EditGame = () => {
   );
 };
 
-export default EditGame;
+export default EditProduct;

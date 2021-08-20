@@ -14,9 +14,13 @@
       "name": "tynai.s.95@gmail.com",
       "password": "tynai",
       "isAdmin": true,
-      "cart": [],
+      "cart": [
+        3
+      ],
       "library": [
-        5
+        5,
+        null,
+        null
       ],
       "id": 2
     },
@@ -45,10 +49,10 @@
       "id": 4
     }
   ],
-  "games": [
+  "products": [
     {
       "name": "Rocket League",
-      "description": "Rocket League is a fantastical sport-based video game, developed by Psyonix (it's “soccer with cars”). It features a competitive game mode based on teamwork and outmaneuvering opponents. Players work with their team to advance the ball down the field, and score goals in their opponents' net.",
+      "description": "Rocket League is a fantastical sport-based video product, developed by Psyonix (it's “soccer with cars”). It features a competitive product mode based on teamwork and outmaneuvering opponents. Players work with their team to advance the ball down the field, and score goals in their opponents' net.",
       "image": "http://sm.ign.com/ign_ru/screenshot/default/83a8ed68-9712-4253-8365-5098d87df493_qw6g.jpg",
       "video": "http://www.youtube.com/embed/OmMF9EDbmQQ",
       "price": 0,
@@ -94,12 +98,12 @@
           "authorNickname": "Genshin4ever",
           "authorMail": "kozhon.amantay@gmail.com",
           "date": "Wed Aug 11 2021 13:56:30",
-          "text": "I dont like this game, it is so govno",
+          "text": "I dont like this product, it is so govno",
           "id": 1628668590259,
           "isChanged": null
         }
       ],
-      "description": "The Witcher 3: Wild Hunt is an action role-playing game with a third-person perspective. Players control Geralt of Rivia, a monster slayer known as a Witcher. Geralt walks, runs, rolls and dodges, and (for the first time in the series) jumps, climbs and swims. He has a variety of weapons, including bombs, a crossbow and two swords (one steel and one silver). The steel sword is used primarily to kill humans while the silver sword is more effective against creatures and monsters. Players can draw out, switch and sheathe their swords at will. There are two modes of melee attack; light attacks are fast but weak, and heavy attacks are slow but strong. Players can block and counter enemy attacks with their swords. Swords have limited endurance and require regular repair. In addition to physical attacks, Geralt has five magical signs at his disposal: Aard, Axii, Igni, Yrden and Quen. Aard prompts Geralt to unleash a telekinetic blast, Axii confuses enemies, Igni burns them, Yrden slows them down and Quen offers players a temporary, protective shield. The signs use stamina, and cannot be used indefinitely. Players can use mutagens to increase Geralt's magic power. Geralt loses health when attacked by enemies, although wearing armour can help reduce health loss. Health is restored with meditation or consumables, such as food and potions. Players occasionally control Ciri, Geralt's adoptive daughter who can teleport short distances.",
+      "description": "The Witcher 3: Wild Hunt is an action role-playing product with a third-person perspective. Players control Geralt of Rivia, a monster slayer known as a Witcher. Geralt walks, runs, rolls and dodges, and (for the first time in the series) jumps, climbs and swims. He has a variety of weapons, including bombs, a crossbow and two swords (one steel and one silver). The steel sword is used primarily to kill humans while the silver sword is more effective against creatures and monsters. Players can draw out, switch and sheathe their swords at will. There are two modes of melee attack; light attacks are fast but weak, and heavy attacks are slow but strong. Players can block and counter enemy attacks with their swords. Swords have limited endurance and require regular repair. In addition to physical attacks, Geralt has five magical signs at his disposal: Aard, Axii, Igni, Yrden and Quen. Aard prompts Geralt to unleash a telekinetic blast, Axii confuses enemies, Igni burns them, Yrden slows them down and Quen offers players a temporary, protective shield. The signs use stamina, and cannot be used indefinitely. Players can use mutagens to increase Geralt's magic power. Geralt loses health when attacked by enemies, although wearing armour can help reduce health loss. Health is restored with meditation or consumables, such as food and potions. Players occasionally control Ciri, Geralt's adoptive daughter who can teleport short distances.",
       "image": "https://www.ixbt.com/img/n1/news/2021/6/6/E531CN9WQAMmK-h_large.jpg",
       "video": "https://www.youtube.com/embed/c0i88t0Kacs",
       "price": 50,
@@ -123,7 +127,7 @@
     },
     {
       "name": "Skyrim",
-      "creator": "Bethesda Game Studios",
+      "creator": "Bethesda Product Studios",
       "comments": [
         {
           "authorNickname": "Genshin4ever",
@@ -134,7 +138,7 @@
           "isChanged": null
         }
       ],
-      "description": "The game's main story revolves around the player's character, the Dragonborn, on their quest to defeat Alduin the World-Eater, a dragon who is prophesied to destroy the world. The game is set 200 years after the events of Oblivion and takes place in Skyrim, the northernmost province of Tamriel.",
+      "description": "The product's main story revolves around the player's character, the Dragonborn, on their quest to defeat Alduin the World-Eater, a dragon who is prophesied to destroy the world. The product is set 200 years after the events of Oblivion and takes place in Skyrim, the northernmost province of Tamriel.",
       "image": "https://wallpaperchat.com/walls/full/2/7/5/1424570.jpg",
       "video": "https://www.youtube.com/embed/JSRtYpNRoN0",
       "price": 49,
@@ -144,9 +148,9 @@
     },
     {
       "name": "Red Dead Redemption 2",
-      "creator": "Rockstar Games",
+      "creator": "Rockstar Products",
       "comments": [],
-      "description": "Set in a fictional recreation of the American Old West in 1899, Red Dead Redemption 2 focuses on the life of Arthur Morgan and his position in the notorious Van der Linde gang. The game follows the gang's decline as they are pursued by lawmen, fellow gangs and Pinkerton agents.",
+      "description": "Set in a fictional recreation of the American Old West in 1899, Red Dead Redemption 2 focuses on the life of Arthur Morgan and his position in the notorious Van der Linde gang. The product follows the gang's decline as they are pursued by lawmen, fellow gangs and Pinkerton agents.",
       "image": "https://compass-ssl.xbox.com/assets/64/02/6402981a-9446-46d8-8289-e370f3158746.jpg?n=Red-Dead-Redemption-II_GLP-Page-Hero-1084_1920x1080.jpg",
       "video": "https://www.youtube.com/embed/eaW0tYpxyp0",
       "price": 70,
@@ -167,7 +171,7 @@
           "isChanged": null
         }
       ],
-      "description": "Dota 2 is a multiplayer online battle arena (MOBA) video game in which two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \"Ancient\", whilst defending their own.",
+      "description": "Dota 2 is a multiplayer online battle arena (MOBA) video product in which two teams of five players compete to collectively destroy a large structure defended by the opposing team known as the \"Ancient\", whilst defending their own.",
       "image": "https://dmarket.com/blog/best-dota2-wallpapers/dota2heroes2_hu09790f4d5057803e423e71fe0fc10c90_842974_1920x1080_resize_q75_lanczos.jpg",
       "video": "https://www.youtube.com/embed/-cSFPIwMEq4",
       "price": 0,
@@ -179,7 +183,7 @@
       "name": "The Last of Us",
       "creator": "Naughty Dog",
       "comments": [],
-      "description": "The Last of Us is an action-adventure survival horror game played from a third-person perspective. The player traverses post-apocalyptic environments such as towns, buildings, forests, and sewers to advance the story.",
+      "description": "The Last of Us is an action-adventure survival horror product played from a third-person perspective. The player traverses post-apocalyptic environments such as towns, buildings, forests, and sewers to advance the story.",
       "image": "https://images7.alphacoders.com/446/thumb-1920-446464.jpg",
       "video": "https://www.youtube.com/embed/W01L70IGBgE",
       "price": 40,
@@ -200,7 +204,7 @@
           "authorNickname": "Genshin4ever",
           "authorMail": "kozhon.amantay@gmail.com",
           "date": "Mon Aug 09 2021 17:13:23",
-          "text": "This is the best game I've ever played!!! Everyone have to try this game!!! GENSHIN4EVER <333333",
+          "text": "This is the best product I've ever played!!! Everyone have to try this product!!! GENSHIN4EVER <333333",
           "id": 1628507603023,
           "isChanged": " (changed)"
         }
@@ -210,7 +214,7 @@
     },
     {
       "name": "Among us",
-      "description": "Among Us is a 2018 online multiplayer social deduction game developed and published by American game studio Innersloth. ... The game takes place in a space-themed setting, in which players each take on one of two roles, most being Crewmates, and a predetermined number being Impostors.",
+      "description": "Among Us is a 2018 online multiplayer social deduction product developed and published by American product studio Innersloth. ... The product takes place in a space-themed setting, in which players each take on one of two roles, most being Crewmates, and a predetermined number being Impostors.",
       "image": "https://images3.alphacoders.com/115/1151761.png",
       "video": "https://www.youtube.com/embed/NSJ4cESNQfE",
       "price": 3,
@@ -234,7 +238,7 @@
     },
     {
       "name": "Apex Legends",
-      "description": "Apex Legends is an online multiplayer battle royale game featuring squads of three players using pre-made characters with distinctive abilities, called \"Legends\", similar to those of hero shooters. Alternate modes have been introduced allowing for single and for two-player squads since the game's release.",
+      "description": "Apex Legends is an online multiplayer battle royale product featuring squads of three players using pre-made characters with distinctive abilities, called \"Legends\", similar to those of hero shooters. Alternate modes have been introduced allowing for single and for two-player squads since the product's release.",
       "image": "https://images6.alphacoders.com/992/thumb-1920-992033.jpg",
       "video": "https://www.youtube.com/embed/oshvcDjEKZc",
       "price": 0,
@@ -246,7 +250,7 @@
     },
     {
       "name": "Counter Strike: GO",
-      "description": "Counter-Strike: Global Offensive (CS:GO) is a multiplayer first-person shooter developed by Valve and Hidden Path Entertainment. It is the fourth game in the Counter-Strike series. ... The game pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based game modes.",
+      "description": "Counter-Strike: Global Offensive (CS:GO) is a multiplayer first-person shooter developed by Valve and Hidden Path Entertainment. It is the fourth product in the Counter-Strike series. ... The product pits two teams, Terrorists and Counter-Terrorists, against each other in different objective-based product modes.",
       "image": "https://www.mithesports.com/wp-content/uploads/2015/09/CSGO.jpg",
       "video": "https://www.youtube.com/embed/edYCtaNueQY",
       "price": 5,
@@ -258,11 +262,11 @@
     },
     {
       "name": "Grand Theft Auto V",
-      "description": "Grand Theft Auto V is an action-adventure game played from either a third-person or first-person perspective. Players complete missions—linear scenarios with set objectives—to progress through the story. Outside of the missions, players may freely roam the open world.",
+      "description": "Grand Theft Auto V is an action-adventure product played from either a third-person or first-person perspective. Players complete missions—linear scenarios with set objectives—to progress through the story. Outside of the missions, players may freely roam the open world.",
       "image": "https://akket.com/wp-content/uploads/2021/08/GTA-V-vyshla-besplatno-dlya-ustroi-stv-na-Android-i-iOS-1.jpg",
       "video": "https://www.youtube.com/embed/QkkoHAzjnUs",
       "price": 50,
-      "creator": "Rockstar Games",
+      "creator": "Rockstar Products",
       "genre": "Open World",
       "comments": [],
       "likes": [],
@@ -270,11 +274,11 @@
     },
     {
       "name": "Plants vs Zombies",
-      "description": "Tower defense game (Mainline games) Third-person shooter (Garden Warfare games) Digital collectible card game (Plants vs. Zombies Heroes)",
+      "description": "Tower defense product (Mainline products) Third-person shooter (Garden Warfare products) Digital collectible card product (Plants vs. Zombies Heroes)",
       "image": "https://images6.alphacoders.com/530/thumb-1920-530939.jpg",
       "video": "https://www.youtube.com/embed/CHAbHz8iYHc",
       "price": 8,
-      "creator": "PopCap Games",
+      "creator": "PopCap Products",
       "genre": "Shooter",
       "comments": [
         {
@@ -299,14 +303,16 @@
     },
     {
       "name": "Final Fantasy VII: Remake",
-      "description": "Final Fantasy VII Remake is a 2020 action role-playing game developed and published by Square Enix. It is the first in a planned series of games remaking the 1997 PlayStation game Final Fantasy VII. Set in the dystopian cyberpunk metropolis of Midgar, players control mercenary Cloud Strife.",
+      "description": "Final Fantasy VII Remake is a 2020 action role-playing product developed and published by Square Enix. It is the first in a planned series of products remaking the 1997 PlayStation product Final Fantasy VII. Set in the dystopian cyberpunk metropolis of Midgar, players control mercenary Cloud Strife.",
       "image": "https://lordsofgaming.net/wp-content/uploads/2020/01/thumb-1920-928770.jpg",
       "video": "https://www.youtube.com/embed/ERgrFVhL-n4",
       "price": 50,
       "creator": "Square Enix",
       "genre": "RPG",
       "comments": [],
-      "likes": [],
+      "likes": [
+        null
+      ],
       "id": 17
     }
   ],

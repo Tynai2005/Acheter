@@ -2,7 +2,7 @@ import { makeStyles, TextField, Button } from "@material-ui/core";
 import ArrowForwardRoundedIcon from "@material-ui/icons/ArrowForwardRounded";
 import React from "react";
 import { useState } from "react";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 
 const useStyles = makeStyles(() => ({
   commentsInnerContainer: {
@@ -87,14 +87,14 @@ const useStyles = makeStyles(() => ({
   },
 }));
 
-const GameComments = () => {
+const ProductComments = () => {
   const [newComment, setNewComment] = useState("");
   const [addingComment, setAddingComment] = useState();
   const [editingComment, setEditingComment] = useState();
   const [curId, setCurId] = useState("");
   const [isEditing, setIsEditing] = useState(false);
   const [isAdding, setIsAdding] = useState(false);
-  const { gameDetails, toggleComment } = useGames();
+  const { productDetails, toggleComment } = useProducts();
   const classes = useStyles();
   const sendComment = async (comment) => {
     if (comment.trim()) {
@@ -106,24 +106,24 @@ const GameComments = () => {
         id: Date.now(),
         isChanged: null,
       };
-      gameDetails.comments.push(createdComment);
-      toggleComment(gameDetails.id, gameDetails);
+      productDetails.comments.push(createdComment);
+      toggleComment(productDetails.id, productDetails);
     } else {
       alert("Comment cannot be empty");
     }
   };
 
   const deleteComment = async (removableComment) => {
-    const newComments = gameDetails.comments.filter(
+    const newComments = productDetails.comments.filter(
       (comment) => comment.id != removableComment.id
     );
-    gameDetails.comments = newComments;
-    toggleComment(gameDetails.id, gameDetails);
+    productDetails.comments = newComments;
+    toggleComment(productDetails.id, productDetails);
   };
 
   const saveEditedComment = async (id) => {
     if (editingComment.trim()) {
-      const newComments = await gameDetails.comments.map((comment) => {
+      const newComments = await productDetails.comments.map((comment) => {
         if (comment.id == id) {
           if (!comment.isChanged) {
             return {
@@ -141,8 +141,8 @@ const GameComments = () => {
         }
         return comment;
       });
-      gameDetails.comments = newComments;
-      await toggleComment(gameDetails.id, gameDetails);
+      productDetails.comments = newComments;
+      await toggleComment(productDetails.id, productDetails);
       setIsEditing(false);
     } else {
       alert("Comment cannot be empty");
@@ -193,8 +193,8 @@ const GameComments = () => {
               )}
             </div>
 
-            {gameDetails?.comments?.length
-              ? gameDetails?.comments?.map((comment) => {
+            {productDetails?.comments?.length
+              ? productDetails?.comments?.map((comment) => {
                   return (
                     <div className={classes.usersComment}>
                       <h5>{comment.authorNickname}</h5>
@@ -275,4 +275,4 @@ const GameComments = () => {
   );
 };
 
-export default GameComments;
+export default ProductComments;

@@ -7,12 +7,13 @@ import {
   IconButton,
   Typography,
 } from "@material-ui/core";
-import React, { useState } from "react";
-import { useAuth } from "../../contexts/AuthContext";
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import VisibilityOffIcon from "@material-ui/icons/VisibilityOff";
-import { useHistory } from "react-router-dom";
-import { useGames } from "../../contexts/GameContext";
+import { withRouter } from "react-router";
+import {app} from "../../base";
+
 const useStyles = makeStyles((theme) => ({
   btns: {
     backgroundColor: "#0099ff",
@@ -40,26 +41,41 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const SignUp = () => {
-  const classes = useStyles();
-  const {
-    regUser,
-    visible,
-    handleVisible,
-    typePass,
-    handleInpType,
-    setVisible,
-    setInpType,
-    history,
-  } = useAuth();
-  const [newUser, setNewUser] = useState({
-    nickname: "",
-    name: "",
-    password: "",
-    cart: [],
-    library: [],
-    isAdmin: false,
-  });
+  const SignUp = () => {
+
+    const classes = useStyles();
+
+    const {
+      visible,
+      typePass,
+      handleInpType,
+      setVisible,
+      setInpType,
+      history,
+    } = useContext(AuthContext);
+
+    const [newUser, setNewUser] = useState({
+      nickname: "",
+      name: "",
+      password: "",
+      cart: [],
+      library: [],
+      isAdmin: false,
+      id: "", 
+    });
+
+    const handleSignUp = async (event) => {
+      event.preventDefault();
+      try {
+        await app
+          .auth()
+          .createUserWithEmailAndPassword(newUser.name, newUser.password);
+        history.push("/");
+      } catch (error) {
+        alert(error);
+      }
+    };
+
   return (
     <Container component="main" maxWidth="xs">
       <form action="" className={classes.cont}>
@@ -121,31 +137,12 @@ const SignUp = () => {
               <IconButton
                 className={classes.visBtn}
                 onClick={() => {
-                  handleVisible();
+                  setVisible(!visible);
                   handleInpType();
                 }}
               >
                 {!visible ? <VisibilityIcon /> : <VisibilityOffIcon />}
               </IconButton>
-            </Grid>
-            <Grid className={classes.grids}>
-              <TextField
-                variant="filled"
-                className={classes.inps}
-                name="passwordTwo"
-                type={typePass}
-                required
-                label="Confirm password"
-                InputProps={{
-                  className: classes.inpColor,
-                }}
-                InputLabelProps={{
-                  style: { color: "#fff" },
-                }}
-                onChange={(e) =>
-                  setNewUser({ ...newUser, passwordSec: e.target.value })
-                }
-              />
             </Grid>
           </Grid>
           <Button
@@ -163,8 +160,8 @@ const SignUp = () => {
             className={classes.btns}
             variant="contained"
             color="primary"
-            onClick={async () => {
-              await regUser(newUser);
+            onClick={(e) => {
+              handleSignUp(e);
               setVisible(false);
               setInpType(false);
             }}

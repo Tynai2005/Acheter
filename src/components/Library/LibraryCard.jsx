@@ -3,7 +3,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import axios from "axios";
-import { GAMES_API, JSON_API_USERS } from "../../helper/consts";
+import { PRODUCTS_API, JSON_API_USERS } from "../../helper/consts";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Container, Button } from "@material-ui/core";
@@ -37,21 +37,21 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: "10px !important",
   },
 
-  gameTitle: {
+  productTitle: {
     textAlign: "center",
     color: "white",
     fontSize: "20px",
   },
-  gameCreator: {
+  productCreator: {
     textAlign: "center",
     color: "grey",
     fontSize: "15px",
   },
-  gameDescr: {
+  productDescr: {
     color: "white",
     fontSize: "15px",
   },
-  noGame: {
+  noProduct: {
     color: "white",
     height: "80vh",
     textAlign: "center",
@@ -73,26 +73,26 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LibraryCard = () => {
-  const [libraryGame, setLibraryGame] = useState([]);
+  const [libraryProduct, setLibraryProduct] = useState([]);
   const classes = useStyles();
   const theme = useTheme();
   let library = [];
   const curUser = JSON.parse(localStorage.getItem("user"));
-  const getGames = async () => {
-    const { data } = await axios(GAMES_API);
+  const getProducts = async () => {
+    const { data } = await axios(PRODUCTS_API);
 
-    data.map((game) => {
-      curUser.library.map((libGame) => {
-        if (game.id === libGame) {
-          library.push(game);
+    data.map((product) => {
+      curUser.library.map((libProduct) => {
+        if (product.id === libProduct) {
+          library.push(product);
         }
       });
     });
 
-    setLibraryGame(library);
+    setLibraryProduct(library);
   };
   useEffect(() => {
-    getGames();
+    getProducts();
   }, []);
 
   return (
@@ -100,41 +100,41 @@ const LibraryCard = () => {
       <h2 className={classes.libraryText}>Your library</h2>
       {curUser.library.length > 0 ? (
         <Container className={classes.container}>
-          {libraryGame.map((game) => (
+          {libraryProduct.map((product) => (
             <div className="card">
               <img
-                src={game.image}
-                alt={game.name}
+                src={product.image}
+                alt={product.name}
                 className={classes.cardImg}
               />
               <div className={classes.details}>
                 <CardContent className={classes.content}>
                   <div>
-                    <Typography className={classes.gameTitle}>
-                      {game.name}
+                    <Typography className={classes.productTitle}>
+                      {product.name}
                     </Typography>
                     <Typography
                       variant="subtitle1"
                       color="textSecondary"
-                      className={classes.gameCreator}
+                      className={classes.productCreator}
                     >
-                      {game.creator}
+                      {product.creator}
                     </Typography>
-                    <Typography className={classes.gameDescr}>
-                      {game.description.length > 60
-                        ? game.description.slice(0, 60) + "..."
-                        : game.description}
+                    <Typography className={classes.productDescr}>
+                      {product.description.length > 60
+                        ? product.description.slice(0, 60) + "..."
+                        : product.description}
                     </Typography>
                   </div>
                   <Button className={classes.playBtn}>Play</Button>
                 </CardContent>
               </div>
-              {/* <CardMedia className={classes.cover} image={game.image} /> */}
+              {/* <CardMedia className={classes.cover} image={product.image} /> */}
             </div>
           ))}
         </Container>
       ) : (
-        <h2 className={classes.noGame}>There isn't games in your library</h2>
+        <h2 className={classes.noProduct}>There isn't products in your library</h2>
       )}
     </>
   );

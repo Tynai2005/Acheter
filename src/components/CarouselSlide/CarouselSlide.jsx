@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Container, makeStyles } from "@material-ui/core";
 import axios from "axios";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 import { useState } from "react";
 
 const useStyles = makeStyles((theme) => ({
@@ -24,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 const CarouselSlide = () => {
   const classes = useStyles();
-  const { getGamesData, gamesData, changeId } = useGames();
+  const { getProductsData, productsData, changeId } = useProducts();
 
   useEffect(() => {
-    getGamesData();
+    getProductsData();
   }, []);
 
   return (
@@ -36,7 +36,7 @@ const CarouselSlide = () => {
         <Carousel.Item className={classes.slides}>
           <img
             className="d-block w-100"
-            src={gamesData[0]?.image}
+            src={productsData[0]?.image}
             alt="First slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
@@ -49,7 +49,7 @@ const CarouselSlide = () => {
         <Carousel.Item className={classes.slides}>
           <img
             className="d-block w-100"
-            src={gamesData[1]?.image}
+            src={productsData[1]?.image}
             alt="Second slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
@@ -61,7 +61,7 @@ const CarouselSlide = () => {
         <Carousel.Item className={classes.slides}>
           <img
             className="d-block w-100"
-            src={gamesData[2]?.image}
+            src={productsData[2]?.image}
             alt="Third slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>
@@ -73,7 +73,7 @@ const CarouselSlide = () => {
         <Carousel.Item className={classes.slides}>
           <img
             className="d-block w-100"
-            src={gamesData[3]?.image}
+            src={productsData[3]?.image}
             alt="Third slide"
           />
           <Carousel.Caption style={{ display: "flex" }}>

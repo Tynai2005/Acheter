@@ -1,10 +1,11 @@
 import React from "react";
 import { useEffect } from "react";
-import { useGames } from "../../contexts/GameContext";
-import GameCard from "../GameCard/GameCard";
+import { useProducts } from "../../contexts/ProductContext";
+import ProductCard from "../ProductCard/ProductCard";
 import { Container } from "react-bootstrap";
 import Button from "@material-ui/core/Button";
 import { Grid, makeStyles } from "@material-ui/core";
+
 const useStyles = makeStyles((theme) => ({
   container: {
     width: "100%",
@@ -24,12 +25,12 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "space-between",
   },
 }));
-const GamesListPreview = () => {
+const ProductsListPreview = () => {
   const classes = useStyles();
-  const { getGamesData, gamesData, history } = useGames();
+  const { getProductsData, productsData, history } = useProducts();
 
   useEffect(() => {
-    getGamesData();
+    getProductsData();
   }, []);
 
   let counter = 0;
@@ -38,24 +39,24 @@ const GamesListPreview = () => {
     <Container className={classes.container}>
       <Grid className={classes.seeMore}>
         <h4 style={{ color: "white", fontFamily: "Noto Sans JP" }}>
-          All games
+          All products
         </h4>
         <Button
           variant="contained"
           color="primary"
           onClick={() => {
-            history.push("/gameslist");
+            history.push("/productslist");
           }}
         >
           See More
         </Button>
       </Grid>
       <Grid className={classes.review}>
-        {gamesData &&
-          gamesData.map((game) => {
+        {productsData &&
+          productsData.map((product) => {
             if (counter < 5) {
               counter++;
-              return <GameCard game={game} />;
+              return <ProductCard product={product} />;
             }
           })}
       </Grid>
@@ -63,4 +64,4 @@ const GamesListPreview = () => {
   );
 };
 
-export default GamesListPreview;
+export default ProductsListPreview;

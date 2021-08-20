@@ -8,15 +8,15 @@ import React, {
 } from "react";
 import { useHistory } from "react-router-dom";
 
-import { ACTIONS, GAMES_API, JSON_API_USERS } from "../helper/consts";
+import { ACTIONS, PRODUCTS_API, JSON_API_USERS } from "../helper/consts";
 
-export const gameContext = createContext();
+export const productContext = createContext();
 
-export const useGames = () => useContext(gameContext);
+export const useProducts = () => useContext(productContext);
 
 const INIT_STATE = {
-  gamesData: [],
-  gameDetails: {},
+  productsData: [],
+  productDetails: {},
   modal: false,
   id: null,
   pages: 1,
@@ -24,30 +24,30 @@ const INIT_STATE = {
 
 const reducer = (state = INIT_STATE, action) => {
   switch (action.type) {
-    case ACTIONS.GET_GAME_DETAILS:
-      return { ...state, gameDetails: action.payload };
-    case ACTIONS.GET_GAMES_DATA:
+    case ACTIONS.GET_PRODUCT_DETAILS:
+      return { ...state, productDetails: action.payload };
+    case ACTIONS.GET_PRODUCTS_DATA:
       return {
         ...state,
-        gamesData: action.payload.data,
-        pages: Math.ceil(action.payload.headers["x-total-count"] / gamesCount),
+        productsData: action.payload.data,
+        pages: Math.ceil(action.payload.headers["x-total-count"] / productsCount),
       };
     case ACTIONS.MODAL:
       return { ...state, modal: action.payload };
     case ACTIONS.CHANGE_ID:
       return { ...state, id: action.payload };
-    case ACTIONS.GET_GAMES:
-      return { ...state, gamesData: action.payload };
+    case ACTIONS.GET_PRODUCTS:
+      return { ...state, productsData: action.payload };
     default:
       return state;
   }
 };
 
-let gamesCount = 10;
+let productsCount = 10;
 
-const GameContextProvider = ({ children }) => {
+const ProductContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
-  const [isAllGames, setIsAllGames] = useState(false);
+  const [isAllProducts, setIsAllProducts] = useState(false);
   const history = useHistory();
   const buyNow = JSON.parse(localStorage.getItem("buyNow"));
 
@@ -55,30 +55,30 @@ const GameContextProvider = ({ children }) => {
     localStorage.setItem("buyNow", JSON.stringify([]));
   }, []);
 
-  const getGamesData = async () => {
+  const getProductsData = async () => {
     const search = new URLSearchParams(history.location.search);
-    search.set("_limit", gamesCount);
+    search.set("_limit", productsCount);
     history.push(`${history.location.pathname}?${search.toString()}`);
-    const data = await axios(`${GAMES_API}/${window.location.search}`);
+    const data = await axios(`${PRODUCTS_API}/${window.location.search}`);
     dispatch({
-      type: ACTIONS.GET_GAMES_DATA,
+      type: ACTIONS.GET_PRODUCTS_DATA,
       payload: data,
     });
   };
 
-  const addNewGame = async (newGame) => {
+  const addNewProduct = async (newProduct) => {
     if (
-      newGame.creator.trim().length > 0 &&
-      newGame.description.trim().length > 0 &&
-      newGame.genre.trim().length > 0 &&
-      newGame.image.trim().length > 0 &&
-      newGame.name.trim().length > 0 &&
-      newGame.video.trim().length > 0
+      newProduct.creator.trim().length > 0 &&
+      newProduct.description.trim().length > 0 &&
+      newProduct.genre.trim().length > 0 &&
+      newProduct.image.trim().length > 0 &&
+      newProduct.name.trim().length > 0 &&
+      newProduct.video.trim().length > 0
     ) {
-      if (Number(newGame.price) >= 0) {
-        await axios.post(GAMES_API, newGame);
-        await getGamesData();
-        history.push("/gameslist");
+      if (Number(newProduct.price) >= 0) {
+        await axios.post(PRODUCTS_API, newProduct);
+        await getProductsData();
+        history.push("/productslist");
       } else {
         alert("The price cannot be negative");
       }
@@ -87,9 +87,9 @@ const GameContextProvider = ({ children }) => {
     }
   };
 
-  const deleteGame = async (id) => {
-    await axios.delete(`${GAMES_API}/${id}`);
-    getGamesData();
+  const deleteProduct = async (id) => {
+    await axios.delete(`${PRODUCTS_API}/${id}`);
+    getProductsData();
   };
 
   const toggleModal = () => {
@@ -99,48 +99,48 @@ const GameContextProvider = ({ children }) => {
     });
   };
 
-  const setEditGameInfo = async (id) => {
-    await getGameDetails(id);
+  const setEditProductInfo = async (id) => {
+    await getProductDetails(id);
     dispatch({
       type: ACTIONS.MODAL,
       payload: true,
     });
   };
 
-  const getGameDetails = async (id) => {
-    const { data } = await axios(`${GAMES_API}/${id}`);
+  const getProductDetails = async (id) => {
+    const { data } = await axios(`${PRODUCTS_API}/${id}`);
     dispatch({
-      type: ACTIONS.GET_GAME_DETAILS,
+      type: ACTIONS.GET_PRODUCT_DETAILS,
       payload: data,
     });
   };
 
-  const saveEditedGame = async (id, editedGame) => {
-    console.log(editedGame);
+  const saveEditedProduct = async (id, editedProduct) => {
+    console.log(editedProduct);
     if (
-      editedGame?.creator?.length > 0 &&
-      editedGame?.description?.length > 0 &&
-      editedGame?.genre?.length > 0 &&
-      editedGame?.image?.length > 0 &&
-      editedGame?.name?.length > 0 &&
-      editedGame?.video?.length > 0
+      editedProduct?.creator?.length > 0 &&
+      editedProduct?.description?.length > 0 &&
+      editedProduct?.genre?.length > 0 &&
+      editedProduct?.image?.length > 0 &&
+      editedProduct?.name?.length > 0 &&
+      editedProduct?.video?.length > 0
     ) {
-      if (Number(editedGame.price) >= 0) {
-        const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
+      if (Number(editedProduct.price) >= 0) {
+        const data = await axios.patch(`${PRODUCTS_API}/${id}`, editedProduct);
         toggleModal();
-        getGamesData();
+        getProductsData();
       } else {
         alert("The price cannot be negative");
       }
     } else {
-      alert("Fill all the fields");
+      alert("Fill in all the fields");
     }
   };
 
-  const toggleComment = async (id, editedGame) => {
-    console.log(editedGame);
-    const data = await axios.patch(`${GAMES_API}/${id}`, editedGame);
-    getGamesData();
+  const toggleComment = async (id, editedProduct) => {
+    console.log(editedProduct);
+    const data = await axios.patch(`${PRODUCTS_API}/${id}`, editedProduct);
+    getProductsData();
   };
 
   const changeId = (id) => {
@@ -148,32 +148,32 @@ const GameContextProvider = ({ children }) => {
       type: ACTIONS.CHANGE_ID,
       payload: id,
     });
-    history.push(`/gamedetails/${id}`);
+    history.push(`/productdetails/${id}`);
   };
 
   const changeGenre = async (selectedGenre) => {
-    const { data } = await axios(GAMES_API);
+    const { data } = await axios(PRODUCTS_API);
     console.log(data);
-    let newData = data.filter((game) => game.genre == selectedGenre);
+    let newData = data.filter((product) => product.genre == selectedGenre);
     dispatch({
-      type: ACTIONS.GET_GAMES_DATA,
+      type: ACTIONS.GET_PRODUCTS_DATA,
       payload: newData,
     });
   };
 
   const toHome = () => {
-    setIsAllGames(false);
-    history.push("/gameslist");
+    setIsAllProducts(false);
+    history.push("/productslist");
   };
 
-  const toGamesList = () => {
-    setIsAllGames(true);
+  const toProductsList = () => {
+    setIsAllProducts(true);
     history.push("/");
   };
 
-  const deleteCartGame = async (id) => {
+  const deleteCartProduct = async (id) => {
     const curUser = JSON.parse(localStorage.getItem("user"));
-    const newCart = curUser.cart.filter((game) => game !== id);
+    const newCart = curUser.cart.filter((product) => product !== id);
     const newUser = { ...curUser, cart: newCart };
     localStorage.setItem("user", JSON.stringify(newUser));
     axios.patch(`${JSON_API_USERS}/${curUser.id}`, newUser);
@@ -195,10 +195,10 @@ const GameContextProvider = ({ children }) => {
     } else {
       data.map((user) => {
         if (Array.isArray(id)) {
-          id.map((cartGame) => {
+          id.map((cartProduct) => {
             if (user.name === curUser.name) {
               const edittedUser = { ...user };
-              edittedUser.library.push(cartGame);
+              edittedUser.library.push(cartProduct);
               edittedUser.cart = [];
               axios.patch(`${JSON_API_USERS}/${user.id}`, edittedUser);
               localStorage.setItem("user", JSON.stringify(edittedUser));
@@ -216,29 +216,29 @@ const GameContextProvider = ({ children }) => {
 
   const values = {
     toLibrary,
-    deleteCartGame,
-    getGamesData,
-    addNewGame,
-    deleteGame,
-    setEditGameInfo,
+    deleteCartProduct,
+    getProductsData,
+    addNewProduct,
+    deleteProduct,
+    setEditProductInfo,
     toggleModal,
-    getGameDetails,
-    saveEditedGame,
+    getProductDetails,
+    saveEditedProduct,
     changeId,
     changeGenre,
     toggleComment,
-    setIsAllGames,
+    setIsAllProducts,
     toHome,
-    toGamesList,
-    isAllGames,
+    toProductsList,
+    isAllProducts,
     pages: state.pages,
     history,
     id: state.id,
-    gamesData: state.gamesData,
+    productsData: state.productsData,
     modal: state.modal,
-    gameDetails: state.gameDetails,
+    productDetails: state.productDetails,
   };
-  return <gameContext.Provider value={values}>{children}</gameContext.Provider>;
+  return <productContext.Provider value={values}>{children}</productContext.Provider>;
 };
 
-export default GameContextProvider;
+export default ProductContextProvider;

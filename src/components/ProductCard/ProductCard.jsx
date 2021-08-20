@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import React from "react";
-import { useAuth } from "../../contexts/AuthContext";
-import { useGames } from "../../contexts/GameContext";
+import React, { useContext } from "react";
+import { AuthContext, useAuth } from "../../contexts/AuthContext";
+import { useProducts } from "../../contexts/ProductContext";
 import { makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles(() => ({
@@ -19,52 +19,52 @@ const useStyles = makeStyles(() => ({
     color: "white",
   },
 }));
-const GameCard = ({ game }) => {
+const ProductCard = ({ product }) => {
   const classes = useStyles();
-  const { deleteGame, setEditGameInfo, history } = useGames();
-  const { logged } = useAuth();
+  const { deleteProduct, setEditProductInfo, history } = useProducts();
+  const { currentUser } = useContext(AuthContext);
 
   return (
-    <div className="game-card" style={{ marginBottom: "30px" }}>
-      <div
-        className="game-img-div"
+    <div className="product-card" style={{ marginBottom: "30px" }}>
+      {/* <div
+        className="product-img-div"
         onClick={() => {
-          history.push(`gameDetails/${game.id}`);
+          history.push(`productdetails/${product.id}`);
         }}
       >
         <img
-          className="game-card-img"
-          src={game.image}
-          alt={`${game.name} img`}
+          className="product-card-img"
+          src={product.image}
+          alt={`${product.name} img`}
         />
       </div>
-      <div className="game-card-info">
+      <div className="product-card-info">
         <div style={{ fontFamily: "Roboto", color: "gainsboro" }}>
-          {game.name}
+          {product.name}
         </div>
-        <div style={{ color: "silver", fontSize: "12px" }}>{game.creator}</div>
+        <div style={{ color: "silver", fontSize: "12px" }}>{product.creator}</div>
         <div style={{ color: "gainsboro", fontSize: "15px" }}>
-          {game.price == 0 ? "Free to play" : game.price + "$"}
+          {product.price == 0 ? "Free to play" : product.price + "$"}
         </div>
         {logged && logged.isAdmin ? (
           <div>
             <button
               className={classes.deleteBtn}
-              onClick={() => deleteGame(game.id)}
+              onClick={() => deleteProduct(product.id)}
             >
               DELETE
             </button>
             <button
               className={classes.editBtn}
-              onClick={() => setEditGameInfo(game.id)}
+              onClick={() => setEditProductInfo(product.id)}
             >
               EDIT
             </button>
           </div>
         ) : null}
-      </div>
+      </div> */}
     </div>
   );
 };
 
-export default GameCard;
+export default ProductCard;

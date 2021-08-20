@@ -1,14 +1,12 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 import Header from "../components/Header/Header";
 import Home from "../components/Home/Home";
-import GameContextProvider from "../contexts/GameContext";
-import AddGame from "../components/AddGame/AddGame";
-import GameDetails from "../components/GameDetails/GameDetails";
-import GameContext from "../contexts/GameContext";
+import ProductContextProvider from "../contexts/ProductContext";
+import AddProduct from "../components/AddProduct/AddProduct";
+import ProductDetails from "../components/ProductDetails/ProductDetails";
 import Footer from "../components/Footer/Footer";
-import GamesList from "../components/GamesList/GamesList";
+import ProductsList from "../components/ProductsList/ProductsList";
 import LogIn from "../components/Auth/LogIn";
 import AuthContextProvider from "../contexts/AuthContext";
 import SignUp from "../components/Auth/SignUp";
@@ -25,7 +23,7 @@ const Routes = () => {
     <div>
       <BrowserRouter>
         <AuthContextProvider>
-          <GameContextProvider>
+          <ProductContextProvider>
             <Header />
             <Switch>
               <Route exact path="/aboutus" component={AboutUs} />
@@ -36,12 +34,12 @@ const Routes = () => {
               <Route exact path="/login" component={LogIn} />
               <Route exact path="/signup" component={SignUp} />
               <Route exact path="/" component={Home} />
-              <Route exact path="/gamedetails/:id" component={GameDetails} />
-              <ProtectedRoute exact path="/addgame" component={AddGame} />
-              <Route exact path="/gameslist" component={GamesList} />
+              <Route exact path="/productdetails/:id" component={ProductDetails} />
+              <ProtectedRoute exact path="/addproduct" component={AddProduct} />
+              <Route exact path="/productslist" component={ProductsList} />
             </Switch>
             <Footer />
-          </GameContextProvider>
+          </ProductContextProvider>
         </AuthContextProvider>
       </BrowserRouter>
     </div>

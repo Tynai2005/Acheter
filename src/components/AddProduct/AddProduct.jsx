@@ -2,7 +2,7 @@ import { Container, makeStyles, TextField, Button } from "@material-ui/core";
 
 import React from "react";
 import { useState } from "react";
-import { useGames } from "../../contexts/GameContext";
+import { useProducts } from "../../contexts/ProductContext";
 import { RadioGroup } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -17,13 +17,13 @@ const useStyles = makeStyles((theme) => ({
     margin: "0 10px",
   },
 }));
-const AddGame = () => {
+const AddProduct = () => {
   const [vid, setVid] = useState("https://www.youtube.com/embed/");
   const classes = useStyles();
-  const { addNewGame, history } = useGames();
+  const { addNewProduct, history } = useProducts();
   const [priceRadios, setPriceRadios] = useState(false);
 
-  const [gameInfo, setGameInfo] = useState({
+  const [productInfo, setProductInfo] = useState({
     name: "",
     description: "",
     image: "",
@@ -44,12 +44,12 @@ const AddGame = () => {
       }}
     >
       <div className={classes.text}>
-        <h1>Game creator</h1>
+        <h1>Product creator</h1>
         <br />
 
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, name: e.target.value });
+            setProductInfo({ ...productInfo, name: e.target.value });
           }}
           type="text"
           placeholder="Name"
@@ -57,7 +57,7 @@ const AddGame = () => {
         <br />
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, creator: e.target.value });
+            setProductInfo({ ...productInfo, creator: e.target.value });
           }}
           type="text"
           placeholder="Creator"
@@ -65,7 +65,7 @@ const AddGame = () => {
         <br />
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, description: e.target.value });
+            setProductInfo({ ...productInfo, description: e.target.value });
           }}
           type="text"
           placeholder="Description"
@@ -73,7 +73,7 @@ const AddGame = () => {
         <br />
         <textarea
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, video: e.target.value });
+            setProductInfo({ ...productInfo, video: e.target.value });
             setVid(e.target.value);
           }}
           style={{ width: "188px" }}
@@ -84,7 +84,7 @@ const AddGame = () => {
         <br />
         <input
           onChange={(e) => {
-            setGameInfo({ ...gameInfo, image: e.target.value });
+            setProductInfo({ ...productInfo, image: e.target.value });
           }}
           type="text"
           placeholder="Image"
@@ -94,7 +94,7 @@ const AddGame = () => {
           <div>
             <input
               onChange={(e) => {
-                setGameInfo({ ...gameInfo, price: Number(e.target.value) });
+                setProductInfo({ ...productInfo, price: Number(e.target.value) });
               }}
               type="number"
               placeholder="Price($)"
@@ -108,14 +108,14 @@ const AddGame = () => {
             name="priceRadio"
             id=""
             onChange={() => {
-              setGameInfo({ ...gameInfo, price: Number(0) });
+              setProductInfo({ ...productInfo, price: Number(0) });
               setPriceRadios(!priceRadios);
             }}
           />
           Free to play
         </div>
         <div>
-          <p> Choose game genre:</p>
+          <p> Choose product genre:</p>
 
           <div>
             <input
@@ -123,7 +123,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "RPG" });
+                setProductInfo({ ...productInfo, genre: "RPG" });
               }}
             />
             RPG
@@ -134,7 +134,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "Survival" });
+                setProductInfo({ ...productInfo, genre: "Survival" });
               }}
             />
             Survival
@@ -145,7 +145,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "Sandbox" });
+                setProductInfo({ ...productInfo, genre: "Sandbox" });
               }}
             />
             Sandbox
@@ -156,7 +156,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "Shooter" });
+                setProductInfo({ ...productInfo, genre: "Shooter" });
               }}
             />
             Shooter
@@ -167,7 +167,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "Fighting" });
+                setProductInfo({ ...productInfo, genre: "Fighting" });
               }}
             />
             Fighting
@@ -178,7 +178,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "MOBA" });
+                setProductInfo({ ...productInfo, genre: "MOBA" });
               }}
             />
             MOBA
@@ -189,7 +189,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "Sport" });
+                setProductInfo({ ...productInfo, genre: "Sport" });
               }}
             />
             Sport
@@ -200,7 +200,7 @@ const AddGame = () => {
               name="genreRadio"
               id=""
               onChange={() => {
-                setGameInfo({ ...gameInfo, genre: "Open World" });
+                setProductInfo({ ...productInfo, genre: "Open World" });
               }}
             />
             Open World
@@ -210,13 +210,13 @@ const AddGame = () => {
         <Button
           className={classes.btns}
           variant="secondary"
-          onClick={() => history.push("/gameslist")}
+          onClick={() => history.push("/productslist")}
         >
           Close
         </Button>
         <Button
           onClick={() => {
-            addNewGame(gameInfo);
+            addNewProduct(productInfo);
           }}
           className={classes.btns}
         >
@@ -227,4 +227,4 @@ const AddGame = () => {
   );
 };
 
-export default AddGame;
+export default AddProduct;

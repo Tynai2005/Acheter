@@ -1,31 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "./5777879891_5b3ad33c-5853-4bef-9990-1b35d0c4496e.png";
 import { alpha, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
 import MoreIcon from "@material-ui/icons/MoreVert";
 import Navbar from "./Navbar";
 import { Button } from "@material-ui/core";
 import ContactsIcon from "@material-ui/icons/Contacts";
 import InfoIcon from "@material-ui/icons/Info";
 import { Link } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext";
-import { useGames } from "../../contexts/GameContext";
+import { AuthContext} from "../../contexts/AuthContext";
+import { useProducts } from "../../contexts/ProductContext";
+import {app} from "../../base";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
   navbar: {
-    backgroundColor: "black",
+    backgroundColor: "orange",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -100,8 +98,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header() {
   const classes = useStyles();
-  const { logout, logged } = useAuth();
-  const {toGamesList,history} = useGames()
+  const { currentUser } = useContext(AuthContext)
+  const {toProductsList,history} = useProducts()
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
@@ -124,6 +122,8 @@ export default function Header() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  console.log(currentUser);
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -135,7 +135,7 @@ export default function Header() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      {!localStorage.getItem("user") ? (
+      {!currentUser ? (
         <div>
           <Link to="/login" className={classes.a}>
             <MenuItem onClick={handleMenuClose}>Log in</MenuItem>
@@ -145,7 +145,7 @@ export default function Header() {
           </Link>
         </div>
       ) : (
-        <MenuItem onClick={(handleMenuClose, logout)}>Log out</MenuItem>
+        <MenuItem onClick={() => (handleMenuClose(), app.auth().signOut())}>Log out</MenuItem>
       )}
     </Menu>
   );
@@ -182,7 +182,7 @@ export default function Header() {
         >
           <AccountCircle />
         </IconButton>
-        {logged ? <>{logged.nickname}</> : "Profile"}
+        {currentUser ? <>{currentUser.email}</> : "Profile"}
       </MenuItem>
     </Menu>
   );
@@ -192,7 +192,7 @@ export default function Header() {
       <div className={classes.grow}>
         <AppBar position="sticky" className={classes.navbar}>
           <Toolbar>
-            <Link to="/" onClick={toGamesList} className={classes.logo}>
+            <Link to="/" onClick={toProductsList} className={classes.logo}>
               <Typography className={classes.title} variant="h4" noWrap>
                 <img src={logo} alt="logo" className={classes.logo} />
               </Typography>
@@ -224,7 +224,7 @@ export default function Header() {
                 color="inherit"
               >
                 <AccountCircle style={{ marginRight: "5px" }} />
-                {logged ? <>{logged.nickname}</> : null}
+                {currentUser ? <>{ currentUser.email}</> : null}
               </Button>
             </div>
             <div className={classes.sectionMobile}>

@@ -3,8 +3,8 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useGames } from "../../contexts/GameContext";
-import { GAMES_API } from "../../helper/consts";
+import { useProducts } from "../../contexts/ProductContext";
+import { PRODUCTS_API } from "../../helper/consts";
 
 const useStyles = makeStyles(() => ({
   container: {
@@ -34,45 +34,45 @@ const useStyles = makeStyles(() => ({
   creator: { color: "silver", fontSize: "16px" },
 }));
 
-const FreeGames = () => {
+const FreeProducts = () => {
   let counter = 0;
-  const { history } = useGames();
-  const { gamesData, getGamesData } = useGames();
-  //   const [games, setGames] = useState([]);
-  //   const getGames = async () => {
-  //     const { data } = await axios(GAMES_API);
-  //     setGames(data);
+  const { history } = useProducts();
+  const { productsData, getProductsData } = useProducts();
+  //   const [products, setProducts] = useState([]);
+  //   const getProducts = async () => {
+  //     const { data } = await axios(PRODUCTS_API);
+  //     setProducts(data);
   //   };
   useEffect(() => {
-    getGamesData();
+    getProductsData();
   }, []);
-  //   console.log(games);
+  //   console.log(products);
   const classes = useStyles();
   return (
     <Container style={{ margin: "30px 0" }}>
       <h4
         style={{ color: "white", margin: "20px 0", fontFamily: "Noto Sans JP" }}
       >
-        Free games
+        Free products
       </h4>
       <div className={classes.container}>
         <div className={classes.innerContainer}>
-          {gamesData &&
-            gamesData.map((game) => {
-              if (game.price == 0 && counter < 4) {
+          {productsData &&
+            productsData.map((product) => {
+              if (product.price == 0 && counter < 4) {
                 counter++;
                 return (
                   <div className={classes.card}>
                     <img
-                      src={game.image}
+                      src={product.image}
                       className="free-card-img"
                       onClick={() => {
-                        history.push(`gameDetails/${game.id}`);
+                        history.push(`productDetails/${product.id}`);
                       }}
                     />
 
-                    <div className={classes.title}>{game.name}</div>
-                    <div className={classes.creator}>{game.creator}</div>
+                    <div className={classes.title}>{product.name}</div>
+                    <div className={classes.creator}>{product.creator}</div>
                   </div>
                 );
               }
@@ -84,4 +84,4 @@ const FreeGames = () => {
   );
 };
 
-export default FreeGames;
+export default FreeProducts;
